@@ -1,0 +1,49 @@
+name: Bug Report
+description: Report a bug or unexpected behavior.
+title: ""
+labels: ["bug"]
+body:
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to reproduce
+      description: List the exact steps required to reproduce the bug.
+      placeholder: |
+        1. Open the application
+        2. Navigate to ...
+        3. Click ...
+        4. Observe the issue
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+      placeholder: Describe the intended behavior.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: Actual behavior
+      description: What happened instead?
+      placeholder: Describe the observed incorrect behavior, including any error messages.
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include operating system, browser, app version, and deployment context.
+      placeholder: |
+        - OS:
+        - Browser:
+        - Version:
+        - Environment: local / staging / production
+        - Other relevant details:
+    validations:
+      required: true

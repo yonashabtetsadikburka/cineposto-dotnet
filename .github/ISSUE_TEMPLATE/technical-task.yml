@@ -1,0 +1,25 @@
+name: Technical Task
+description: Define a technical implementation or maintenance task.
+title: ""
+labels: ["technical-task"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Summarize the task and the technical context.
+      placeholder: Explain the background, objective, and scope of the work.
+    validations:
+      required: true
+
+  - type: checklist
+    id: definition-of-done
+    attributes:
+      label: Definition of done
+      description: Check the conditions that must be satisfied before the task is complete.
+      options:
+        - label: The implementation is complete and aligns with the requested scope.
+        - label: Relevant tests are added or updated and pass.
+        - label: Documentation and/or comments are updated as needed.
+        - label: The change does not introduce secrets or sensitive values into the codebase.
+        - label: The task is reviewed and ready to merge.

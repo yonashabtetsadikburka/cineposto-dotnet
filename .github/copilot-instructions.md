@@ -1,0 +1,122 @@
+# AGENTS.md — CinePosto (.NET)
+
+Working rules for AI agents and human contributors on CinePosto:
+a scraper for Umbria cinema schedules, with API, frontend,
+and Azure deployment via Bicep and GitHub Actions.
+
+## 1. Language
+
+- All code, comments, commit messages, issues, pull requests,
+  and documentation are written in English.
+- User-facing UI strings are never hardcoded in components, pages,
+  or backend messages returned to the client.
+- All user-facing strings live in localization resource files
+  (e.g. `.resx` / resource JSON), with Italian (`it`) as the
+  default language and English (`en`) as a secondary translation.
+
+## 2. Architecture
+
+Layered structure under `src/`:
+
+- `Domain`: entities, value objects, interfaces. No I/O, no HTTP,
+  no database, no framework dependencies.
+- `Infrastructure`: persistence, configuration, logging,
+  Azure Key Vault access, cross-cutting concerns.
+- `Connectors`: one adapter per cinema / cinema chain that maps
+  the source website or feed to the Domain model.
+- `Scraper`: orchestration (scheduling, fetching via Connectors,
+  normalization, persistence). No parsing logic here — parsing
+  belongs in Connectors.
+- `Api`: ASP.NET Core REST API over the Domain model.
+  No scraping or HTML parsing here.
+- `Web`: frontend application consuming only the public Api.
+  No direct database or Connector access.
+
+Rules:
+
+- Dependencies point inward: `Api`, `Scraper`, and `Web` depend on
+  `Domain`; `Connectors` implement `Domain` interfaces;
+  `Domain` depends on nothing.
+- Keep cinema-specific logic inside its Connector. Shared logic
+  goes in `Domain` or `Infrastructure` only if at least two
+  Connectors need it.
+
+## 3. Connector Tests
+
+- Every cinema Connector must have automated tests.
+- Tests use saved fixtures (HTML / JSON / XML snapshots stored in
+  the repo), never live network calls.
+- No `HttpClient` calls to real sites in tests. Mock the transport
+  or load fixtures from disk.
+- Each Connector test covers at minimum:
+  1. a standard listing with multiple showtimes,
+  2. an empty / no-showtimes case,
+  3. a malformed or unexpected payload that must fail gracefully.
+- New fixtures go next to the corresponding test suite and use
+  descriptive names (e.g. `postmodernissimo_listing_2026-10-01.html`).
+
+## 4. Secrets
+
+- Never put secrets, passwords, connection strings, or API keys
+  in code, tests, fixtures, Bicep files, or workflow files.
+- Local and CI configuration uses environment variables.
+- Production and staging secrets live in Azure Key Vault and are
+  referenced by name; only the vault / secret URI is configurable.
+- If a secret leaks into a commit, rotate it immediately and notify
+  the maintainer — do not just delete it in a follow-up commit.
+
+## 5. Branches and Pull Requests
+
+- All changes go through a branch and a pull request.
+  Never commit directly to `main`.
+- Create the branch from an up-to-date `main`.
+- Keep pull requests focused: one concern per PR.
+- A PR description must state what changed, why, and how it was
+  verified (build / test commands and their outcome).
+
+## 6. Commit Messages
+
+Follow Conventional Commits:
+
+- `feat:` a new feature.
+- `fix:` a bug fix.
+- `docs:` documentation only.
+- `chore:` tooling, CI, dependencies, housekeeping.
+- Format: `<type>: <short imperative description in English>`
+  (e.g. `feat: add Api endpoint for daily showtimes`).
+- Write all commit messages in English.
+
+## 7. Branch Names
+
+- `feat/<short-description>` for features.
+- `fix/<short-description>` for bug fixes.
+- `docs/<short-description>` for documentation.
+- `chore/<short-description>` for tooling, CI, or maintenance.
+- Use lowercase English kebab-case
+  (e.g. `feat/postmodernissimo-connector`).
+
+## 8. Before Writing Code
+
+- Before writing code, briefly explain what you will do and why:
+  the goal, the chosen layer / Connector, and the main files
+  you expect to touch or create.
+- If the request is ambiguous, ask a clarifying question instead
+  of guessing.
+
+## 9. Dependencies
+
+- Do not add new NuGet / npm / tooling dependencies without asking
+  the maintainer first.
+- When proposing a dependency, state the problem, the candidate
+  package and version, its license, and why existing dependencies
+  cannot solve it.
+
+## 10. Verification
+
+- After each change, state how to verify it: the exact build /
+  test commands (e.g. `dotnet build`, `dotnet test`) and which
+  suites were run.
+- Code that does not build or breaks existing tests is not done.
+- Deployment changes (`infra/` Bicep, `.github/workflows/`) must
+  at least pass validation (`az bicep build` / workflow lint where
+  available) and describe the expected Azure impact in the PR.
