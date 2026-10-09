@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CinePosto.Connectors/CinePosto.Connectors.csproj" />
+    <Project Path="src/CinePosto.Domain/CinePosto.Domain.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/CinePosto.Connectors.Tests/CinePosto.Connectors.Tests.csproj" />
+    <Project Path="tests/CinePosto.Domain.Tests/CinePosto.Domain.Tests.csproj" />
+  </Folder>
+</Solution>
