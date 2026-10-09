@@ -22,4 +22,10 @@
     <ProjectReference Include="..\..\src\CinePosto.Domain\CinePosto.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Parity\*.tsv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
