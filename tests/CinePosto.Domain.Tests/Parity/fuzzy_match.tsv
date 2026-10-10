@@ -1,0 +1,781 @@
+a	b	expected
+Avatar	Avaxar	true
+Avaxar	Avatar	true
+Avatar	Avata	true
+Avata	Avatar	true
+Avatar	zAvatar	true
+zAvatar	Avatar	true
+Avatar	Avxtxr	true
+Avxtxr	Avatar	true
+Avatar	Avat	true
+Avat	Avatar	true
+Avatar	zzAvatar	true
+zzAvatar	Avatar	true
+Avatar	Axaxxr	false
+Axaxxr	Avatar	false
+Avatar	Ava	false
+Ava	Avatar	false
+Avatar	zzzAvatar	true
+zzzAvatar	Avatar	true
+Avatar	Axxxxr	false
+Axxxxr	Avatar	false
+Avatar	Av	false
+Av	Avatar	false
+Avatar	zzzzAvatar	true
+zzzzAvatar	Avatar	true
+Avatar	Axxxxx	false
+Axxxxx	Avatar	false
+Avatar	A	false
+A	Avatar	false
+Avatar	zzzzzAvatar	true
+zzzzzAvatar	Avatar	true
+Oppenheimer	Oppenxeimer	true
+Oppenxeimer	Oppenheimer	true
+Oppenheimer	Oppenheime	true
+Oppenheime	Oppenheimer	true
+Oppenheimer	zOppenheimer	true
+zOppenheimer	Oppenheimer	true
+Oppenheimer	Oppxnhexmer	true
+Oppxnhexmer	Oppenheimer	true
+Oppenheimer	Oppenheim	true
+Oppenheim	Oppenheimer	true
+Oppenheimer	zzOppenheimer	true
+zzOppenheimer	Oppenheimer	true
+Oppenheimer	Opxenxeixer	false
+Opxenxeixer	Oppenheimer	false
+Oppenheimer	Oppenhei	true
+Oppenhei	Oppenheimer	true
+Oppenheimer	zzzOppenheimer	true
+zzzOppenheimer	Oppenheimer	true
+Oppenheimer	Opxexhxixer	false
+Opxexhxixer	Oppenheimer	false
+Oppenheimer	Oppenhe	true
+Oppenhe	Oppenheimer	true
+Oppenheimer	zzzzOppenheimer	true
+zzzzOppenheimer	Oppenheimer	true
+Oppenheimer	Oxpxnxexmxr	false
+Oxpxnxexmxr	Oppenheimer	false
+Oppenheimer	Oppenh	true
+Oppenh	Oppenheimer	true
+Oppenheimer	zzzzzOppenheimer	true
+zzzzzOppenheimer	Oppenheimer	true
+Interstellar	Intersxellar	true
+Intersxellar	Interstellar	true
+Interstellar	Interstella	true
+Interstella	Interstellar	true
+Interstellar	zInterstellar	true
+zInterstellar	Interstellar	true
+Interstellar	Intexstexlar	true
+Intexstexlar	Interstellar	true
+Interstellar	Interstell	true
+Interstell	Interstellar	true
+Interstellar	zzInterstellar	true
+zzInterstellar	Interstellar	true
+Interstellar	Intxrsxelxar	true
+Intxrsxelxar	Interstellar	true
+Interstellar	Interstel	true
+Interstel	Interstellar	true
+Interstellar	zzzInterstellar	true
+zzzInterstellar	Interstellar	true
+Interstellar	Inxexstxlxar	false
+Inxexstxlxar	Interstellar	false
+Interstellar	Interste	true
+Interste	Interstellar	true
+Interstellar	zzzzInterstellar	true
+zzzzInterstellar	Interstellar	true
+Interstellar	Inxexsxexlxr	false
+Inxexsxexlxr	Interstellar	false
+Interstellar	Interst	true
+Interst	Interstellar	true
+Interstellar	zzzzzInterstellar	true
+zzzzzInterstellar	Interstellar	true
+Il Gladiatore II	Il Gladixtore II	true
+Il Gladixtore II	Il Gladiatore II	true
+Il Gladiatore II	Il Gladiatore I	true
+Il Gladiatore I	Il Gladiatore II	true
+Il Gladiatore II	zIl Gladiatore II	true
+zIl Gladiatore II	Il Gladiatore II	true
+Il Gladiatore II	Il Glxdiatxre II	true
+Il Glxdiatxre II	Il Gladiatore II	true
+Il Gladiatore II	Il Gladiatore 	true
+Il Gladiatore 	Il Gladiatore II	true
+Il Gladiatore II	zzIl Gladiatore II	true
+zzIl Gladiatore II	Il Gladiatore II	true
+Il Gladiatore II	Il Gxadixtorx II	true
+Il Gxadixtorx II	Il Gladiatore II	true
+Il Gladiatore II	Il Gladiatore	true
+Il Gladiatore	Il Gladiatore II	true
+Il Gladiatore II	zzzIl Gladiatore II	true
+zzzIl Gladiatore II	Il Gladiatore II	true
+Il Gladiatore II	Il xlaxiaxorx II	false
+Il xlaxiaxorx II	Il Gladiatore II	false
+Il Gladiatore II	Il Gladiator	true
+Il Gladiator	Il Gladiatore II	true
+Il Gladiatore II	zzzzIl Gladiatore II	true
+zzzzIl Gladiatore II	Il Gladiatore II	true
+Il Gladiatore II	IlxGlxdixtxrexII	false
+IlxGlxdixtxrexII	Il Gladiatore II	false
+Il Gladiatore II	Il Gladiato	true
+Il Gladiato	Il Gladiatore II	true
+Il Gladiatore II	zzzzzIl Gladiatore II	true
+zzzzzIl Gladiatore II	Il Gladiatore II	true
+Mission: Impossible - Dead Reckoning	Mission: Impossiblx - Dead Reckoning	true
+Mission: Impossiblx - Dead Reckoning	Mission: Impossible - Dead Reckoning	true
+Mission: Impossible - Dead Reckoning	Mission: Impossible - Dead Reckonin	true
+Mission: Impossible - Dead Reckonin	Mission: Impossible - Dead Reckoning	true
+Mission: Impossible - Dead Reckoning	zMission: Impossible - Dead Reckoning	true
+zMission: Impossible - Dead Reckoning	Mission: Impossible - Dead Reckoning	true
+Mission: Impossible - Dead Reckoning	Mission: Impxssible - Dexd Reckoning	true
+Mission: Impxssible - Dexd Reckoning	Mission: Impossible - Dead Reckoning	true
+Mission: Impossible - Dead Reckoning	Mission: Impossible - Dead Reckoni	true
+Mission: Impossible - Dead Reckoni	Mission: Impossible - Dead Reckoning	true
+Mission: Impossible - Dead Reckoning	zzMission: Impossible - Dead Reckoning	true
+zzMission: Impossible - Dead Reckoning	Mission: Impossible - Dead Reckoning	true
+Mission: Impossible - Dead Reckoning	Mission: xmpossiblx - Dead xeckoning	true
+Mission: xmpossiblx - Dead xeckoning	Mission: Impossible - Dead Reckoning	true
+Mission: Impossible - Dead Reckoning	Mission: Impossible - Dead Reckon	true
+Mission: Impossible - Dead Reckon	Mission: Impossible - Dead Reckoning	true
+Mission: Impossible - Dead Reckoning	zzzMission: Impossible - Dead Reckoning	true
+zzzMission: Impossible - Dead Reckoning	Mission: Impossible - Dead Reckoning	true
+Mission: Impossible - Dead Reckoning	Missionx Imposxible -xDead Rxckoning	true
+Missionx Imposxible -xDead Rxckoning	Mission: Impossible - Dead Reckoning	true
+Mission: Impossible - Dead Reckoning	Mission: Impossible - Dead Recko	true
+Mission: Impossible - Dead Recko	Mission: Impossible - Dead Reckoning	true
+Mission: Impossible - Dead Reckoning	zzzzMission: Impossible - Dead Reckoning	true
+zzzzMission: Impossible - Dead Reckoning	Mission: Impossible - Dead Reckoning	true
+Mission: Impossible - Dead Reckoning	Missiox: Impxssiblx - Dexd Recxoning	true
+Missiox: Impxssiblx - Dexd Recxoning	Mission: Impossible - Dead Reckoning	true
+Mission: Impossible - Dead Reckoning	Mission: Impossible - Dead Reck	true
+Mission: Impossible - Dead Reck	Mission: Impossible - Dead Reckoning	true
+Mission: Impossible - Dead Reckoning	zzzzzMission: Impossible - Dead Reckoning	true
+zzzzzMission: Impossible - Dead Reckoning	Mission: Impossible - Dead Reckoning	true
+La Vita è Bella	La Vitaxè Bella	true
+La Vitaxè Bella	La Vita è Bella	true
+La Vita è Bella	La Vita è Bell	true
+La Vita è Bell	La Vita è Bella	true
+La Vita è Bella	zLa Vita è Bella	true
+zLa Vita è Bella	La Vita è Bella	true
+La Vita è Bella	La Vixa è xella	true
+La Vixa è xella	La Vita è Bella	true
+La Vita è Bella	La Vita è Bel	true
+La Vita è Bel	La Vita è Bella	true
+La Vita è Bella	zzLa Vita è Bella	true
+zzLa Vita è Bella	La Vita è Bella	true
+La Vita è Bella	La xitaxè Bxlla	false
+La xitaxè Bxlla	La Vita è Bella	false
+La Vita è Bella	La Vita è Be	true
+La Vita è Be	La Vita è Bella	true
+La Vita è Bella	zzzLa Vita è Bella	true
+zzzLa Vita è Bella	La Vita è Bella	true
+La Vita è Bella	La xitx èxBexla	false
+La xitx èxBexla	La Vita è Bella	false
+La Vita è Bella	La Vita è B	true
+La Vita è B	La Vita è Bella	true
+La Vita è Bella	zzzzLa Vita è Bella	true
+zzzzLa Vita è Bella	La Vita è Bella	true
+La Vita è Bella	LaxVixaxè xexla	false
+LaxVixaxè xexla	La Vita è Bella	false
+La Vita è Bella	La Vita è 	true
+La Vita è 	La Vita è Bella	true
+La Vita è Bella	zzzzzLa Vita è Bella	true
+zzzzzLa Vita è Bella	La Vita è Bella	true
+Cinema Paradiso	Cinema xaradiso	true
+Cinema xaradiso	Cinema Paradiso	true
+Cinema Paradiso	Cinema Paradis	true
+Cinema Paradis	Cinema Paradiso	true
+Cinema Paradiso	zCinema Paradiso	true
+zCinema Paradiso	Cinema Paradiso	true
+Cinema Paradiso	Cinemx Parxdiso	true
+Cinemx Parxdiso	Cinema Paradiso	true
+Cinema Paradiso	Cinema Paradi	true
+Cinema Paradi	Cinema Paradiso	true
+Cinema Paradiso	zzCinema Paradiso	true
+zzCinema Paradiso	Cinema Paradiso	true
+Cinema Paradiso	Cinxma xaraxiso	true
+Cinxma xaraxiso	Cinema Paradiso	true
+Cinema Paradiso	Cinema Parad	true
+Cinema Parad	Cinema Paradiso	true
+Cinema Paradiso	zzzCinema Paradiso	true
+zzzCinema Paradiso	Cinema Paradiso	true
+Cinema Paradiso	CinxmaxPaxadxso	false
+CinxmaxPaxadxso	Cinema Paradiso	false
+Cinema Paradiso	Cinema Para	true
+Cinema Para	Cinema Paradiso	true
+Cinema Paradiso	zzzzCinema Paradiso	true
+zzzzCinema Paradiso	Cinema Paradiso	true
+Cinema Paradiso	Cixemx xarxdxso	false
+Cixemx xarxdxso	Cinema Paradiso	false
+Cinema Paradiso	Cinema Par	true
+Cinema Par	Cinema Paradiso	true
+Cinema Paradiso	zzzzzCinema Paradiso	true
+zzzzzCinema Paradiso	Cinema Paradiso	true
+Il Signore degli Anelli	Il Signore xegli Anelli	true
+Il Signore xegli Anelli	Il Signore degli Anelli	true
+Il Signore degli Anelli	Il Signore degli Anell	true
+Il Signore degli Anell	Il Signore degli Anelli	true
+Il Signore degli Anelli	zIl Signore degli Anelli	true
+zIl Signore degli Anelli	Il Signore degli Anelli	true
+Il Signore degli Anelli	Il Signxre deglx Anelli	true
+Il Signxre deglx Anelli	Il Signore degli Anelli	true
+Il Signore degli Anelli	Il Signore degli Anel	true
+Il Signore degli Anel	Il Signore degli Anelli	true
+Il Signore degli Anelli	zzIl Signore degli Anelli	true
+zzIl Signore degli Anelli	Il Signore degli Anelli	true
+Il Signore degli Anelli	Il Sixnore xegli xnelli	true
+Il Sixnore xegli xnelli	Il Signore degli Anelli	true
+Il Signore degli Anelli	Il Signore degli Ane	true
+Il Signore degli Ane	Il Signore degli Anelli	true
+Il Signore degli Anelli	zzzIl Signore degli Anelli	true
+zzzIl Signore degli Anelli	Il Signore degli Anelli	true
+Il Signore degli Anelli	Il Sxgnorx dexli Axelli	true
+Il Sxgnorx dexli Axelli	Il Signore degli Anelli	true
+Il Signore degli Anelli	Il Signore degli An	true
+Il Signore degli An	Il Signore degli Anelli	true
+Il Signore degli Anelli	zzzzIl Signore degli Anelli	true
+zzzzIl Signore degli Anelli	Il Signore degli Anelli	true
+Il Signore degli Anelli	Il xignxre xeglx Anxlli	false
+Il xignxre xeglx Anxlli	Il Signore degli Anelli	false
+Il Signore degli Anelli	Il Signore degli A	true
+Il Signore degli A	Il Signore degli Anelli	true
+Il Signore degli Anelli	zzzzzIl Signore degli Anelli	true
+zzzzzIl Signore degli Anelli	Il Signore degli Anelli	true
+Guardiani della Galassia	Guardiani dexla Galassia	true
+Guardiani dexla Galassia	Guardiani della Galassia	true
+Guardiani della Galassia	Guardiani della Galassi	true
+Guardiani della Galassi	Guardiani della Galassia	true
+Guardiani della Galassia	zGuardiani della Galassia	true
+zGuardiani della Galassia	Guardiani della Galassia	true
+Guardiani della Galassia	Guardianx della xalassia	true
+Guardianx della xalassia	Guardiani della Galassia	true
+Guardiani della Galassia	Guardiani della Galass	true
+Guardiani della Galass	Guardiani della Galassia	true
+Guardiani della Galassia	zzGuardiani della Galassia	true
+zzGuardiani della Galassia	Guardiani della Galassia	true
+Guardiani della Galassia	Guardixni dexla Gaxassia	true
+Guardixni dexla Gaxassia	Guardiani della Galassia	true
+Guardiani della Galassia	Guardiani della Galas	true
+Guardiani della Galas	Guardiani della Galassia	true
+Guardiani della Galassia	zzzGuardiani della Galassia	true
+zzzGuardiani della Galassia	Guardiani della Galassia	true
+Guardiani della Galassia	Guarxianixdellx Galxssia	true
+Guarxianixdellx Galxssia	Guardiani della Galassia	true
+Guardiani della Galassia	Guardiani della Gala	true
+Guardiani della Gala	Guardiani della Galassia	true
+Guardiani della Galassia	zzzzGuardiani della Galassia	true
+zzzzGuardiani della Galassia	Guardiani della Galassia	true
+Guardiani della Galassia	Guarxianx dexla xalaxsia	true
+Guarxianx dexla xalaxsia	Guardiani della Galassia	true
+Guardiani della Galassia	Guardiani della Gal	true
+Guardiani della Gal	Guardiani della Galassia	true
+Guardiani della Galassia	zzzzzGuardiani della Galassia	true
+zzzzzGuardiani della Galassia	Guardiani della Galassia	true
+Spider-Man: Across the Spider-Verse	Spider-Man: Acrosx the Spider-Verse	true
+Spider-Man: Acrosx the Spider-Verse	Spider-Man: Across the Spider-Verse	true
+Spider-Man: Across the Spider-Verse	Spider-Man: Across the Spider-Vers	true
+Spider-Man: Across the Spider-Vers	Spider-Man: Across the Spider-Verse	true
+Spider-Man: Across the Spider-Verse	zSpider-Man: Across the Spider-Verse	true
+zSpider-Man: Across the Spider-Verse	Spider-Man: Across the Spider-Verse	true
+Spider-Man: Across the Spider-Verse	Spider-Man:xAcross the xpider-Verse	true
+Spider-Man:xAcross the xpider-Verse	Spider-Man: Across the Spider-Verse	true
+Spider-Man: Across the Spider-Verse	Spider-Man: Across the Spider-Ver	true
+Spider-Man: Across the Spider-Ver	Spider-Man: Across the Spider-Verse	true
+Spider-Man: Across the Spider-Verse	zzSpider-Man: Across the Spider-Verse	true
+zzSpider-Man: Across the Spider-Verse	Spider-Man: Across the Spider-Verse	true
+Spider-Man: Across the Spider-Verse	Spider-Mxn: Acrosx the Spixer-Verse	true
+Spider-Mxn: Acrosx the Spixer-Verse	Spider-Man: Across the Spider-Verse	true
+Spider-Man: Across the Spider-Verse	Spider-Man: Across the Spider-Ve	true
+Spider-Man: Across the Spider-Ve	Spider-Man: Across the Spider-Verse	true
+Spider-Man: Across the Spider-Verse	zzzSpider-Man: Across the Spider-Verse	true
+zzzSpider-Man: Across the Spider-Verse	Spider-Man: Across the Spider-Verse	true
+Spider-Man: Across the Spider-Verse	Spider-xan: Acxoss thx Spidex-Verse	true
+Spider-xan: Acxoss thx Spidex-Verse	Spider-Man: Across the Spider-Verse	true
+Spider-Man: Across the Spider-Verse	Spider-Man: Across the Spider-V	true
+Spider-Man: Across the Spider-V	Spider-Man: Across the Spider-Verse	true
+Spider-Man: Across the Spider-Verse	zzzzSpider-Man: Across the Spider-Verse	true
+zzzzSpider-Man: Across the Spider-Verse	Spider-Man: Across the Spider-Verse	true
+Spider-Man: Across the Spider-Verse	Spidex-Man:xAcrosx the xpiderxVerse	true
+Spidex-Man:xAcrosx the xpiderxVerse	Spider-Man: Across the Spider-Verse	true
+Spider-Man: Across the Spider-Verse	Spider-Man: Across the Spider-	true
+Spider-Man: Across the Spider-	Spider-Man: Across the Spider-Verse	true
+Spider-Man: Across the Spider-Verse	zzzzzSpider-Man: Across the Spider-Verse	true
+zzzzzSpider-Man: Across the Spider-Verse	Spider-Man: Across the Spider-Verse	true
+Fast & Furious 9	Fast & Fxrious 9	true
+Fast & Fxrious 9	Fast & Furious 9	true
+Fast & Furious 9	Fast & Furious 	true
+Fast & Furious 	Fast & Furious 9	true
+Fast & Furious 9	zFast & Furious 9	true
+zFast & Furious 9	Fast & Furious 9	true
+Fast & Furious 9	Fast x Furxous 9	true
+Fast x Furxous 9	Fast & Furious 9	true
+Fast & Furious 9	Fast & Furious	true
+Fast & Furious	Fast & Furious 9	true
+Fast & Furious 9	zzFast & Furious 9	true
+zzFast & Furious 9	Fast & Furious 9	true
+Fast & Furious 9	Fastx& Fxrioxs 9	true
+Fastx& Fxrioxs 9	Fast & Furious 9	true
+Fast & Furious 9	Fast & Furiou	true
+Fast & Furiou	Fast & Furious 9	true
+Fast & Furious 9	zzzFast & Furious 9	true
+zzzFast & Furious 9	Fast & Furious 9	true
+Fast & Furious 9	Fasx &xFuxioxs 9	false
+Fasx &xFuxioxs 9	Fast & Furious 9	false
+Fast & Furious 9	Fast & Furio	true
+Fast & Furio	Fast & Furious 9	true
+Fast & Furious 9	zzzzFast & Furious 9	true
+zzzzFast & Furious 9	Fast & Furious 9	true
+Fast & Furious 9	Faxt x Fxrxoux 9	false
+Faxt x Fxrxoux 9	Fast & Furious 9	false
+Fast & Furious 9	Fast & Furi	true
+Fast & Furi	Fast & Furious 9	true
+Fast & Furious 9	zzzzzFast & Furious 9	true
+zzzzzFast & Furious 9	Fast & Furious 9	true
+Dune	Duxe	true
+Duxe	Dune	true
+Dune	Dun	true
+Dun	Dune	true
+Dune	zDune	true
+zDune	Dune	true
+Dune	Dxxe	true
+Dxxe	Dune	true
+Dune	Du	true
+Du	Dune	true
+Dune	zzDune	true
+zzDune	Dune	true
+Dune	Dxxx	false
+Dxxx	Dune	false
+Dune	D	false
+D	Dune	false
+Dune	zzzDune	true
+zzzDune	Dune	true
+Dune	xxxx	false
+xxxx	Dune	false
+Dune		false
+	Dune	false
+Dune	zzzzDune	true
+zzzzDune	Dune	true
+Dune	xxxx	false
+xxxx	Dune	false
+Dune		false
+	Dune	false
+Dune	zzzzzDune	true
+zzzzzDune	Dune	true
+Up	Ux	true
+Ux	Up	true
+Up	U	true
+U	Up	true
+Up	zUp	true
+zUp	Up	true
+Up	xx	true
+xx	Up	true
+Up		true
+	Up	true
+Up	zzUp	true
+zzUp	Up	true
+Up	xx	true
+xx	Up	true
+Up		true
+	Up	true
+Up	zzzUp	false
+zzzUp	Up	false
+Up	xx	true
+xx	Up	true
+Up		true
+	Up	true
+Up	zzzzUp	false
+zzzzUp	Up	false
+Up	xx	true
+xx	Up	true
+Up		true
+	Up	true
+Up	zzzzzUp	false
+zzzzzUp	Up	false
+Alien	Alxen	true
+Alxen	Alien	true
+Alien	Alie	true
+Alie	Alien	true
+Alien	zAlien	true
+zAlien	Alien	true
+Alien	Axixn	true
+Axixn	Alien	true
+Alien	Ali	true
+Ali	Alien	true
+Alien	zzAlien	true
+zzAlien	Alien	true
+Alien	Axxxn	false
+Axxxn	Alien	false
+Alien	Al	false
+Al	Alien	false
+Alien	zzzAlien	true
+zzzAlien	Alien	true
+Alien	Axxxx	false
+Axxxx	Alien	false
+Alien	A	false
+A	Alien	false
+Alien	zzzzAlien	true
+zzzzAlien	Alien	true
+Alien	xxxxx	false
+xxxxx	Alien	false
+Alien		false
+	Alien	false
+Alien	zzzzzAlien	true
+zzzzzAlien	Alien	true
+Barbie	Barxie	true
+Barxie	Barbie	true
+Barbie	Barbi	true
+Barbi	Barbie	true
+Barbie	zBarbie	true
+zBarbie	Barbie	true
+Barbie	Baxbxe	true
+Baxbxe	Barbie	true
+Barbie	Barb	true
+Barb	Barbie	true
+Barbie	zzBarbie	true
+zzBarbie	Barbie	true
+Barbie	Bxrxxe	false
+Bxrxxe	Barbie	false
+Barbie	Bar	false
+Bar	Barbie	false
+Barbie	zzzBarbie	true
+zzzBarbie	Barbie	true
+Barbie	Bxxxxe	false
+Bxxxxe	Barbie	false
+Barbie	Ba	false
+Ba	Barbie	false
+Barbie	zzzzBarbie	true
+zzzzBarbie	Barbie	true
+Barbie	Bxxxxx	false
+Bxxxxx	Barbie	false
+Barbie	B	false
+B	Barbie	false
+Barbie	zzzzzBarbie	true
+zzzzzBarbie	Barbie	true
+Wonka	Woxka	true
+Woxka	Wonka	true
+Wonka	Wonk	true
+Wonk	Wonka	true
+Wonka	zWonka	true
+zWonka	Wonka	true
+Wonka	Wxnxa	true
+Wxnxa	Wonka	true
+Wonka	Won	true
+Won	Wonka	true
+Wonka	zzWonka	true
+zzWonka	Wonka	true
+Wonka	Wxxxa	false
+Wxxxa	Wonka	false
+Wonka	Wo	false
+Wo	Wonka	false
+Wonka	zzzWonka	true
+zzzWonka	Wonka	true
+Wonka	Wxxxx	false
+Wxxxx	Wonka	false
+Wonka	W	false
+W	Wonka	false
+Wonka	zzzzWonka	true
+zzzzWonka	Wonka	true
+Wonka	xxxxx	false
+xxxxx	Wonka	false
+Wonka		false
+	Wonka	false
+Wonka	zzzzzWonka	true
+zzzzzWonka	Wonka	true
+Titanic	Titxnic	true
+Titxnic	Titanic	true
+Titanic	Titani	true
+Titani	Titanic	true
+Titanic	zTitanic	true
+zTitanic	Titanic	true
+Titanic	Tixaxic	true
+Tixaxic	Titanic	true
+Titanic	Titan	true
+Titan	Titanic	true
+Titanic	zzTitanic	true
+zzTitanic	Titanic	true
+Titanic	Txtxnxc	false
+Txtxnxc	Titanic	false
+Titanic	Tita	true
+Tita	Titanic	true
+Titanic	zzzTitanic	true
+zzzTitanic	Titanic	true
+Titanic	Txxaxxc	false
+Txxaxxc	Titanic	false
+Titanic	Tit	false
+Tit	Titanic	false
+Titanic	zzzzTitanic	true
+zzzzTitanic	Titanic	true
+Titanic	Txxxxxc	false
+Txxxxxc	Titanic	false
+Titanic	Ti	false
+Ti	Titanic	false
+Titanic	zzzzzTitanic	true
+zzzzzTitanic	Titanic	true
+Il Padrino	Il Paxrino	true
+Il Paxrino	Il Padrino	true
+Il Padrino	Il Padrin	true
+Il Padrin	Il Padrino	true
+Il Padrino	zIl Padrino	true
+zIl Padrino	Il Padrino	true
+Il Padrino	Il xadxino	true
+Il xadxino	Il Padrino	true
+Il Padrino	Il Padri	true
+Il Padri	Il Padrino	true
+Il Padrino	zzIl Padrino	true
+zzIl Padrino	Il Padrino	true
+Il Padrino	IlxPaxrxno	false
+IlxPaxrxno	Il Padrino	false
+Il Padrino	Il Padr	true
+Il Padr	Il Padrino	true
+Il Padrino	zzzIl Padrino	true
+zzzIl Padrino	Il Padrino	true
+Il Padrino	IlxPxdxixo	false
+IlxPxdxixo	Il Padrino	false
+Il Padrino	Il Pad	false
+Il Pad	Il Padrino	false
+Il Padrino	zzzzIl Padrino	true
+zzzzIl Padrino	Il Padrino	true
+Il Padrino	Ix xaxxixo	false
+Ix xaxxixo	Il Padrino	false
+Il Padrino	Il Pa	false
+Il Pa	Il Padrino	false
+Il Padrino	zzzzzIl Padrino	true
+zzzzzIl Padrino	Il Padrino	true
+Blade Runner 2049	Blade Ruxner 2049	true
+Blade Ruxner 2049	Blade Runner 2049	true
+Blade Runner 2049	Blade Runner 204	true
+Blade Runner 204	Blade Runner 2049	true
+Blade Runner 2049	zBlade Runner 2049	true
+zBlade Runner 2049	Blade Runner 2049	true
+Blade Runner 2049	BladexRunnex 2049	true
+BladexRunnex 2049	Blade Runner 2049	true
+Blade Runner 2049	Blade Runner 20	true
+Blade Runner 20	Blade Runner 2049	true
+Blade Runner 2049	zzBlade Runner 2049	true
+zzBlade Runner 2049	Blade Runner 2049	true
+Blade Runner 2049	Bladx Ruxnerx2049	false
+Bladx Ruxnerx2049	Blade Runner 2049	true
+Blade Runner 2049	Blade Runner 2	true
+Blade Runner 2	Blade Runner 2049	true
+Blade Runner 2049	zzzBlade Runner 2049	true
+zzzBlade Runner 2049	Blade Runner 2049	true
+Blade Runner 2049	Blaxe xunnxr x049	false
+Blaxe xunnxr x049	Blade Runner 2049	false
+Blade Runner 2049	Blade Runner 	true
+Blade Runner 	Blade Runner 2049	true
+Blade Runner 2049	zzzzBlade Runner 2049	true
+zzzzBlade Runner 2049	Blade Runner 2049	true
+Blade Runner 2049	BlxdexRuxnex 2x49	false
+BlxdexRuxnex 2x49	Blade Runner 2049	false
+Blade Runner 2049	Blade Runner	true
+Blade Runner	Blade Runner 2049	true
+Blade Runner 2049	zzzzzBlade Runner 2049	true
+zzzzzBlade Runner 2049	Blade Runner 2049	true
+Inside Out 2	InsidexOut 2	true
+InsidexOut 2	Inside Out 2	true
+Inside Out 2	Inside Out 	true
+Inside Out 	Inside Out 2	true
+Inside Out 2	zInside Out 2	true
+zInside Out 2	Inside Out 2	true
+Inside Out 2	Insixe Oxt 2	true
+Insixe Oxt 2	Inside Out 2	true
+Inside Out 2	Inside Out	true
+Inside Out	Inside Out 2	true
+Inside Out 2	zzInside Out 2	true
+zzInside Out 2	Inside Out 2	true
+Inside Out 2	InsxdexOux 2	false
+InsxdexOux 2	Inside Out 2	false
+Inside Out 2	Inside Ou	true
+Inside Ou	Inside Out 2	true
+Inside Out 2	zzzInside Out 2	true
+zzzInside Out 2	Inside Out 2	true
+Inside Out 2	Inxixe xux 2	false
+Inxixe xux 2	Inside Out 2	false
+Inside Out 2	Inside O	true
+Inside O	Inside Out 2	true
+Inside Out 2	zzzzInside Out 2	true
+zzzzInside Out 2	Inside Out 2	true
+Inside Out 2	InxixexOxtx2	false
+InxixexOxtx2	Inside Out 2	false
+Inside Out 2	Inside 	true
+Inside 	Inside Out 2	true
+Inside Out 2	zzzzzInside Out 2	true
+zzzzzInside Out 2	Inside Out 2	true
+Napoleon	Napoxeon	true
+Napoxeon	Napoleon	true
+Napoleon	Napoleo	true
+Napoleo	Napoleon	true
+Napoleon	zNapoleon	true
+zNapoleon	Napoleon	true
+Napoleon	Naxolxon	true
+Naxolxon	Napoleon	true
+Napoleon	Napole	true
+Napole	Napoleon	true
+Napoleon	zzNapoleon	true
+zzNapoleon	Napoleon	true
+Napoleon	Naxoxexn	false
+Naxoxexn	Napoleon	false
+Napoleon	Napol	true
+Napol	Napoleon	true
+Napoleon	zzzNapoleon	true
+zzzNapoleon	Napoleon	true
+Napoleon	Nxpxxexn	false
+Nxpxxexn	Napoleon	false
+Napoleon	Napo	true
+Napo	Napoleon	true
+Napoleon	zzzzNapoleon	true
+zzzzNapoleon	Napoleon	true
+Napoleon	Nxxoxxxn	false
+Nxxoxxxn	Napoleon	false
+Napoleon	Nap	false
+Nap	Napoleon	false
+Napoleon	zzzzzNapoleon	true
+zzzzzNapoleon	Napoleon	true
+Joker	Joxer	true
+Joxer	Joker	true
+Joker	Joke	true
+Joke	Joker	true
+Joker	zJoker	true
+zJoker	Joker	true
+Joker	Jxkxr	true
+Jxkxr	Joker	true
+Joker	Jok	true
+Jok	Joker	true
+Joker	zzJoker	true
+zzJoker	Joker	true
+Joker	Jxxxr	false
+Jxxxr	Joker	false
+Joker	Jo	false
+Jo	Joker	false
+Joker	zzzJoker	true
+zzzJoker	Joker	true
+Joker	Jxxxx	false
+Jxxxx	Joker	false
+Joker	J	false
+J	Joker	false
+Joker	zzzzJoker	true
+zzzzJoker	Joker	true
+Joker	xxxxx	false
+xxxxx	Joker	false
+Joker		false
+	Joker	false
+Joker	zzzzzJoker	true
+zzzzzJoker	Joker	true
+Parasite	Paraxite	true
+Paraxite	Parasite	true
+Parasite	Parasit	true
+Parasit	Parasite	true
+Parasite	zParasite	true
+zParasite	Parasite	true
+Parasite	Paxasxte	true
+Paxasxte	Parasite	true
+Parasite	Parasi	true
+Parasi	Parasite	true
+Parasite	zzParasite	true
+zzParasite	Parasite	true
+Parasite	Paxaxixe	false
+Paxaxixe	Parasite	false
+Parasite	Paras	true
+Paras	Parasite	true
+Parasite	zzzParasite	true
+zzzParasite	Parasite	true
+Parasite	Pxrxxixe	false
+Pxrxxixe	Parasite	false
+Parasite	Para	true
+Para	Parasite	true
+Parasite	zzzzParasite	true
+zzzzParasite	Parasite	true
+Parasite	Pxxaxxxe	false
+Pxxaxxxe	Parasite	false
+Parasite	Par	false
+Par	Parasite	false
+Parasite	zzzzzParasite	true
+zzzzzParasite	Parasite	true
+Whiplash	Whipxash	true
+Whipxash	Whiplash	true
+Whiplash	Whiplas	true
+Whiplas	Whiplash	true
+Whiplash	zWhiplash	true
+zWhiplash	Whiplash	true
+Whiplash	Whxplxsh	true
+Whxplxsh	Whiplash	true
+Whiplash	Whipla	true
+Whipla	Whiplash	true
+Whiplash	zzWhiplash	true
+zzWhiplash	Whiplash	true
+Whiplash	Whxpxaxh	false
+Whxpxaxh	Whiplash	false
+Whiplash	Whipl	true
+Whipl	Whiplash	true
+Whiplash	zzzWhiplash	true
+zzzWhiplash	Whiplash	true
+Whiplash	Wxixxaxh	false
+Wxixxaxh	Whiplash	false
+Whiplash	Whip	true
+Whip	Whiplash	true
+Whiplash	zzzzWhiplash	true
+zzzzWhiplash	Whiplash	true
+Whiplash	Wxxpxxxh	false
+Wxxpxxxh	Whiplash	false
+Whiplash	Whi	false
+Whi	Whiplash	false
+Whiplash	zzzzzWhiplash	true
+zzzzzWhiplash	Whiplash	true
+Quo Vado?	Quo xado?	true
+Quo xado?	Quo Vado?	true
+Quo Vado?	Quo Vado	true
+Quo Vado	Quo Vado?	true
+Quo Vado?	zQuo Vado?	true
+zQuo Vado?	Quo Vado?	true
+Quo Vado?	QuoxVaxo?	true
+QuoxVaxo?	Quo Vado?	true
+Quo Vado?	Quo Vad	true
+Quo Vad	Quo Vado?	true
+Quo Vado?	zzQuo Vado?	true
+zzQuo Vado?	Quo Vado?	true
+Quo Vado?	Qux xaxo?	false
+Qux xaxo?	Quo Vado?	false
+Quo Vado?	Quo Va	true
+Quo Va	Quo Vado?	true
+Quo Vado?	zzzQuo Vado?	true
+zzzQuo Vado?	Quo Vado?	true
+Quo Vado?	QxoxVxdx?	false
+QxoxVxdx?	Quo Vado?	false
+Quo Vado?	Quo V	true
+Quo V	Quo Vado?	true
+Quo Vado?	zzzzQuo Vado?	true
+zzzzQuo Vado?	Quo Vado?	true
+Quo Vado?	Qxoxxaxx?	false
+Qxoxxaxx?	Quo Vado?	false
+Quo Vado?	Quo 	false
+Quo 	Quo Vado?	false
+Quo Vado?	zzzzzQuo Vado?	true
+zzzzzQuo Vado?	Quo Vado?	true
+Avatar	Avatar - 3D	true
+Avatar - 3D	Avatar	true
+Avatar	Avatar: La via dell'acqua	true
+Avatar: La via dell'acqua	Avatar	true
+Up	Upgrade	false
+Upgrade	Up	false
+Dune	Dune: Parte Due	true
+Dune: Parte Due	Dune	true
+Alien	Aliens	true
+Aliens	Alien	true
+Cars	Scars	true
+Scars	Cars	true
+Thor	Thor: Love and Thunder	true
+Thor: Love and Thunder	Thor	true
+Se7en	Seven	true
+Seven	Se7en	true
+Oppenheimer	Openheimer	true
+Openheimer	Oppenheimer	true
+Interstellar	Intersteller	true
+Intersteller	Interstellar	true
+La Vita è Bella	La Vita e Bella	true
+La Vita e Bella	La Vita è Bella	true
+L’uomo	L'uomo	true
+L'uomo	L’uomo	true
+		true
+		true
+	Avatar	false
+Avatar		false
+   	Avatar	false
+Avatar	   	false
