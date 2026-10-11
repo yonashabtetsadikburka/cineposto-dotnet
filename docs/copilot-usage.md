@@ -13,3 +13,4 @@ OpenCode, GitHub Copilot.
 | Date | Tool | What went wrong | How I noticed | How I fixed it |
 |---|---|---|---|---|
 | 2026-10-09 | OpenCode | A hand-transcribed expected value in the parity tests contained a typo | One parity test failed while the C# output was correct | Compared with the legacy-generated TSV, fixed the value, and now generate test data from the TSV |
+| 2026-10-11 | Opencode | Ported the weekday validation as an eager check before the loop, while the legacy code evaluates it lazily inside the condition | I read the C# against the Python short-circuit condition and added rows to the legacy-generated table that failed | Added the rows to the TSV, saw them fail, moved the check inside the loop |
