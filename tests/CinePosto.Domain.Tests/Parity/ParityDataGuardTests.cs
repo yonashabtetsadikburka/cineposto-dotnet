@@ -1,3 +1,5 @@
+using CinePosto.TestSupport;
+
 namespace CinePosto.Domain.Tests.Parity;
 
 public class ParityDataGuardTests

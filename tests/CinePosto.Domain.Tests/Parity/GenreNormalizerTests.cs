@@ -1,5 +1,6 @@
 using System.Text.Json;
 using CinePosto.Domain.Text;
+using CinePosto.TestSupport;
 
 namespace CinePosto.Domain.Tests.Parity;
 

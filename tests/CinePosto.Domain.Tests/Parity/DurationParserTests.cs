@@ -1,5 +1,6 @@
 using System.Globalization;
 using CinePosto.Domain.Text;
+using CinePosto.TestSupport;
 
 namespace CinePosto.Domain.Tests.Parity;
 
