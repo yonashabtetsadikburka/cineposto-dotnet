@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\CinePosto.Domain\CinePosto.Domain.csproj" />
+    <ProjectReference Include="..\CinePosto.TestSupport\CinePosto.TestSupport.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -20,6 +20,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\CinePosto.Connectors\CinePosto.Connectors.csproj" />
+    <ProjectReference Include="..\CinePosto.TestSupport\CinePosto.TestSupport.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Parity\*.tsv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
