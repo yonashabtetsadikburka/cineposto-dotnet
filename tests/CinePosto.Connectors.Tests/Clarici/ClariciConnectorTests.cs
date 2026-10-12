@@ -104,15 +104,79 @@ public class ClariciConnectorTests
         Assert.True(count >= 24, $"Golden folder has only {count} cases; expected at least 24.");
     }
 
+    [Fact]
+    public async Task ScrapeAsync_PropagatesCancellation()
+    {
+        ClariciOptions options = new()
+        {
+            MoviesUrl = "https://test.local/movies.json",
+            SettingsUrl = "https://test.local/settings.json",
+        };
+        FakeHttpMessageHandler handler = new(options, 200, "[]", 200, null);
+        using HttpClient http = new(handler);
+        ClariciConnector connector = new(http, options: options);
+
+        using CancellationTokenSource cts = new();
+        cts.Cancel();
+
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(
+            () => connector.ScrapeAsync(new DateOnly(2026, 9, 22), null, cts.Token));
+    }
+
     private static string GenreToString(JsonElement element) =>
         element.ValueKind == JsonValueKind.String ? element.GetString()! : element.GetRawText();
+
+    private enum CancelOn
+    {
+        None,
+        Movies,
+        Settings,
+    }
+
+    [Fact]
+    public async Task ScrapeAsync_PropagatesMoviesCancellation()
+    {
+        ClariciOptions options = new()
+        {
+            MoviesUrl = "https://test.local/movies.json",
+            SettingsUrl = "https://test.local/settings.json",
+        };
+        FakeHttpMessageHandler handler = new(options, 200, "[]", 200, null, CancelOn.Movies);
+        using HttpClient http = new(handler);
+        ClariciConnector connector = new(http, options: options);
+
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(
+            () => connector.ScrapeAsync(new DateOnly(2026, 9, 22), null, CancellationToken.None));
+    }
+
+    [Fact]
+    public async Task ScrapeAsync_PropagatesSettingsCancellation()
+    {
+        ClariciOptions options = new()
+        {
+            MoviesUrl = "https://test.local/movies.json",
+            SettingsUrl = "https://test.local/settings.json",
+        };
+        FakeHttpMessageHandler handler = new(options, 200, "[]", 200, null, CancelOn.Settings);
+        using HttpClient http = new(handler);
+        ClariciConnector connector = new(http, options: options);
+
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(
+            () => connector.ScrapeAsync(new DateOnly(2026, 9, 22), null, CancellationToken.None));
+    }
 
     private sealed class FakeHttpMessageHandler : HttpMessageHandler
     {
         private readonly Dictionary<string, (int Status, string? Body)> _responses;
+        private readonly string _moviesUrl;
+        private readonly string _settingsUrl;
+        private readonly CancelOn _cancelOn;
 
-        public FakeHttpMessageHandler(ClariciOptions options, int moviesStatus, string moviesBody, int settingsStatus, string? settingsBody)
+        public FakeHttpMessageHandler(ClariciOptions options, int moviesStatus, string moviesBody, int settingsStatus, string? settingsBody, CancelOn cancelOn = CancelOn.None)
         {
+            _moviesUrl = options.MoviesUrl;
+            _settingsUrl = options.SettingsUrl;
+            _cancelOn = cancelOn;
             _responses = new Dictionary<string, (int, string?)>(StringComparer.Ordinal)
             {
                 [options.MoviesUrl] = (moviesStatus, moviesBody),
@@ -122,7 +186,14 @@ public class ClariciConnectorTests
 
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            (int status, string? body) = _responses[request.RequestUri!.AbsoluteUri];
+            string url = request.RequestUri!.AbsoluteUri;
+            if ((_cancelOn == CancelOn.Movies && url.Equals(_moviesUrl, StringComparison.Ordinal))
+                || (_cancelOn == CancelOn.Settings && url.Equals(_settingsUrl, StringComparison.Ordinal)))
+            {
+                throw new OperationCanceledException();
+            }
+
+            (int status, string? body) = _responses[url];
             HttpResponseMessage response = new((System.Net.HttpStatusCode)status);
             if (body is not null)
             {
