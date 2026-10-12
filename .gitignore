@@ -11,6 +11,10 @@
 *.sln.docstates
 *.env
 
+#private
+.private/
+.private/legacy/
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 

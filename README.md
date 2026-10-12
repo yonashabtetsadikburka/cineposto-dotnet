@@ -70,6 +70,10 @@ in Azure Key Vault. Never commit secrets to the repo.
 - TODO: define milestones (first connector, API v1, web v1, Azure deploy).
 - TODO: list target cinemas.
 
+## Credits
+CinePosto was originally developed as a team class project by Yonas Habtetsadik Burka, Elio Casiola, Andrea Cestelli, Emanuele Ceccariglia. 
+This repository is a from-scratch rewrite in C#/.NET by Yonas Habtetsadik Burka.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
