@@ -1,0 +1,27 @@
+{
+  "films": [
+    {
+      "title": "Nebbia sul Lago",
+      "title_normalized": "Nebbia sul Lago",
+      "poster": "https://example.test/p.jpg",
+      "backdrop": "https://example.test/b.jpg",
+      "description": "Trama inventata per i test.",
+      "genres": [
+        "Fantasia Sintetica"
+      ],
+      "duration": "100 min",
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "20:00"
+          ],
+          "language": "ITA",
+          "source_url": "https://www.cinemaclarici.it/"
+        }
+      ]
+    }
+  ],
+  "error_phases": []
+}

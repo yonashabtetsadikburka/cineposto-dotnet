@@ -1,0 +1,22 @@
+{
+  "movies": [
+    {
+      "id": "sintetico",
+      "title": "Nebbia sul Lago",
+      "duration": 100,
+      "director": "Regia Inventata",
+      "genre": [
+        "Fantasia Sintetica"
+      ],
+      "description": "Trama inventata per i test.",
+      "image": "https://example.test/p.jpg",
+      "backdrop": "https://example.test/b.jpg",
+      "isVisible": true,
+      "cinemas": {
+        "Politeama": [
+          "Mar 22/09: 20:00"
+        ]
+      }
+    }
+  ]
+}

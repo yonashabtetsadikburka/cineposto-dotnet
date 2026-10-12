@@ -1,0 +1,74 @@
+[
+  {
+    "id": "sintetico",
+    "title": 5,
+    "duration": 100,
+    "director": "Regia Inventata",
+    "genre": [
+      "Fantasia Sintetica"
+    ],
+    "description": "Trama inventata per i test.",
+    "image": "https://example.test/p.jpg",
+    "backdrop": "https://example.test/b.jpg",
+    "isVisible": true,
+    "cinemas": {
+      "Politeama": [
+        "Mar 22/09: 20:00"
+      ]
+    }
+  },
+  {
+    "id": "sintetico",
+    "title": "Desc Rotta",
+    "duration": 100,
+    "director": "Regia Inventata",
+    "genre": [
+      "Fantasia Sintetica"
+    ],
+    "description": 5,
+    "image": "https://example.test/p.jpg",
+    "backdrop": "https://example.test/b.jpg",
+    "isVisible": true,
+    "cinemas": {
+      "Politeama": [
+        "Mar 22/09: 20:00"
+      ]
+    }
+  },
+  {
+    "id": "sintetico",
+    "title": "Regia Rotta",
+    "duration": 100,
+    "director": 5,
+    "genre": [
+      "Fantasia Sintetica"
+    ],
+    "description": "Trama inventata per i test.",
+    "image": "https://example.test/p.jpg",
+    "backdrop": "https://example.test/b.jpg",
+    "isVisible": true,
+    "cinemas": {
+      "Politeama": [
+        "Mar 22/09: 20:00"
+      ]
+    }
+  },
+  {
+    "id": "sintetico",
+    "title": "Buono Sintetico",
+    "duration": 100,
+    "director": "Regia Inventata",
+    "genre": [
+      "Fantasia Sintetica"
+    ],
+    "description": "Trama inventata per i test.",
+    "image": "https://example.test/p.jpg",
+    "backdrop": "https://example.test/b.jpg",
+    "isVisible": true,
+    "cinemas": {
+      "Politeama": [
+        "Mar 22/09: 20:00"
+      ]
+    }
+  }
+]

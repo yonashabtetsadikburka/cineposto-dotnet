@@ -1,0 +1,85 @@
+[
+  {
+    "id": "sintetico",
+    "title": "Genere 0",
+    "duration": 100,
+    "director": "Regia Inventata",
+    "genre": [
+      "Alfa",
+      "Beta"
+    ],
+    "description": "Trama inventata per i test.",
+    "image": "https://example.test/p.jpg",
+    "backdrop": "https://example.test/b.jpg",
+    "isVisible": true,
+    "cinemas": {
+      "Politeama": [
+        "Mar 22/09: 20:00"
+      ]
+    }
+  },
+  {
+    "id": "sintetico",
+    "title": "Genere 1",
+    "duration": 100,
+    "director": "Regia Inventata",
+    "genre": "Alfa, Beta",
+    "description": "Trama inventata per i test.",
+    "image": "https://example.test/p.jpg",
+    "backdrop": "https://example.test/b.jpg",
+    "isVisible": true,
+    "cinemas": {
+      "Politeama": [
+        "Mar 22/09: 20:00"
+      ]
+    }
+  },
+  {
+    "id": "sintetico",
+    "title": "Genere 2",
+    "duration": 100,
+    "director": "Regia Inventata",
+    "genre": "",
+    "description": "Trama inventata per i test.",
+    "image": "https://example.test/p.jpg",
+    "backdrop": "https://example.test/b.jpg",
+    "isVisible": true,
+    "cinemas": {
+      "Politeama": [
+        "Mar 22/09: 20:00"
+      ]
+    }
+  },
+  {
+    "id": "sintetico",
+    "title": "Genere 3",
+    "duration": 100,
+    "director": "Regia Inventata",
+    "genre": 5,
+    "description": "Trama inventata per i test.",
+    "image": "https://example.test/p.jpg",
+    "backdrop": "https://example.test/b.jpg",
+    "isVisible": true,
+    "cinemas": {
+      "Politeama": [
+        "Mar 22/09: 20:00"
+      ]
+    }
+  },
+  {
+    "id": "sintetico",
+    "title": "Genere 4",
+    "duration": 100,
+    "director": "Regia Inventata",
+    "genre": {},
+    "description": "Trama inventata per i test.",
+    "image": "https://example.test/p.jpg",
+    "backdrop": "https://example.test/b.jpg",
+    "isVisible": true,
+    "cinemas": {
+      "Politeama": [
+        "Mar 22/09: 20:00"
+      ]
+    }
+  }
+]

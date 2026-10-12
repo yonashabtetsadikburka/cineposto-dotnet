@@ -23,7 +23,7 @@ Each module is ported in two steps:
 
 Known deviations from the original are listed in the documentation.
 
-Reference cases are currently kept outside this repository. Parity tests read them from a configurable folder and are skipped when it is missing, so the CI stays green without them. They may be added to the repository later.
+Small parity tables and synthetic golden cases (hand-written inputs, expected values produced by running the legacy code) are committed to the repository. Parity tests read them from the test output folder. Real captures of cinema sites are never committed, and the larger legacy analysis stays private.
 
 Small parity tables are committed; larger golden cases stay private
 
@@ -45,4 +45,3 @@ Negative:
 
 - Known quirks live in the code for a while.
 - Reference cases take effort to produce and cannot cover every situation.
-- Until the cases are in the repository, parity can only be checked locally.

@@ -1,0 +1,37 @@
+{
+  "eventi": [
+    {
+      "id": "ev-sint",
+      "title": "Prima Sintetica",
+      "description": "Evento inventato.",
+      "image": "https://example.test/ev.jpg",
+      "shows": {
+        "Politeama": [
+          {
+            "date": "2026-09-25",
+            "times": "20:00"
+          }
+        ]
+      }
+    },
+    {
+      "id": "x",
+      "title": "Rotto",
+      "shows": "boom"
+    },
+    {
+      "id": "ev-sint",
+      "title": "Dopo Sintetica",
+      "description": "Evento inventato.",
+      "image": "https://example.test/ev.jpg",
+      "shows": {
+        "Politeama": [
+          {
+            "date": "2026-09-25",
+            "times": "20:00"
+          }
+        ]
+      }
+    }
+  ]
+}

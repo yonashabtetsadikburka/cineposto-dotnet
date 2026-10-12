@@ -1,0 +1,115 @@
+{
+  "films": [
+    {
+      "title": "Durata 0",
+      "title_normalized": "Durata",
+      "poster": "https://example.test/p.jpg",
+      "backdrop": "https://example.test/b.jpg",
+      "description": "Trama inventata per i test.",
+      "genres": [
+        "Fantasia Sintetica"
+      ],
+      "duration": "100 min",
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "20:00"
+          ],
+          "language": "ITA",
+          "source_url": "https://www.cinemaclarici.it/"
+        }
+      ]
+    },
+    {
+      "title": "Durata 1",
+      "title_normalized": "Durata",
+      "poster": "https://example.test/p.jpg",
+      "backdrop": "https://example.test/b.jpg",
+      "description": "Trama inventata per i test.",
+      "genres": [
+        "Fantasia Sintetica"
+      ],
+      "duration": null,
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "20:00"
+          ],
+          "language": "ITA",
+          "source_url": "https://www.cinemaclarici.it/"
+        }
+      ]
+    },
+    {
+      "title": "Durata 2",
+      "title_normalized": "Durata",
+      "poster": "https://example.test/p.jpg",
+      "backdrop": "https://example.test/b.jpg",
+      "description": "Trama inventata per i test.",
+      "genres": [
+        "Fantasia Sintetica"
+      ],
+      "duration": null,
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "20:00"
+          ],
+          "language": "ITA",
+          "source_url": "https://www.cinemaclarici.it/"
+        }
+      ]
+    },
+    {
+      "title": "Durata 3",
+      "title_normalized": "Durata",
+      "poster": "https://example.test/p.jpg",
+      "backdrop": "https://example.test/b.jpg",
+      "description": "Trama inventata per i test.",
+      "genres": [
+        "Fantasia Sintetica"
+      ],
+      "duration": "0 min",
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "20:00"
+          ],
+          "language": "ITA",
+          "source_url": "https://www.cinemaclarici.it/"
+        }
+      ]
+    },
+    {
+      "title": "Durata 4",
+      "title_normalized": "Durata",
+      "poster": "https://example.test/p.jpg",
+      "backdrop": "https://example.test/b.jpg",
+      "description": "Trama inventata per i test.",
+      "genres": [
+        "Fantasia Sintetica"
+      ],
+      "duration": null,
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "20:00"
+          ],
+          "language": "ITA",
+          "source_url": "https://www.cinemaclarici.it/"
+        }
+      ]
+    }
+  ],
+  "error_phases": []
+}

@@ -1,0 +1,116 @@
+[
+  {
+    "id": "sintetico",
+    "title": "Vapore 0",
+    "duration": 100,
+    "director": "Regia Inventata",
+    "genre": [
+      "Fantasia Sintetica"
+    ],
+    "description": "Trama inventata per i test.",
+    "image": "https://example.test/p.jpg",
+    "backdrop": "https://example.test/b.jpg",
+    "isVisible": true,
+    "cinemas": {
+      "Politeama": [
+        "Mar 22/09: 20:00"
+      ]
+    },
+    "isVO": true
+  },
+  {
+    "id": "sintetico",
+    "title": "Vapore 1",
+    "duration": 100,
+    "director": "Regia Inventata",
+    "genre": [
+      "Fantasia Sintetica"
+    ],
+    "description": "Trama inventata per i test.",
+    "image": "https://example.test/p.jpg",
+    "backdrop": "https://example.test/b.jpg",
+    "isVisible": true,
+    "cinemas": {
+      "Politeama": [
+        "Mar 22/09: 20:00"
+      ]
+    },
+    "isVO": false
+  },
+  {
+    "id": "sintetico",
+    "title": "Vapore 2",
+    "duration": 100,
+    "director": "Regia Inventata",
+    "genre": [
+      "Fantasia Sintetica"
+    ],
+    "description": "Trama inventata per i test.",
+    "image": "https://example.test/p.jpg",
+    "backdrop": "https://example.test/b.jpg",
+    "isVisible": true,
+    "cinemas": {
+      "Politeama": [
+        "Mar 22/09: 20:00"
+      ]
+    },
+    "isVO": 1
+  },
+  {
+    "id": "sintetico",
+    "title": "Vapore 3",
+    "duration": 100,
+    "director": "Regia Inventata",
+    "genre": [
+      "Fantasia Sintetica"
+    ],
+    "description": "Trama inventata per i test.",
+    "image": "https://example.test/p.jpg",
+    "backdrop": "https://example.test/b.jpg",
+    "isVisible": true,
+    "cinemas": {
+      "Politeama": [
+        "Mar 22/09: 20:00"
+      ]
+    },
+    "isVO": "si"
+  },
+  {
+    "id": "sintetico",
+    "title": "Vapore 4",
+    "duration": 100,
+    "director": "Regia Inventata",
+    "genre": [
+      "Fantasia Sintetica"
+    ],
+    "description": "Trama inventata per i test.",
+    "image": "https://example.test/p.jpg",
+    "backdrop": "https://example.test/b.jpg",
+    "isVisible": true,
+    "cinemas": {
+      "Politeama": [
+        "Mar 22/09: 20:00"
+      ]
+    },
+    "isVO": 0
+  },
+  {
+    "id": "sintetico",
+    "title": "Vapore 5",
+    "duration": 100,
+    "director": "Regia Inventata",
+    "genre": [
+      "Fantasia Sintetica"
+    ],
+    "description": "Trama inventata per i test.",
+    "image": "https://example.test/p.jpg",
+    "backdrop": "https://example.test/b.jpg",
+    "isVisible": true,
+    "cinemas": {
+      "Politeama": [
+        "Mar 22/09: 20:00"
+      ]
+    },
+    "isVO": ""
+  }
+]

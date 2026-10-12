@@ -1,0 +1,49 @@
+[
+  {
+    "id": "sintetico",
+    "title": "Cinema Lista",
+    "duration": 100,
+    "director": "Regia Inventata",
+    "genre": [
+      "Fantasia Sintetica"
+    ],
+    "description": "Trama inventata per i test.",
+    "image": "https://example.test/p.jpg",
+    "backdrop": "https://example.test/b.jpg",
+    "isVisible": true,
+    "cinemas": [
+      "Mar 22/09: 20:00"
+    ]
+  },
+  {
+    "id": "sintetico",
+    "title": "Cinema Assente",
+    "duration": 100,
+    "director": "Regia Inventata",
+    "genre": [
+      "Fantasia Sintetica"
+    ],
+    "description": "Trama inventata per i test.",
+    "image": "https://example.test/p.jpg",
+    "backdrop": "https://example.test/b.jpg",
+    "isVisible": true
+  },
+  {
+    "id": "sintetico",
+    "title": "Cinema Altrove",
+    "duration": 100,
+    "director": "Regia Inventata",
+    "genre": [
+      "Fantasia Sintetica"
+    ],
+    "description": "Trama inventata per i test.",
+    "image": "https://example.test/p.jpg",
+    "backdrop": "https://example.test/b.jpg",
+    "isVisible": true,
+    "cinemas": {
+      "Altro": [
+        "Mar 22/09: 20:00"
+      ]
+    }
+  }
+]
