@@ -15,7 +15,7 @@ Early stage. The repository layout is in place; implementation
 has not started yet.
 
 - [x] Repository structure
-- [ ] Domain model — TODO
+- [x] Domain model
 - [ ] First cinema connector — TODO
 - [ ] Scraper — TODO
 - [ ] API — TODO
