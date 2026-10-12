@@ -1,0 +1,49 @@
+{
+  "films": [
+    {
+      "title": "Film Nullo Sintetico",
+      "title_normalized": "Film Nullo Sintetico",
+      "poster": "https://example.test/p.jpg",
+      "backdrop": "https://example.test/b.jpg",
+      "description": "Trama inventata per i test.",
+      "genres": [
+        "Fantasia Sintetica"
+      ],
+      "duration": "100 min",
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "20:00"
+          ],
+          "language": "ITA",
+          "source_url": "https://www.cinemaclarici.it/"
+        }
+      ]
+    },
+    {
+      "title": "Film Senza Flag",
+      "title_normalized": "Film Senza Flag",
+      "poster": "https://example.test/p.jpg",
+      "backdrop": "https://example.test/b.jpg",
+      "description": "Trama inventata per i test.",
+      "genres": [
+        "Fantasia Sintetica"
+      ],
+      "duration": "100 min",
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "20:00"
+          ],
+          "language": "ITA",
+          "source_url": "https://www.cinemaclarici.it/"
+        }
+      ]
+    }
+  ],
+  "error_phases": []
+}

@@ -1,0 +1,112 @@
+{
+  "films": [
+    {
+      "title": "Genere 0",
+      "title_normalized": "Genere",
+      "poster": "https://example.test/p.jpg",
+      "backdrop": "https://example.test/b.jpg",
+      "description": "Trama inventata per i test.",
+      "genres": [
+        "Alfa",
+        "Beta"
+      ],
+      "duration": "100 min",
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "20:00"
+          ],
+          "language": "ITA",
+          "source_url": "https://www.cinemaclarici.it/"
+        }
+      ]
+    },
+    {
+      "title": "Genere 1",
+      "title_normalized": "Genere",
+      "poster": "https://example.test/p.jpg",
+      "backdrop": "https://example.test/b.jpg",
+      "description": "Trama inventata per i test.",
+      "genres": [
+        "Alfa, Beta"
+      ],
+      "duration": "100 min",
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "20:00"
+          ],
+          "language": "ITA",
+          "source_url": "https://www.cinemaclarici.it/"
+        }
+      ]
+    },
+    {
+      "title": "Genere 2",
+      "title_normalized": "Genere",
+      "poster": "https://example.test/p.jpg",
+      "backdrop": "https://example.test/b.jpg",
+      "description": "Trama inventata per i test.",
+      "genres": [],
+      "duration": "100 min",
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "20:00"
+          ],
+          "language": "ITA",
+          "source_url": "https://www.cinemaclarici.it/"
+        }
+      ]
+    },
+    {
+      "title": "Genere 3",
+      "title_normalized": "Genere",
+      "poster": "https://example.test/p.jpg",
+      "backdrop": "https://example.test/b.jpg",
+      "description": "Trama inventata per i test.",
+      "genres": [
+        5
+      ],
+      "duration": "100 min",
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "20:00"
+          ],
+          "language": "ITA",
+          "source_url": "https://www.cinemaclarici.it/"
+        }
+      ]
+    },
+    {
+      "title": "Genere 4",
+      "title_normalized": "Genere",
+      "poster": "https://example.test/p.jpg",
+      "backdrop": "https://example.test/b.jpg",
+      "description": "Trama inventata per i test.",
+      "genres": [],
+      "duration": "100 min",
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "20:00"
+          ],
+          "language": "ITA",
+          "source_url": "https://www.cinemaclarici.it/"
+        }
+      ]
+    }
+  ],
+  "error_phases": []
+}

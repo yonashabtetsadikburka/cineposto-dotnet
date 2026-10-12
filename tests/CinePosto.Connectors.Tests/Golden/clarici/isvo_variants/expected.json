@@ -1,0 +1,137 @@
+{
+  "films": [
+    {
+      "title": "Vapore 0",
+      "title_normalized": "Vapore",
+      "poster": "https://example.test/p.jpg",
+      "backdrop": "https://example.test/b.jpg",
+      "description": "Trama inventata per i test.",
+      "genres": [
+        "Fantasia Sintetica"
+      ],
+      "duration": "100 min",
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "20:00"
+          ],
+          "language": "VOST",
+          "source_url": "https://www.cinemaclarici.it/"
+        }
+      ]
+    },
+    {
+      "title": "Vapore 1",
+      "title_normalized": "Vapore",
+      "poster": "https://example.test/p.jpg",
+      "backdrop": "https://example.test/b.jpg",
+      "description": "Trama inventata per i test.",
+      "genres": [
+        "Fantasia Sintetica"
+      ],
+      "duration": "100 min",
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "20:00"
+          ],
+          "language": "ITA",
+          "source_url": "https://www.cinemaclarici.it/"
+        }
+      ]
+    },
+    {
+      "title": "Vapore 2",
+      "title_normalized": "Vapore",
+      "poster": "https://example.test/p.jpg",
+      "backdrop": "https://example.test/b.jpg",
+      "description": "Trama inventata per i test.",
+      "genres": [
+        "Fantasia Sintetica"
+      ],
+      "duration": "100 min",
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "20:00"
+          ],
+          "language": "VOST",
+          "source_url": "https://www.cinemaclarici.it/"
+        }
+      ]
+    },
+    {
+      "title": "Vapore 3",
+      "title_normalized": "Vapore",
+      "poster": "https://example.test/p.jpg",
+      "backdrop": "https://example.test/b.jpg",
+      "description": "Trama inventata per i test.",
+      "genres": [
+        "Fantasia Sintetica"
+      ],
+      "duration": "100 min",
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "20:00"
+          ],
+          "language": "VOST",
+          "source_url": "https://www.cinemaclarici.it/"
+        }
+      ]
+    },
+    {
+      "title": "Vapore 4",
+      "title_normalized": "Vapore",
+      "poster": "https://example.test/p.jpg",
+      "backdrop": "https://example.test/b.jpg",
+      "description": "Trama inventata per i test.",
+      "genres": [
+        "Fantasia Sintetica"
+      ],
+      "duration": "100 min",
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "20:00"
+          ],
+          "language": "ITA",
+          "source_url": "https://www.cinemaclarici.it/"
+        }
+      ]
+    },
+    {
+      "title": "Vapore 5",
+      "title_normalized": "Vapore",
+      "poster": "https://example.test/p.jpg",
+      "backdrop": "https://example.test/b.jpg",
+      "description": "Trama inventata per i test.",
+      "genres": [
+        "Fantasia Sintetica"
+      ],
+      "duration": "100 min",
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "20:00"
+          ],
+          "language": "ITA",
+          "source_url": "https://www.cinemaclarici.it/"
+        }
+      ]
+    }
+  ],
+  "error_phases": []
+}

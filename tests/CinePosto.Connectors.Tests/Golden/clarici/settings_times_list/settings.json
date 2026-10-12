@@ -1,0 +1,21 @@
+{
+  "eventi": [
+    {
+      "id": "ev-sint",
+      "title": "Lista Sintetica",
+      "description": "Evento inventato.",
+      "image": "https://example.test/ev.jpg",
+      "shows": {
+        "Politeama": [
+          {
+            "date": "2026-09-25",
+            "times": [
+              "20:00",
+              "21:00"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

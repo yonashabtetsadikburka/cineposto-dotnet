@@ -1,0 +1,21 @@
+[
+  {
+    "id": "sintetico",
+    "title": "Fuse Sintetiche",
+    "duration": 100,
+    "director": "Regia Inventata",
+    "genre": [
+      "Fantasia Sintetica"
+    ],
+    "description": "Trama inventata per i test.",
+    "image": "https://example.test/p.jpg",
+    "backdrop": "https://example.test/b.jpg",
+    "isVisible": true,
+    "cinemas": {
+      "Politeama": [
+        "Mar 22/09: 21:00 19:00",
+        "Mar 22/09: 20:00 19:00"
+      ]
+    }
+  }
+]

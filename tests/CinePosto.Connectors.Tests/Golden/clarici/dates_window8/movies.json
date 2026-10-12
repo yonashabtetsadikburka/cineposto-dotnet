@@ -1,0 +1,20 @@
+[
+  {
+    "id": "sintetico",
+    "title": "Lontano Sintetico",
+    "duration": 100,
+    "director": "Regia Inventata",
+    "genre": [
+      "Fantasia Sintetica"
+    ],
+    "description": "Trama inventata per i test.",
+    "image": "https://example.test/p.jpg",
+    "backdrop": "https://example.test/b.jpg",
+    "isVisible": true,
+    "cinemas": {
+      "Politeama": [
+        "Dom 4/10: 09:05"
+      ]
+    }
+  }
+]
