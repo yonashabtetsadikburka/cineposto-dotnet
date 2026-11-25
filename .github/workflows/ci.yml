@@ -39,3 +39,27 @@ jobs:
 
       - name: Test
         run: dotnet test CinePosto.slnx --configuration Release --no-build --no-restore
+
+  # Builds the Docker images without pushing them, then runs the local smoke test: the api starts, the scraper
+  # fills the database from saved fixtures and the main endpoints answer. No network or secrets are used.
+  docker-smoke:
+    name: Docker images and smoke test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      # docker-compose.yml requires ADMIN_TOKEN. A random one is made for this run only and never stored.
+      - name: Create a throwaway admin token
+        run: |
+          token="$(openssl rand -hex 32)"
+          echo "::add-mask::$token"
+          echo "ADMIN_TOKEN=$token" >> "$GITHUB_ENV"
+
+      - name: Build the images (not pushed)
+        run: docker compose --profile jobs build
+
+      # The script prints the logs of the failing service itself, then removes its containers and volume.
+      - name: Smoke test
+        run: bash scripts/smoke.sh
