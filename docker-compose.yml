@@ -1,0 +1,71 @@
+# Local run of CinePosto. See "Running locally with Docker" in README.md.
+#
+#   docker compose up -d --build            start the api
+#   docker compose run --rm scraper         run one scrape and fill the database (profile "jobs")
+#
+# Settings come from .env (copy .env.example). Nothing secret is stored in this file or in the images.
+name: cineposto
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: src/CinePosto.Api/Dockerfile
+    image: cineposto-api:local
+    ports:
+      - "${API_PORT:-8080}:8080"
+    environment:
+      # Required and without a default. The api also refuses to start when it is shorter than 16 characters.
+      ADMIN_TOKEN: ${ADMIN_TOKEN:?ADMIN_TOKEN is required. Copy .env.example to .env and set it}
+      CINEPOSTO_DB_PATH: ${CINEPOSTO_DB_PATH:-/data/cineposto.db}
+    volumes:
+      - data:/data
+    healthcheck:
+      # The image has no curl, so the app probes /health itself.
+      test: ["CMD", "dotnet", "CinePosto.Api.dll", "--healthcheck"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+  scraper:
+    # Not started by `docker compose up`. It runs once and exits: docker compose run --rm scraper
+    profiles: ["jobs"]
+    build:
+      context: .
+      dockerfile: src/CinePosto.Scraper/Dockerfile
+    image: cineposto-scraper:local
+    environment:
+      # fixtures reads the saved responses mounted below and never touches the network. live uses the real sites.
+      SCRAPER_MODE: ${SCRAPER_MODE:-fixtures}
+      SCRAPER_FIXTURES_DIR: /fixtures/clarici/${SCRAPER_FIXTURES_CASE:-settings_valid}
+      CINEPOSTO_DB_PATH: ${CINEPOSTO_DB_PATH:-/data/cineposto.db}
+      SCRAPER_USER_AGENT: ${SCRAPER_USER_AGENT:-}
+      SCRAPER_HTTP_TIMEOUT_SECONDS: ${SCRAPER_HTTP_TIMEOUT_SECONDS:-30}
+    volumes:
+      - data:/data
+      - type: bind
+        source: ${FIXTURES_DIR:-./tests/CinePosto.Connectors.Tests/Golden}
+        target: /fixtures
+        read_only: true
+    restart: "no"
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  # The SQLite file shared by api and scraper. Its real name is prefixed with the project name, so a run with
+  # another project name (the smoke test) never touches this data.
+  data:

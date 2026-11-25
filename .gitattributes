@@ -1,0 +1,7 @@
+# Scripts and container files must keep LF line endings, whatever core.autocrlf says.
+# A CRLF in a shell script or a Dockerfile breaks it on Linux.
+*.sh text eol=lf
+Dockerfile text eol=lf
+.dockerignore text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
