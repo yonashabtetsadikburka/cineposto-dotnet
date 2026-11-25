@@ -1,0 +1,150 @@
+/* CinePosto — layout.css (Shell app, livello 3/6)
+   Solo struttura: topbar, nav desktop/mobile, contenitore vista, footer.
+   Niente @media qui: tutti i breakpoint vivono in responsive.css. */
+
+.view {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 12px 0 96px;
+}
+
+/* Header globale: logo + nav + search + filtro + tema, sticky su tutti i breakpoint */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--card);
+  padding: 10px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.brand img {
+  height: 38px;
+  width: auto;
+  flex: 0 0 auto;
+}
+
+:root[data-theme="light"] .brand img {
+  background: #141414;
+  border-radius: 8px;
+  padding: 2px;
+}
+
+.topnav {
+  display: none;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.topnav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: var(--light);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.topnav a.active {
+  color: var(--white);
+  border-bottom: 2px solid var(--primary);
+}
+
+.topnav svg {
+  width: 16px;
+  height: 16px;
+}
+
+.topbar .tb-search {
+  flex: 1 1 auto;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.topbar .icon-btn { flex: 0 0 auto; }
+
+.bottomnav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  background: var(--surface);
+  border-top: 1px solid var(--card);
+  z-index: 50;
+  min-height: 70px;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.bottomnav a {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  color: var(--gray);
+  padding-top: 6px;
+  padding-bottom: 8px;
+  font-size: 22px;
+}
+
+.bottomnav a svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+  margin: 0 auto 2px;
+}
+
+.bottomnav a span {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.bottomnav a.active { color: var(--primary); }
+
+.icon-btn {
+  background: transparent;
+  color: var(--white);
+  border: 0;
+  border-radius: 6px;
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Language switch: the button shows the language code it switches to (IT or EN). */
+.icon-btn.lang-btn {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* Attribuzione TMDb (obbligatoria da ToS, uso non commerciale) */
+.attrib {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 16px 16px 110px;
+  text-align: center;
+}
+
+.attrib p {
+  color: var(--gray);
+  font-size: 11px;
+  margin: 0;
+}
+
+.attrib a { color: var(--light); }
