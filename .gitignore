@@ -15,6 +15,14 @@
 .private/
 .private/legacy/
 
+# Local environment and runtime data (copy .env.example to .env)
+.env
+.env.*
+!.env.example
+*.db
+*.db-wal
+*.db-shm
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 

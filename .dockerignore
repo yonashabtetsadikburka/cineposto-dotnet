@@ -1,0 +1,30 @@
+# Deny everything, then allow only what the images need to build.
+*
+
+!global.json
+!Directory.Build.props
+!.editorconfig
+!src/CinePosto.Domain/**
+!src/CinePosto.Infrastructure/**
+!src/CinePosto.Connectors/**
+!src/CinePosto.Api/**
+!src/CinePosto.Scraper/**
+
+# Never send build output, local databases or secrets, even from inside the allowed folders.
+**/bin
+**/obj
+**/*.db
+**/*.db-wal
+**/*.db-shm
+**/.env
+**/.env.*
+**/*.env
+
+# Spelled out for readability. These are already excluded by the first rule.
+.git
+.private
+.github
+tests
+docs
+infra
+scripts

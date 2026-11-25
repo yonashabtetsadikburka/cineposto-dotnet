@@ -11,14 +11,16 @@ TODO: add a one-paragraph project summary once the scope is final.
 
 ## Project status
 
-Early stage. The repository layout is in place; implementation
-has not started yet.
+Early stage. The Domain, one cinema connector (Clarici), a minimal
+Scraper and a minimal API exist, and the whole system runs locally with
+Docker. The web frontend and the Azure deployment do not exist yet.
 
 - [x] Repository structure
-- [x] Domain model
-- [ ] First cinema connector — TODO
-- [ ] Scraper — TODO
-- [ ] API — TODO
+- [x] Domain model (scraped models, title normalization, persistence abstractions)
+- [x] First cinema connector (Clarici)
+- [x] Scraper (minimal: runs the connectors and stores the result in SQLite)
+- [x] API (minimal: cinemas, films, showings, health, admin dataset info)
+- [x] Local run with Docker Compose and a smoke test
 - [ ] Web frontend — TODO
 - [ ] Azure deployment (Bicep + GitHub Actions) — TODO
 
@@ -42,28 +44,126 @@ flowchart LR
 ## Repository structure
 
 ```text
-src/      # .NET projects (Domain, Infrastructure, Connectors, Scraper, Api, Web) — TODO
-tests/    # automated tests with saved fixtures (no live network) — TODO
+src/      # .NET projects: Domain, Infrastructure, Connectors, Scraper, Api (Web — TODO)
+tests/    # automated tests with saved fixtures (no live network)
 docs/     # analysis, UX, and architecture notes
 infra/    # Bicep files for Azure deployment — TODO
+scripts/  # local smoke test (smoke.sh, smoke.ps1)
 .github/  # GitHub Actions workflows and templates
+docker-compose.yml, .env.example   # local run with Docker
 ```
 
 See `AGENTS.md` for working rules (branches, commits, tests, secrets).
 
 ## Getting started
 
-Prerequisites: TODO (exact .NET SDK version).
+Prerequisites: the .NET SDK pinned in `global.json` (10.0.300), and Docker
+with the Compose plugin to run the system locally.
 
 ```bash
 dotnet build
 dotnet test
 ```
 
-TODO: add run instructions for the API and web app once they exist.
-
 Configuration uses environment variables. Production secrets live
 in Azure Key Vault. Never commit secrets to the repo.
+
+## Running locally with Docker
+
+This runs the API and the scraper in containers on your machine. Nothing
+is deployed to Azure. You need Docker with the Compose plugin
+(`docker compose version`).
+
+1. **Configure.** Copy the template and set the admin token. There is no
+   default token, and the API refuses to start without one (at least 16
+   characters). `.env` is ignored by git.
+
+   ```bash
+   cp .env.example .env          # PowerShell: Copy-Item .env.example .env
+   openssl rand -hex 32          # put the output in ADMIN_TOKEN=
+   ```
+
+2. **Start the API.** The image is built the first time.
+
+   ```bash
+   docker compose up -d --build
+   curl http://localhost:8080/health      # Healthy
+   ```
+
+3. **Fill the database.** The scraper runs once and exits. The default
+   mode, `SCRAPER_MODE=fixtures`, reads saved responses from
+   `tests/CinePosto.Connectors.Tests/Golden` (mounted read-only) and never
+   uses the network. The database is created or migrated automatically.
+
+   ```bash
+   docker compose run --rm scraper
+   ```
+
+4. **Look at the data.**
+
+   ```bash
+   curl http://localhost:8080/api/v1/cinemas
+   curl http://localhost:8080/api/v1/films
+   curl http://localhost:8080/api/v1/showings
+   curl -H "X-Admin-Token: $ADMIN_TOKEN" http://localhost:8080/api/v1/admin/dataset-info
+   ```
+
+   The saved responses are dated 2026-09-22, so `?date=` with today's date
+   returns nothing. Use a date from the fixtures, such as `?date=2026-09-22`.
+
+5. **Stop.** `docker compose down` keeps the database in the `data` volume.
+   `docker compose down -v` deletes it too.
+
+Notes:
+
+- Every `docker compose` command, including `run scraper`, needs
+  `ADMIN_TOKEN` to be set, because Compose reads the whole file.
+- `SCRAPER_MODE=live` calls the real cinema website. Check its terms of use
+  and `robots.txt` first, and set `SCRAPER_USER_AGENT` to a value that
+  identifies you. The mode has no default on purpose.
+- Ports, the database path and the fixtures folder are set in `.env`. Every
+  variable is described in `.env.example`.
+
+### Smoke test
+
+`scripts/smoke.sh` (Linux, macOS, Git Bash, WSL) and `scripts/smoke.ps1`
+(Windows PowerShell and PowerShell 7) build the images, check that the API
+refuses to start without a token, start it, run the scraper on the saved
+fixtures and call the main endpoints with curl. They also check that a second
+scraper run changes nothing and that a failing source keeps the last known
+showings. They use their own Compose project and a temporary token, so they
+never touch your `.env` or your data, and they remove what they create.
+
+```bash
+scripts/smoke.sh
+powershell -ExecutionPolicy Bypass -File scripts\smoke.ps1   # Windows
+```
+
+A failing check prints the logs of the service involved and ends with a
+specific non-zero exit code (listed at the top of each script). The smoke test
+publishes the API on port 18080; change it with `SMOKE_API_PORT`. CI runs it on
+every pull request.
+
+### What changes on Azure
+
+This section describes the plan. None of it is implemented yet.
+
+- **Secrets.** `ADMIN_TOKEN` and any API key come from Azure Key Vault, not
+  from `.env`. The app reads them from environment variables in both cases.
+- **Database.** The SQLite file in a Docker volume is for local runs only.
+  SQLite on a network file share (Azure Files) is not reliable because of file
+  locking, and two instances cannot safely share one file, so Azure needs a
+  managed database. It is not decided yet (see ADR 0003). The Domain does not
+  depend on it, but the EF Core migrations will probably be generated again for
+  the new provider.
+- **Scraper.** It becomes a scheduled job (at least every 24 hours) in `live`
+  mode, not a command run by hand. The fixtures mount is not used.
+- **Images.** CI builds them without pushing. In Azure they are pushed to a
+  registry from the pipeline.
+- **Network.** The platform terminates HTTPS and uses `/health` as the
+  health probe. `API_PORT` only changes the port published on your machine.
+- **Infrastructure.** Everything is described in Bicep under `infra/`, which
+  is still empty.
 
 ## Roadmap
 
