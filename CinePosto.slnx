@@ -2,10 +2,12 @@
   <Folder Name="/src/">
     <Project Path="src/CinePosto.Connectors/CinePosto.Connectors.csproj" />
     <Project Path="src/CinePosto.Domain/CinePosto.Domain.csproj" />
+    <Project Path="src/CinePosto.Infrastructure/CinePosto.Infrastructure.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/CinePosto.Connectors.Tests/CinePosto.Connectors.Tests.csproj" />
     <Project Path="tests/CinePosto.Domain.Tests/CinePosto.Domain.Tests.csproj" />
+    <Project Path="tests/CinePosto.Infrastructure.Tests/CinePosto.Infrastructure.Tests.csproj" />
     <Project Path="tests/CinePosto.TestSupport/CinePosto.TestSupport.csproj" />
   </Folder>
 </Solution>
