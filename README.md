@@ -12,8 +12,8 @@ TODO: add a one-paragraph project summary once the scope is final.
 ## Project status
 
 Early stage. The Domain, one cinema connector (Clarici), a minimal
-Scraper and a minimal API exist, and the whole system runs locally with
-Docker. The web frontend and the Azure deployment do not exist yet.
+Scraper, a minimal API and a web frontend exist, and the whole system runs
+locally with Docker. The Azure deployment does not exist yet.
 
 - [x] Repository structure
 - [x] Domain model (scraped models, title normalization, persistence abstractions)
@@ -21,7 +21,7 @@ Docker. The web frontend and the Azure deployment do not exist yet.
 - [x] Scraper (minimal: runs the connectors and stores the result in SQLite)
 - [x] API (minimal: cinemas, films, showings, health, admin dataset info)
 - [x] Local run with Docker Compose and a smoke test
-- [ ] Web frontend — TODO
+- [x] Web frontend (`web/`, served by the API; Italian and English)
 - [ ] Azure deployment (Bicep + GitHub Actions) — TODO
 
 ## Architecture
@@ -44,7 +44,8 @@ flowchart LR
 ## Repository structure
 
 ```text
-src/      # .NET projects: Domain, Infrastructure, Connectors, Scraper, Api (Web — TODO)
+src/      # .NET projects: Domain, Infrastructure, Connectors, Scraper, Api
+web/      # web frontend: HTML, CSS, JavaScript, texts in web/i18n (it, en), tests in web/tests
 tests/    # automated tests with saved fixtures (no live network)
 docs/     # analysis, UX, and architecture notes
 infra/    # Bicep files for Azure deployment — TODO
@@ -57,13 +58,18 @@ See `AGENTS.md` for working rules (branches, commits, tests, secrets).
 
 ## Getting started
 
-Prerequisites: the .NET SDK pinned in `global.json` (10.0.300), and Docker
-with the Compose plugin to run the system locally.
+Prerequisites: the .NET SDK pinned in `global.json` (10.0.300), Docker with
+the Compose plugin to run the system locally, and Node.js 22 or later to run
+the frontend tests (no package is installed).
 
 ```bash
 dotnet build
 dotnet test
+node --test "web/tests/*.test.mjs"    # frontend unit tests
 ```
+
+To run the API without Docker, point it to the frontend folder:
+`WEB_ROOT=web ADMIN_TOKEN=... dotnet run --project src/CinePosto.Api`.
 
 Configuration uses environment variables. Production secrets live
 in Azure Key Vault. Never commit secrets to the repo.
@@ -99,7 +105,18 @@ is deployed to Azure. You need Docker with the Compose plugin
    docker compose run --rm scraper
    ```
 
-4. **Look at the data.**
+4. **Open the web app.** Go to <http://localhost:8080> (the port is `API_PORT`).
+   The API serves the frontend, so it is one container on one address. The
+   button in the top bar switches between Italian and English; the browser
+   language is used the first time.
+
+   The saved responses are dated 2026-09-22 and 2026-09-25, which is in the
+   past. The home therefore opens on the closest day that has data and shows
+   a "data is out of date" notice. The days from today onwards are empty.
+   Both are expected with fixtures. Posters are placeholders because the
+   fixtures point to addresses that do not exist.
+
+5. **Or call the API directly.**
 
    ```bash
    curl http://localhost:8080/api/v1/cinemas
@@ -108,10 +125,10 @@ is deployed to Azure. You need Docker with the Compose plugin
    curl -H "X-Admin-Token: $ADMIN_TOKEN" http://localhost:8080/api/v1/admin/dataset-info
    ```
 
-   The saved responses are dated 2026-09-22, so `?date=` with today's date
-   returns nothing. Use a date from the fixtures, such as `?date=2026-09-22`.
+   `?date=` with today's date returns nothing for the same reason. Use a date
+   from the fixtures, such as `?date=2026-09-22`.
 
-5. **Stop.** `docker compose down` keeps the database in the `data` volume.
+6. **Stop.** `docker compose down` keeps the database in the `data` volume.
    `docker compose down -v` deletes it too.
 
 Notes:
