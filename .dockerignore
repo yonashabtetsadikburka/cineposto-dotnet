@@ -9,6 +9,7 @@
 !src/CinePosto.Connectors/**
 !src/CinePosto.Api/**
 !src/CinePosto.Scraper/**
+!web/**
 
 # Never send build output, local databases or secrets, even from inside the allowed folders.
 **/bin
@@ -25,6 +26,7 @@
 .private
 .github
 tests
+web/tests
 docs
 infra
 scripts

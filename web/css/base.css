@@ -1,0 +1,52 @@
+/* CinePosto — base.css (Reset + utility, livello 2/6)
+   Nessun colore/brand qui oltre ai token; niente selettori di pagina. */
+
+* { box-sizing: border-box; }
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  color: var(--white);
+  font-family: var(--font-sans);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+a { color: inherit; }
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Accessibilità */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+/* Spinner riusabile (stati loading) */
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 4px solid var(--card);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Icone SVG Heroicons inline: ereditano il colore, dimensione dal contesto.
+   Non fissare mai stroke/fill qui — resta currentColor come in BuyPool. */
+svg.icon {
+  flex: 0 0 auto;
+  display: inline-block;
+  vertical-align: middle;
+}

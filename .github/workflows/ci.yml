@@ -40,6 +40,15 @@ jobs:
       - name: Test
         run: dotnet test CinePosto.slnx --configuration Release --no-build --no-restore
 
+      # The web frontend is plain JavaScript. Its unit tests use the test runner built into Node: no package is installed.
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Test the web frontend
+        run: node --no-warnings --test "web/tests/*.test.mjs"
+
   # Builds the Docker images without pushing them, then runs the local smoke test: the api starts, the scraper
   # fills the database from saved fixtures and the main endpoints answer. No network or secrets are used.
   docker-smoke:

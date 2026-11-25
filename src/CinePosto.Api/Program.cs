@@ -9,7 +9,14 @@ if (args.Contains(HealthProbe.Flag))
     return await HealthProbe.RunAsync();
 }
 
-WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+// The Api also serves the web frontend, so the page and the API share one origin (no CORS). In the container the
+// frontend is copied to wwwroot. WEB_ROOT points to another folder, for example web/ when running with dotnet run.
+string? webRoot = Environment.GetEnvironmentVariable("WEB_ROOT");
+WebApplicationBuilder builder = WebApplication.CreateBuilder(new WebApplicationOptions
+{
+    Args = args,
+    WebRootPath = string.IsNullOrWhiteSpace(webRoot) ? null : Path.GetFullPath(webRoot),
+});
 
 // There is deliberately no default token: without a usable one the app refuses to start.
 string? adminToken = builder.Configuration["ADMIN_TOKEN"];
@@ -33,6 +40,14 @@ using (IServiceScope scope = app.Services.CreateScope())
     CinePostoDbContext db = scope.ServiceProvider.GetRequiredService<CinePostoDbContext>();
     await DatabaseInitializer.MigrateAsync(db, app.Lifetime.ApplicationStopping);
 }
+
+app.UseDefaultFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    // Files are revalidated on every load (they carry an ETag), so a new version of the frontend is never hidden
+    // behind a cached one.
+    OnPrepareResponse = context => context.Context.Response.Headers.CacheControl = "no-cache",
+});
 
 app.MapHealthChecks("/health");
 app.MapCatalogEndpoints();

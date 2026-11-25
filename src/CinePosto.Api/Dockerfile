@@ -34,6 +34,9 @@ EXPOSE 8080
 
 COPY --from=build /app/publish ./
 
+# The web frontend is served by the Api from wwwroot. The build context excludes web/tests (see .dockerignore).
+COPY web/ ./wwwroot/
+
 # No secrets are baked in: ADMIN_TOKEN is supplied when the container starts, and the app refuses to start without it.
 USER $APP_UID
 ENTRYPOINT ["dotnet", "CinePosto.Api.dll"]

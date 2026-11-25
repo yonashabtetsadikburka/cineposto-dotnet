@@ -1,0 +1,671 @@
+/* CinePosto — components.css (Componenti riusabili, livello 4/6)
+   Bottoni, pill/datebar, card, search/live, bottom-sheet filtri,
+   stati vuoti/errore, showtimes, section-head, carousel.
+   Niente @media qui: breakpoint in responsive.css. */
+
+/* --- Bottoni --- */
+.btn {
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  min-height: 36px;
+  touch-action: manipulation;
+}
+
+.btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.btn.play { background: var(--white); color: var(--dark); font-weight: bold; }
+.btn.info { background: rgba(109, 109, 110, 0.7); color: var(--white); font-size: 14px; }
+.btn.trailer {
+  background: rgba(40, 40, 40, 0.85);
+  color: var(--white);
+  border: 1px solid #ff0000;
+  padding: 8px 10px;
+}
+.btn.primary {
+  background: var(--primary);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  min-height: 44px;
+}
+.btn.ghost {
+  background: transparent;
+  color: var(--light);
+  border: 1px solid var(--card);
+  padding: 12px 16px;
+  border-radius: 8px;
+  min-height: 44px;
+}
+
+:root[data-theme="light"] .btn.trailer { color: #fff; }
+
+/* --- Filtri attivi (chip) --- */
+.active-filters {
+  display: flex;
+  align-items: center;
+  margin: 0 16px 12px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--primary);
+  color: var(--white);
+  border: 0;
+  border-radius: 16px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 32px;
+}
+
+.filter-chip svg {
+  width: 14px;
+  height: 14px;
+}
+
+.clear-all {
+  background: none;
+  border: 0;
+  color: var(--gray);
+  font-size: 13px;
+  margin-left: auto;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+/* --- DateBar / pill --- */
+.datebar {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  padding: 0 16px;
+  scrollbar-width: none;
+}
+
+.datebar::-webkit-scrollbar { display: none; }
+
+.pill {
+  flex: 1 1 0;
+  background: var(--card);
+  color: var(--light);
+  border: 0;
+  border-radius: 20px;
+  padding: 10px 8px;
+  min-width: 64px;
+  min-height: 44px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.pill.active { background: var(--primary); color: var(--white); }
+
+:root[data-theme="light"] .filter-chip,
+:root[data-theme="light"] .pill.active { color: #fff; }
+
+/* Variante date-tab del dettaglio film */
+#filmDates .pill { background: var(--surface); padding: 8px 14px; }
+#filmDates .pill.today { border: 1px solid var(--primary); }
+#filmDates .pill.active { background: var(--primary); }
+
+/* --- Carousel con frecce (DateBar, Top 10) --- */
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.carousel .datebar { flex: 1; min-width: 0; }
+.carousel .row { flex: 1 1 auto; min-width: 0; max-width: 844px; margin: 0 auto; }
+
+.car-arrow {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--card);
+  background: var(--surface);
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.car-arrow svg {
+  width: 20px;
+  height: 20px;
+}
+
+:root[data-theme="light"] .car-arrow { color: #141414; }
+
+/* --- Section head / righe --- */
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 10px 16px;
+}
+
+.section-head .section-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+.section-initial {
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
+  background: var(--card);
+  color: var(--light);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  flex: 0 0 auto;
+}
+
+.linklike { background: none; border: 0; font: inherit; cursor: pointer; padding: 8px 0; }
+
+.section-head h3 { margin: 0; color: var(--white); font-size: 18px; font-weight: bold; }
+
+.section-head h3 svg {
+  width: 20px;
+  height: 20px;
+  color: var(--primary);
+  vertical-align: -4px;
+}
+
+.show-all-link {
+  margin-left: auto;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.show-all-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+.row {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  padding: 0 8px 6px 16px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.row::-webkit-scrollbar { display: none; }
+
+/* --- Card film --- */
+.card {
+  flex: 0 0 auto;
+  width: 130px;
+  margin-right: 8px;
+  scroll-snap-align: start;
+  text-decoration: none;
+}
+
+.card img.poster {
+  width: 130px;
+  height: 195px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: var(--card);
+}
+
+.card .placeholder {
+  width: 130px;
+  height: 195px;
+  border-radius: 6px;
+  background: var(--card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--light);
+  font-size: 12px;
+  padding: 8px;
+  text-align: center;
+}
+
+.card .title {
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 600;
+  margin: 4px 0 0;
+  line-height: 16px;
+}
+
+.card .sub { color: var(--gray); font-size: 11px; margin: 2px 0 0; }
+
+.card .times {
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 700;
+  margin: 2px 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.no-results { color: var(--gray); text-align: center; padding: 24px; }
+
+/* --- Search globale + live results --- */
+.tb-search {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--white);
+  border-radius: 12px;
+  padding: 0 12px;
+  min-width: 0;
+}
+
+.tb-search:focus-within { border-color: var(--primary); }
+
+.tb-search-icon {
+  margin-right: 8px;
+  display: inline-flex;
+  color: var(--gray);
+}
+
+.tb-search-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.tb-search input {
+  flex: 1;
+  background: none;
+  border: 0;
+  color: #fff;
+  font-size: 14px;
+  padding: 12px 0;
+  outline: none;
+  min-width: 0;
+}
+
+.tb-search input::placeholder { color: var(--gray); }
+
+:root[data-theme="light"] .tb-search input { color: #141414; }
+
+.live-results {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--surface);
+  border: 1px solid var(--card);
+  border-radius: 12px;
+  max-height: 320px;
+  overflow: hidden auto;
+  z-index: 60;
+  box-shadow: var(--shadow-lg);
+}
+
+.live-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 12px;
+  text-decoration: none;
+}
+
+.live-item.active,
+.live-item:hover { background: var(--card); }
+
+.live-item img,
+.live-ph {
+  width: 36px;
+  height: 54px;
+  border-radius: 4px;
+  object-fit: cover;
+  background: var(--card);
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--light);
+  font-weight: bold;
+}
+
+.live-item strong { font-size: 13px; }
+.live-item small { color: var(--gray); font-size: 11px; }
+.live-empty { padding: 12px; color: var(--gray); font-size: 13px; margin: 0; }
+
+/* --- Searchbar pagina cerca --- */
+.searchbar {
+  display: flex;
+  align-items: center;
+  background: var(--surface);
+  margin: 50px 16px 12px;
+  border: 1px solid var(--white);
+  border-radius: 12px;
+  padding: 0 12px;
+}
+
+.searchbar:focus-within { border-color: var(--primary); }
+
+.search-icon {
+  margin-right: 8px;
+  display: inline-flex;
+  color: var(--gray);
+}
+
+.search-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.searchbar input {
+  flex: 1;
+  background: none;
+  border: 0;
+  color: var(--white);
+  font-size: 16px;
+  padding: 12px 0;
+  outline: none;
+  min-width: 0;
+}
+
+.searchbar input::placeholder { color: var(--gray); }
+
+#results { padding: 0 16px; }
+
+.result {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--card);
+  text-decoration: none;
+  gap: 0;
+}
+
+.result-poster {
+  width: 45px;
+  height: 67px;
+  border-radius: 4px;
+  margin-right: 12px;
+  object-fit: cover;
+  background: var(--card);
+}
+
+.result-poster.ph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--light);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.result-info { flex: 1; min-width: 0; }
+
+.result-title {
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.result-meta { color: var(--gray); font-size: 12px; margin: 0 0 2px; }
+.result-arrow { color: var(--gray); }
+
+.result-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* --- Bottom-sheet filtri --- */
+.filters-sheet {
+  background: var(--surface);
+  color: #fff;
+  border: 0;
+  margin: auto 0 0;
+  width: 100%;
+  max-width: 640px;
+  border-radius: 20px 20px 0 0;
+  padding: 0 0 32px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.filters-sheet::backdrop { background: rgba(0, 0, 0, 0.7); }
+
+:root[data-theme="light"] .state-title,
+:root[data-theme="light"] .filters-sheet { color: #141414; }
+
+.sheet-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid var(--card);
+}
+
+.sheet-head h2 { margin: 0; color: var(--white); font-size: 18px; font-weight: bold; }
+
+.sheet-section {
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: bold;
+  padding: 16px 16px 6px;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sheet-list { list-style: none; margin: 0; padding: 0; }
+
+.sheet-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--card);
+  color: var(--white);
+  font-size: 16px;
+  padding: 14px 16px;
+  cursor: pointer;
+  min-height: 52px;
+  text-align: left;
+}
+
+.sheet-option.active { background: var(--card); }
+.sheet-option.active span:first-child { color: var(--primary); font-weight: 600; }
+.sheet-option .check { color: var(--primary); font-size: 20px; }
+
+/* --- Stati (loading / errore / vuoto) --- */
+.state { text-align: center; padding: 48px 24px; color: var(--light); }
+.state-title { color: #fff; font-size: 20px; font-weight: bold; margin: 0 0 8px; }
+.state-sub { color: var(--light); font-size: 14px; }
+.error-icon { font-size: 48px; margin-bottom: 12px; }
+
+/* --- Banner dati stale --- */
+.stale-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin: 0 16px 12px;
+  color: var(--light);
+  font-size: 13px;
+}
+
+.stale-banner button {
+  margin-left: auto;
+  background: none;
+  border: 0;
+  color: var(--light);
+  font-size: 16px;
+  cursor: pointer;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stale-banner button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.stale-banner span svg {
+  width: 18px;
+  height: 18px;
+  vertical-align: -3px;
+}
+
+/* --- Showtimes (riuso card/result/times) --- */
+.show-card {
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 10px;
+}
+
+.show-card.cinema-accent { border-left: 4px solid var(--cinema-color, #e50914); scroll-margin-top: 70px; }
+
+.show-head {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 8px;
+}
+
+.show-head strong {
+  color: var(--white);
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.show-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
+  object-fit: cover;
+  flex: 0 0 auto;
+}
+
+.show-lang { color: var(--gray); font-size: 11px; }
+
+/* Badge lingua/formato standard (ITA · 2D) nell'header degli orari */
+.show-tag {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--light);
+  border: 1px solid var(--card);
+  border-radius: 4px;
+  padding: 2px 6px;
+  white-space: nowrap;
+}
+
+.times-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+
+.time-chip {
+  background: var(--card);
+  padding: 8px 12px;
+  border-radius: 6px;
+  min-width: 80px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.time-text { color: var(--white); font-size: 15px; font-weight: 600; display: block; }
+.time-detail { color: var(--gray); font-size: 11px; }
+
+.buy-link {
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.buy-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+.empty-text { color: var(--gray); font-size: 14px; text-align: center; margin-top: 8px; }
+
+.trailer-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid var(--card);
+  border-radius: 10px;
+  padding: 12px;
+  color: var(--light);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 24px;
+}
+
+.trailer-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* CTA primaria acquisto: bottone pieno sotto gli orari di ogni cinema */
+.buy-cta {
+  width: 100%;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.buy-cta svg {
+  width: 16px;
+  height: 16px;
+}

@@ -20,6 +20,8 @@
 #   14 the scraper failed
 #   20 /health                      21 /api/v1/cinemas
 #   22 /api/v1/films                23 /api/v1/showings
+#   30 the web frontend or one of its files is not served
+#   31 the frontend tests are served by the api (they must not ship)
 #   24 admin endpoint accepted a request without the token
 #   25 admin endpoint rejected the right token or returned unexpected counts
 #   26 a second scraper run changed the data
@@ -118,7 +120,7 @@ generate_token() {
   fi
 }
 
-step "0/9 prerequisites"
+step "0/10 prerequisites"
 command -v docker >/dev/null 2>&1 || fail 10 "" "docker is not installed or not on PATH"
 docker compose version >/dev/null 2>&1 || fail 10 "" "the docker compose plugin is not available"
 command -v curl >/dev/null 2>&1 || fail 10 "" "curl is not installed or not on PATH"
@@ -126,11 +128,11 @@ ADMIN_TOKEN=$(generate_token)
 export ADMIN_TOKEN
 pass "docker, compose and curl found; project '${COMPOSE_PROJECT_NAME}', api on port ${API_PORT}"
 
-step "1/9 build the images"
+step "1/10 build the images"
 docker compose --profile jobs build || fail 11 "" "docker compose build failed"
 pass "images built"
 
-step "2/9 the api must refuse to start without a token"
+step "2/10 the api must refuse to start without a token"
 API_IMAGE=$(docker compose config --images 2>/dev/null | grep -F 'cineposto-api' | head -n 1)
 [ -n "$API_IMAGE" ] || API_IMAGE=cineposto-api:local
 OUT=$(docker run --rm --pull=never "$API_IMAGE" 2>&1)
@@ -144,24 +146,32 @@ RC=$?
 grep -q 'ADMIN_TOKEN' <<<"$OUT" || fail 12 "" "docker compose failed, but not because of ADMIN_TOKEN" "$OUT"
 pass "docker compose rejects an empty ADMIN_TOKEN"
 
-step "3/9 start the api and wait for the healthcheck"
+step "3/10 start the api and wait for the healthcheck"
 docker compose up -d --wait --wait-timeout 120 api || fail 13 api "the api did not become healthy within 120s"
 pass "api is healthy"
 
-step "4/9 run the scraper on the saved fixtures"
+step "4/10 run the scraper on the saved fixtures"
 run_scraper
 echo "$SCRAPER_OUT"
 [ "$SCRAPER_RC" -eq 0 ] || fail 14 api "the scraper exited with code $SCRAPER_RC" "$SCRAPER_OUT"
 grep -qF 'films=2' <<<"$SCRAPER_OUT" || fail 14 api "the scraper did not report 2 films" "$SCRAPER_OUT"
 pass "scraper finished with exit code 0"
 
-step "5/9 public endpoints"
+step "5/10 public endpoints"
 expect_data "/health" 20 /health "Healthy"
 expect_data "cinemas" 21 /api/v1/cinemas "clarici-foligno"
 expect_data "films" 22 /api/v1/films "Nebbia sul Lago"
 expect_data "showings" 23 /api/v1/showings "clarici-foligno"
 
-step "6/9 admin endpoint"
+step "6/10 web frontend"
+expect_data "web page" 30 / "js/app.js"
+expect_data "web script" 30 /js/app.js "renderHome"
+expect_data "italian texts" 30 /i18n/it.json '"nav.home"'
+expect_data "english texts" 30 /i18n/en.json '"nav.home"'
+get /tests/i18n.test.mjs
+[ "$HTTP_STATUS" = "404" ] || fail 31 api "the frontend tests are served by the api (status $HTTP_STATUS)" "$HTTP_BODY"
+pass "frontend tests are not shipped in the image"
+step "7/10 admin endpoint"
 get /api/v1/admin/dataset-info
 [ "$HTTP_STATUS" = "401" ] || fail 24 api "admin endpoint without a token: expected 401, got $HTTP_STATUS" "$HTTP_BODY"
 pass "no token -> 401"
@@ -173,14 +183,14 @@ get /api/v1/admin/dataset-info -H "X-Admin-Token: ${ADMIN_TOKEN}"
 [ "$HTTP_BODY" = "$EXPECTED_COUNTS" ] || fail 25 api "unexpected counts: wanted $EXPECTED_COUNTS" "$HTTP_BODY"
 pass "right token -> 200 $HTTP_BODY"
 
-step "7/9 a second scraper run must not change the data"
+step "8/10 a second scraper run must not change the data"
 run_scraper
 [ "$SCRAPER_RC" -eq 0 ] || fail 26 api "the second scraper run exited with code $SCRAPER_RC" "$SCRAPER_OUT"
 get /api/v1/admin/dataset-info -H "X-Admin-Token: ${ADMIN_TOKEN}"
 [ "$HTTP_BODY" = "$EXPECTED_COUNTS" ] || fail 26 api "counts changed after the second run: $HTTP_BODY" "$HTTP_BODY"
 pass "counts unchanged: $HTTP_BODY"
 
-step "8/9 a failing source must keep the last known showings"
+step "9/10 a failing source must keep the last known showings"
 SCRAPER_FIXTURES_CASE=movies_http500 run_scraper
 echo "$SCRAPER_OUT"
 [ "$SCRAPER_RC" -eq 1 ] || fail 27 api "the scraper should exit with code 1 when the source fails, got $SCRAPER_RC" "$SCRAPER_OUT"
@@ -188,5 +198,5 @@ get /api/v1/admin/dataset-info -H "X-Admin-Token: ${ADMIN_TOKEN}"
 [ "$HTTP_BODY" = "$EXPECTED_COUNTS" ] || fail 27 api "the failing run changed the data: $HTTP_BODY" "$HTTP_BODY"
 pass "scraper reported the failure (exit 1) and the data is still $HTTP_BODY"
 
-step "9/9 the api is still healthy"
+step "10/10 the api is still healthy"
 expect_data "/health" 20 /health "Healthy"

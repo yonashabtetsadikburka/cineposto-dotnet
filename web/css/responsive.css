@@ -1,0 +1,52 @@
+/* CinePosto — responsive.css (Breakpoint, livello 6/6, ultimo caricato)
+   Unico file autorizzato a contenere @media.
+   Ordine: mobile-first adjustments → tablet → desktop. */
+
+/* Hero overview nascosta su schermi molto piccoli */
+@media (max-width: 479px) {
+  .hero-overview { display: none; }
+  /* Films: sempre 2 colonne leggibili, mai 1 colonna gigante */
+  .films-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Header compatto: wrap della search sotto i 640px */
+@media (max-width: 639px) {
+  .topbar { flex-wrap: wrap; }
+  .topbar .tb-search { order: 5; flex-basis: 100%; }
+}
+
+/* Topbar visibile da 640px in su */
+@media (min-width: 640px) {
+  .topnav { display: flex; }
+}
+
+/* Fascia 640-900px: 5 link + search + 2 bottoni, compattati */
+@media (min-width: 640px) and (max-width: 899px) {
+  .topbar { gap: 8px; padding: 10px; }
+  .topnav { gap: 8px; }
+  .topnav a { font-size: 13px; }
+  .topbar .tb-search { max-width: 260px; }
+}
+
+/* Sotto 1100px nascondi "Cerca" (ridondante: search bar + bottomnav) */
+@media (max-width: 1099px) {
+  .topnav a[data-route="cerca"] { display: none; }
+}
+
+/* Desktop ≥768px: bottomnav nascosta, card più grandi, cinema a 3 colonne */
+@media (min-width: 768px) {
+  .topbar { gap: 16px; }
+  .bottomnav { display: none; }
+  .view { padding-bottom: 40px; }
+  .hero-slide { max-height: 320px; }
+  .hero-slide .hero-fg { height: 170px; }
+  .card { width: 150px; }
+  .card img.poster,
+  .card .placeholder { width: 150px; height: 225px; }
+  .cinema-list { grid-template-columns: repeat(3, 1fr); }
+  .carousel .row { max-width: 964px; }
+}
+
+@media (min-width: 1024px) {
+  .hero-body h2 { font-size: 26px; }
+}

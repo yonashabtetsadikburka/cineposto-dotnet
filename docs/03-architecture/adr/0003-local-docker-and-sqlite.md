@@ -14,6 +14,7 @@ Nothing should be deployed to Azure before the whole system has been run and tes
 - For local runs the database is a SQLite file in a named volume shared by the two containers. It is created and migrated automatically at startup, with Entity Framework Core migrations.
 - The Domain does not know about SQLite. It defines `IScrapeResultWriter` and `IShowtimeReader`; the Infrastructure project implements them. Changing the database later means changing Infrastructure only.
 - The Scraper has two modes, chosen explicitly with `SCRAPER_MODE` (there is no default): `fixtures` replaces the network with saved responses through an `HttpMessageHandler`, so the connectors run unchanged; `live` uses the real sites. Local runs and CI use `fixtures`.
+- The web frontend (`web/`, plain HTML, CSS and JavaScript) is served by the Api container from `wwwroot`, on the same origin as the API, so there is no CORS and no extra service. It only calls the public API. All its texts live in `web/i18n/it.json` (default) and `en.json`.
 - Configuration comes from environment variables. The admin token has no default value: the Api refuses to start without a usable one. No secret is stored in the images or in the repository.
 - `scripts/smoke.sh` and `scripts/smoke.ps1` run the whole setup and check it. CI runs the smoke test on every pull request.
 

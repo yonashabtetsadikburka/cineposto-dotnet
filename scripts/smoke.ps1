@@ -19,6 +19,8 @@
       14 the scraper failed
       20 /health                      21 /api/v1/cinemas
       22 /api/v1/films                23 /api/v1/showings
+      30 the web frontend or one of its files is not served
+      31 the frontend tests are served by the api (they must not ship)
       24 admin endpoint accepted a request without the token
       25 admin endpoint rejected the right token or returned unexpected counts
       26 a second scraper run changed the data
@@ -112,7 +114,7 @@ function New-Token {
 }
 
 function Invoke-Smoke {
-    Write-Step '0/9 prerequisites'
+    Write-Step '0/10 prerequisites'
     if (-not (Get-Command docker -ErrorAction SilentlyContinue)) { Stop-Smoke 10 '' 'docker is not installed or not on PATH' }
     if ((Invoke-Docker @('compose', 'version')).ExitCode -ne 0) { Stop-Smoke 10 '' 'the docker compose plugin is not available' }
     if (-not (Get-Command curl.exe -ErrorAction SilentlyContinue)) { Stop-Smoke 10 '' 'curl.exe is not installed or not on PATH' }
@@ -134,12 +136,12 @@ function Invoke-Smoke {
     $script:Base = "http://127.0.0.1:$port"
     Write-Pass "docker, compose and curl.exe found; project '$project', api on port $port"
 
-    Write-Step '1/9 build the images'
+    Write-Step '1/10 build the images'
     & docker compose --profile jobs build
     if ($LASTEXITCODE -ne 0) { Stop-Smoke 11 '' 'docker compose build failed' }
     Write-Pass 'images built'
 
-    Write-Step '2/9 the api must refuse to start without a token'
+    Write-Step '2/10 the api must refuse to start without a token'
     $apiImage = 'cineposto-api:local'
     $images = Invoke-Docker @('compose', 'config', '--images')
     $found = $images.Output -split "`r?`n" | Where-Object { $_ -like '*cineposto-api*' } | Select-Object -First 1
@@ -162,25 +164,34 @@ function Invoke-Smoke {
     if ($config.Output -notmatch 'ADMIN_TOKEN') { Stop-Smoke 12 '' 'docker compose failed, but not because of ADMIN_TOKEN' $config.Output }
     Write-Pass 'docker compose rejects a missing ADMIN_TOKEN'
 
-    Write-Step '3/9 start the api and wait for the healthcheck'
+    Write-Step '3/10 start the api and wait for the healthcheck'
     & docker compose up -d --wait --wait-timeout 120 api
     if ($LASTEXITCODE -ne 0) { Stop-Smoke 13 'api' 'the api did not become healthy within 120s' }
     Write-Pass 'api is healthy'
 
-    Write-Step '4/9 run the scraper on the saved fixtures'
+    Write-Step '4/10 run the scraper on the saved fixtures'
     $scrape = Invoke-Docker @('compose', 'run', '-T', '--rm', 'scraper')
     Write-Host $scrape.Output
     if ($scrape.ExitCode -ne 0) { Stop-Smoke 14 'api' "the scraper exited with code $($scrape.ExitCode)" $scrape.Output }
     if (-not $scrape.Output.Contains('films=2')) { Stop-Smoke 14 'api' 'the scraper did not report 2 films' $scrape.Output }
     Write-Pass 'scraper finished with exit code 0'
 
-    Write-Step '5/9 public endpoints'
+    Write-Step '5/10 public endpoints'
     Test-Data '/health' 20 '/health' 'Healthy'
     Test-Data 'cinemas' 21 '/api/v1/cinemas' 'clarici-foligno'
     Test-Data 'films' 22 '/api/v1/films' 'Nebbia sul Lago'
     Test-Data 'showings' 23 '/api/v1/showings' 'clarici-foligno'
 
-    Write-Step '6/9 admin endpoint'
+    Write-Step '6/10 web frontend'
+    Test-Data 'web page' 30 '/' 'js/app.js'
+    Test-Data 'web script' 30 '/js/app.js' 'renderHome'
+    Test-Data 'italian texts' 30 '/i18n/it.json' '"nav.home"'
+    Test-Data 'english texts' 30 '/i18n/en.json' '"nav.home"'
+    $tests = Get-Http '/tests/i18n.test.mjs'
+    if ($tests.Status -ne '404') { Stop-Smoke 31 'api' "the frontend tests are served by the api (status $($tests.Status))" $tests.Body }
+    Write-Pass 'frontend tests are not shipped in the image'
+
+    Write-Step '7/10 admin endpoint'
     $admin = Get-Http '/api/v1/admin/dataset-info'
     if ($admin.Status -ne '401') { Stop-Smoke 24 'api' "admin endpoint without a token: expected 401, got $($admin.Status)" $admin.Body }
     Write-Pass 'no token -> 401'
@@ -192,14 +203,14 @@ function Invoke-Smoke {
     if ($admin.Body -ne $ExpectedCounts) { Stop-Smoke 25 'api' "unexpected counts: wanted $ExpectedCounts" $admin.Body }
     Write-Pass "right token -> 200 $($admin.Body)"
 
-    Write-Step '7/9 a second scraper run must not change the data'
+    Write-Step '8/10 a second scraper run must not change the data'
     $scrape = Invoke-Docker @('compose', 'run', '-T', '--rm', 'scraper')
     if ($scrape.ExitCode -ne 0) { Stop-Smoke 26 'api' "the second scraper run exited with code $($scrape.ExitCode)" $scrape.Output }
     $admin = Get-Http '/api/v1/admin/dataset-info' @('-H', "X-Admin-Token: $token")
     if ($admin.Body -ne $ExpectedCounts) { Stop-Smoke 26 'api' "counts changed after the second run: $($admin.Body)" $admin.Body }
     Write-Pass "counts unchanged: $($admin.Body)"
 
-    Write-Step '8/9 a failing source must keep the last known showings'
+    Write-Step '9/10 a failing source must keep the last known showings'
     $env:SCRAPER_FIXTURES_CASE = 'movies_http500'
     $scrape = Invoke-Docker @('compose', 'run', '-T', '--rm', 'scraper')
     $env:SCRAPER_FIXTURES_CASE = 'settings_valid'
@@ -209,7 +220,7 @@ function Invoke-Smoke {
     if ($admin.Body -ne $ExpectedCounts) { Stop-Smoke 27 'api' "the failing run changed the data: $($admin.Body)" $admin.Body }
     Write-Pass "scraper reported the failure (exit 1) and the data is still $($admin.Body)"
 
-    Write-Step '9/9 the api is still healthy'
+    Write-Step '10/10 the api is still healthy'
     Test-Data '/health' 20 '/health' 'Healthy'
 }
 
