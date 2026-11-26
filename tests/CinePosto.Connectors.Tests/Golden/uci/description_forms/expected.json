@@ -1,0 +1,258 @@
+{
+  "films": [
+    {
+      "title": "D Tag",
+      "title_normalized": "D Tag",
+      "poster": null,
+      "backdrop": null,
+      "description": "Un film inventato.",
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/d-tag/"
+        }
+      ]
+    },
+    {
+      "title": "D Entita",
+      "title_normalized": "D Entita",
+      "poster": null,
+      "backdrop": null,
+      "description": "Caffè & torta: l'età \"d’oro\"",
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/d-entita/"
+        }
+      ]
+    },
+    {
+      "title": "D Nbsp",
+      "title_normalized": "D Nbsp",
+      "poster": null,
+      "backdrop": null,
+      "description": "Spazio",
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/d-nbsp/"
+        }
+      ]
+    },
+    {
+      "title": "D Tag Escapati",
+      "title_normalized": "D Tag Escapati",
+      "poster": null,
+      "backdrop": null,
+      "description": "grassetto resta testo",
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/d-escapati/"
+        }
+      ]
+    },
+    {
+      "title": "D Solo Tag",
+      "title_normalized": "D Solo Tag",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/d-solo-tag/"
+        }
+      ]
+    },
+    {
+      "title": "D Spazi",
+      "title_normalized": "D Spazi",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/d-spazi/"
+        }
+      ]
+    },
+    {
+      "title": "D Vuota",
+      "title_normalized": "D Vuota",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/d-vuota/"
+        }
+      ]
+    },
+    {
+      "title": "D Nulla",
+      "title_normalized": "D Nulla",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/d-nulla/"
+        }
+      ]
+    },
+    {
+      "title": "D A Capo",
+      "title_normalized": "D A Capo",
+      "poster": null,
+      "backdrop": null,
+      "description": "Riga uno\nRiga due",
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/d-a-capo/"
+        }
+      ]
+    },
+    {
+      "title": "D Tag Multilinea",
+      "title_normalized": "D Tag Multilinea",
+      "poster": null,
+      "backdrop": null,
+      "description": "a b c",
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/d-multilinea/"
+        }
+      ]
+    },
+    {
+      "title": "D Minore",
+      "title_normalized": "D Minore",
+      "poster": null,
+      "backdrop": null,
+      "description": "1  2",
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/d-minore/"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

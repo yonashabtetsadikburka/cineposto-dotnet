@@ -1,0 +1,30 @@
+{
+  "films": [
+    {
+      "title": "Film di Prova",
+      "title_normalized": "Film di Prova",
+      "poster": "https://example.test/poster.jpg",
+      "backdrop": null,
+      "description": "Una storia inventata.",
+      "genres": [
+        "Drammatico"
+      ],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/film-di-prova/"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

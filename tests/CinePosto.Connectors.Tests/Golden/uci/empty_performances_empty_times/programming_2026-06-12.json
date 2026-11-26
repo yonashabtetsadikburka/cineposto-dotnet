@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Senza Orari",
+      "slug": "senza-orari",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

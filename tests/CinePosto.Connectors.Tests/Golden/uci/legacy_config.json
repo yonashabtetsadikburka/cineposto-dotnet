@@ -1,0 +1,6 @@
+{
+  "programming_url_template": "https://myuci---uci-backend-production-nfluwp7wga-oc.a.run.app/api/theatres/uci-cinemas-perugia/programming/{date}",
+  "base_url": "https://ucicinemas.it",
+  "cinema_slug": "uci-perugia",
+  "cinema_name": "UCI Cinemas Perugia"
+}

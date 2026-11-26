@@ -1,0 +1,13 @@
+{
+  "films": [],
+  "errors": [
+    {
+      "phase": "parse_programming_movie",
+      "date": null
+    },
+    {
+      "phase": "parse_programming_movie",
+      "date": null
+    }
+  ]
+}

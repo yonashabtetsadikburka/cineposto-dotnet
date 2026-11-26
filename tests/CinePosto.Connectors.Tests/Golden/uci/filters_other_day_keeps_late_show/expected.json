@@ -1,0 +1,28 @@
+{
+  "films": [
+    {
+      "title": "Filtro Giorno",
+      "title_normalized": "Filtro Giorno",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "16:00",
+            "23:55"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/filtro-giorno/"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

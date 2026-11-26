@@ -1,0 +1,27 @@
+{
+  "films": [
+    {
+      "title": "Rumore",
+      "title_normalized": "Rumore",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "21:00"
+          ],
+          "screen": "IMAX",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/rumore/"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,31 @@
+{
+  "films": [
+    {
+      "title": "Giorni Strani",
+      "title_normalized": "Giorni Strani",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "10:00",
+            "12:00",
+            "13:00",
+            "14:00",
+            "17:00"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/giorni-strani/"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

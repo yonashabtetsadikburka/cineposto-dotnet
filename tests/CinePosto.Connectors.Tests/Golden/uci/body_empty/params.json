@@ -1,0 +1,13 @@
+{
+  "today": "2026-06-12",
+  "dates": [
+    "2026-06-12"
+  ],
+  "responses": [
+    {
+      "date": "2026-06-12",
+      "status": 200,
+      "body": "programming_2026-06-12_raw.txt"
+    }
+  ]
+}

@@ -1,0 +1,441 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "V Normale",
+      "slug": "v-normale",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:00",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "V Senza Lingua",
+      "slug": "v-senza-lingua",
+      "screens": [
+        {
+          "2D": [
+            {
+              "screen": {
+                "name": "Sala 3"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:01",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "V Lingua Nulla",
+      "slug": "v-lingua-nulla",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": null,
+              "screen": {
+                "name": "Sala 3"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:02",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "V Lingua Testo",
+      "slug": "v-lingua-testo",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": "ITA",
+              "screen": {
+                "name": "Sala 3"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:03",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "V Lingua Vuota",
+      "slug": "v-lingua-vuota",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": ""
+              },
+              "screen": {
+                "name": "Sala 3"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:04",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "V Lingua Senza Nome",
+      "slug": "v-lingua-senza-nome",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "id": 3
+              },
+              "screen": {
+                "name": "Sala 3"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:05",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "V Senza Sala",
+      "slug": "v-senza-sala",
+      "screens": [
+        {
+          "3D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:06",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "V Sala Nulla",
+      "slug": "v-sala-nulla",
+      "screens": [
+        {
+          "3D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": null,
+              "performances": [
+                {
+                  "actual_start_at": "18:07",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "V Sala Testo",
+      "slug": "v-sala-testo",
+      "screens": [
+        {
+          "3D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": "Sala 9",
+              "performances": [
+                {
+                  "actual_start_at": "18:08",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "V Sala Senza Nome",
+      "slug": "v-sala-senza-nome",
+      "screens": [
+        {
+          "3D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "id": 4
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:09",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "V Sala Vuota",
+      "slug": "v-sala-vuota",
+      "screens": [
+        {
+          "3D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": ""
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:10",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "V Formato Uguale",
+      "slug": "v-formato-uguale",
+      "screens": [
+        {
+          "3D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "3D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:11",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "V Formato Diverso",
+      "slug": "v-formato-diverso",
+      "screens": [
+        {
+          "3D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "Sala 4"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:12",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "V Formato Vuoto",
+      "slug": "v-formato-vuoto",
+      "screens": [
+        {
+          "": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "Sala 4"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:13",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "V Senza Performances",
+      "slug": "v-senza-performances",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "V Performances Nulle",
+      "slug": "v-performances-nulle",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "V Performances Testo",
+      "slug": "v-performances-testo",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": "abc"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "V Performances Oggetto",
+      "slug": "v-performances-oggetto",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": {
+                "a": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "V Performances Zero",
+      "slug": "v-performances-zero",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

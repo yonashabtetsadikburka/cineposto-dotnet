@@ -1,0 +1,433 @@
+{
+  "films": [
+    {
+      "title": "V Normale",
+      "title_normalized": "V Normale",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/v-normale/"
+        }
+      ]
+    },
+    {
+      "title": "V Senza Lingua",
+      "title_normalized": "V Senza Lingua",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:01"
+          ],
+          "screen": "Sala 3",
+          "language": null,
+          "session_attributes": [
+            "2D"
+          ],
+          "source_url": "https://ucicinemas.it/film/v-senza-lingua/"
+        }
+      ]
+    },
+    {
+      "title": "V Lingua Nulla",
+      "title_normalized": "V Lingua Nulla",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:02"
+          ],
+          "screen": "Sala 3",
+          "language": null,
+          "session_attributes": [
+            "2D"
+          ],
+          "source_url": "https://ucicinemas.it/film/v-lingua-nulla/"
+        }
+      ]
+    },
+    {
+      "title": "V Lingua Testo",
+      "title_normalized": "V Lingua Testo",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:03"
+          ],
+          "screen": "Sala 3",
+          "language": null,
+          "session_attributes": [
+            "2D"
+          ],
+          "source_url": "https://ucicinemas.it/film/v-lingua-testo/"
+        }
+      ]
+    },
+    {
+      "title": "V Lingua Vuota",
+      "title_normalized": "V Lingua Vuota",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:04"
+          ],
+          "screen": "Sala 3",
+          "language": null,
+          "session_attributes": [
+            "2D"
+          ],
+          "source_url": "https://ucicinemas.it/film/v-lingua-vuota/"
+        }
+      ]
+    },
+    {
+      "title": "V Lingua Senza Nome",
+      "title_normalized": "V Lingua Senza Nome",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:05"
+          ],
+          "screen": "Sala 3",
+          "language": null,
+          "session_attributes": [
+            "2D"
+          ],
+          "source_url": "https://ucicinemas.it/film/v-lingua-senza-nome/"
+        }
+      ]
+    },
+    {
+      "title": "V Senza Sala",
+      "title_normalized": "V Senza Sala",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:06"
+          ],
+          "screen": null,
+          "language": "ITA",
+          "session_attributes": [
+            "3D"
+          ],
+          "source_url": "https://ucicinemas.it/film/v-senza-sala/"
+        }
+      ]
+    },
+    {
+      "title": "V Sala Nulla",
+      "title_normalized": "V Sala Nulla",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:07"
+          ],
+          "screen": null,
+          "language": "ITA",
+          "session_attributes": [
+            "3D"
+          ],
+          "source_url": "https://ucicinemas.it/film/v-sala-nulla/"
+        }
+      ]
+    },
+    {
+      "title": "V Sala Testo",
+      "title_normalized": "V Sala Testo",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:08"
+          ],
+          "screen": "3D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/v-sala-testo/"
+        }
+      ]
+    },
+    {
+      "title": "V Sala Senza Nome",
+      "title_normalized": "V Sala Senza Nome",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:09"
+          ],
+          "screen": null,
+          "language": "ITA",
+          "session_attributes": [
+            "3D"
+          ],
+          "source_url": "https://ucicinemas.it/film/v-sala-senza-nome/"
+        }
+      ]
+    },
+    {
+      "title": "V Sala Vuota",
+      "title_normalized": "V Sala Vuota",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:10"
+          ],
+          "screen": null,
+          "language": "ITA",
+          "session_attributes": [
+            "3D"
+          ],
+          "source_url": "https://ucicinemas.it/film/v-sala-vuota/"
+        }
+      ]
+    },
+    {
+      "title": "V Formato Uguale",
+      "title_normalized": "V Formato Uguale",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:11"
+          ],
+          "screen": "3D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/v-formato-uguale/"
+        }
+      ]
+    },
+    {
+      "title": "V Formato Diverso",
+      "title_normalized": "V Formato Diverso",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:12"
+          ],
+          "screen": "Sala 4",
+          "language": "ITA",
+          "session_attributes": [
+            "3D"
+          ],
+          "source_url": "https://ucicinemas.it/film/v-formato-diverso/"
+        }
+      ]
+    },
+    {
+      "title": "V Formato Vuoto",
+      "title_normalized": "V Formato Vuoto",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:13"
+          ],
+          "screen": "Sala 4",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/v-formato-vuoto/"
+        }
+      ]
+    },
+    {
+      "title": "V Senza Performances",
+      "title_normalized": "V Senza Performances",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/v-senza-performances/"
+        }
+      ]
+    },
+    {
+      "title": "V Performances Nulle",
+      "title_normalized": "V Performances Nulle",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/v-performances-nulle/"
+        }
+      ]
+    },
+    {
+      "title": "V Performances Testo",
+      "title_normalized": "V Performances Testo",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/v-performances-testo/"
+        }
+      ]
+    },
+    {
+      "title": "V Performances Oggetto",
+      "title_normalized": "V Performances Oggetto",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/v-performances-oggetto/"
+        }
+      ]
+    },
+    {
+      "title": "V Performances Zero",
+      "title_normalized": "V Performances Zero",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/v-performances-zero/"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

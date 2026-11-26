@@ -1,0 +1,442 @@
+{
+  "films": [
+    {
+      "title": "P Assoluto",
+      "title_normalized": "P Assoluto",
+      "poster": "https://example.test/img/a.jpg",
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/p-assoluto/"
+        }
+      ]
+    },
+    {
+      "title": "P Http",
+      "title_normalized": "P Http",
+      "poster": "http://example.test/img/b.jpg",
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/p-http/"
+        }
+      ]
+    },
+    {
+      "title": "P Root",
+      "title_normalized": "P Root",
+      "poster": "https://ucicinemas.it/media/c.jpg",
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/p-root/"
+        }
+      ]
+    },
+    {
+      "title": "P Relativo",
+      "title_normalized": "P Relativo",
+      "poster": "https://ucicinemas.it/media/d.jpg",
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/p-relativo/"
+        }
+      ]
+    },
+    {
+      "title": "P Protocollo",
+      "title_normalized": "P Protocollo",
+      "poster": "https://cdn.example.test/e.jpg",
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/p-protocollo/"
+        }
+      ]
+    },
+    {
+      "title": "P Punti",
+      "title_normalized": "P Punti",
+      "poster": "https://ucicinemas.it/media/f.jpg",
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/p-punti/"
+        }
+      ]
+    },
+    {
+      "title": "P Doppio Slash",
+      "title_normalized": "P Doppio Slash",
+      "poster": "https://ucicinemas.it/media//g.jpg",
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/p-doppio/"
+        }
+      ]
+    },
+    {
+      "title": "P Query",
+      "title_normalized": "P Query",
+      "poster": "https://ucicinemas.it/media/h.jpg?v=2#top",
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/p-query/"
+        }
+      ]
+    },
+    {
+      "title": "P Solo Query",
+      "title_normalized": "P Solo Query",
+      "poster": "https://ucicinemas.it?v=3",
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/p-solo-query/"
+        }
+      ]
+    },
+    {
+      "title": "P Spazio",
+      "title_normalized": "P Spazio",
+      "poster": "https://ucicinemas.it/media/i j.jpg",
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/p-spazio/"
+        }
+      ]
+    },
+    {
+      "title": "P Data",
+      "title_normalized": "P Data",
+      "poster": "data:image/png;base64,AAAA",
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/p-data/"
+        }
+      ]
+    },
+    {
+      "title": "P Ftp",
+      "title_normalized": "P Ftp",
+      "poster": "ftp://example.test/k.jpg",
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/p-ftp/"
+        }
+      ]
+    },
+    {
+      "title": "P Maiuscolo",
+      "title_normalized": "P Maiuscolo",
+      "poster": "HTTP://example.test/l.jpg",
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/p-maiuscolo/"
+        }
+      ]
+    },
+    {
+      "title": "P Httpx",
+      "title_normalized": "P Httpx",
+      "poster": "httpfoo/m.jpg",
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/p-httpx/"
+        }
+      ]
+    },
+    {
+      "title": "P Top Image",
+      "title_normalized": "P Top Image",
+      "poster": "https://ucicinemas.it/media/n.jpg",
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/p-top-image/"
+        }
+      ]
+    },
+    {
+      "title": "P Vuoto Poi Top",
+      "title_normalized": "P Vuoto Poi Top",
+      "poster": "https://example.test/o.jpg",
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/p-vuoto-top/"
+        }
+      ]
+    },
+    {
+      "title": "P Null Poi Top",
+      "title_normalized": "P Null Poi Top",
+      "poster": "https://example.test/q.jpg",
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/p-null-top/"
+        }
+      ]
+    },
+    {
+      "title": "P Vince Poster",
+      "title_normalized": "P Vince Poster",
+      "poster": "https://example.test/r.jpg",
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/p-vince/"
+        }
+      ]
+    },
+    {
+      "title": "P Nessuno",
+      "title_normalized": "P Nessuno",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/p-nessuno/"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

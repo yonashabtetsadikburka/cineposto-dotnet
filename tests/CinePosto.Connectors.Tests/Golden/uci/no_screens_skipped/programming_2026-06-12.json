@@ -1,0 +1,66 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Schermi Vuoti",
+      "slug": "schermi-vuoti",
+      "screens": []
+    },
+    {
+      "id": 3,
+      "title": "Senza Chiave",
+      "slug": "senza-chiave"
+    },
+    {
+      "id": 1,
+      "title": "Schermi Testo",
+      "slug": "schermi-testo",
+      "screens": "abc"
+    },
+    {
+      "id": 1,
+      "title": "Schermi Oggetto",
+      "slug": "schermi-oggetto",
+      "screens": {
+        "2D": []
+      }
+    },
+    {
+      "id": 1,
+      "title": "Gruppo Vuoto",
+      "slug": "gruppo-vuoto",
+      "screens": [
+        {}
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Con Orari",
+      "slug": "con-orari",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:00",
+                  "day": "2026-06-12"
+                },
+                {
+                  "actual_start_at": "20:30",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

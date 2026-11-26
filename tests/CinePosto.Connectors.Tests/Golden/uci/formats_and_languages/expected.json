@@ -1,0 +1,64 @@
+{
+  "films": [
+    {
+      "title": "Notte sul Lago",
+      "title_normalized": "Notte sul Lago",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "15:10",
+            "18:00",
+            "21:30"
+          ],
+          "screen": "Sala 1",
+          "language": "ITA",
+          "session_attributes": [
+            "2D"
+          ],
+          "source_url": "https://ucicinemas.it/film/notte-sul-lago/"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:00"
+          ],
+          "screen": "Sala 2",
+          "language": "ENG",
+          "session_attributes": [
+            "2D"
+          ],
+          "source_url": "https://ucicinemas.it/film/notte-sul-lago/"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "17:00",
+            "19:45"
+          ],
+          "screen": "3D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/notte-sul-lago/"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "22:15"
+          ],
+          "screen": "IMAX",
+          "language": "ENG",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/notte-sul-lago/"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

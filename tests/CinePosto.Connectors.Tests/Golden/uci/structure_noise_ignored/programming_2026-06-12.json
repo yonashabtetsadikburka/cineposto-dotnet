@@ -1,0 +1,62 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Rumore",
+      "slug": "rumore",
+      "screens": [
+        "testo",
+        5,
+        null,
+        [],
+        {
+          "2D": "non lista",
+          "3D": null,
+          "4D": 5,
+          "5D": {
+            "a": 1
+          },
+          "IMAX": [
+            "stringa",
+            7,
+            null,
+            [],
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "IMAX"
+              },
+              "performances": [
+                "x",
+                3,
+                null,
+                [],
+                {
+                  "actual_start_at": "21:00",
+                  "day": "2026-06-12"
+                },
+                {
+                  "actual_start_at": null,
+                  "day": "2026-06-12"
+                },
+                {
+                  "actual_start_at": "",
+                  "day": "2026-06-12"
+                },
+                {
+                  "actual_start_at": 0,
+                  "day": "2026-06-12"
+                },
+                {
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "films": [
+    {
+      "title": "Senza Slug",
+      "title_normalized": "Senza Slug",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it"
+        }
+      ]
+    },
+    {
+      "title": "Slug Vuoto",
+      "title_normalized": "Slug Vuoto",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "19:00"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it"
+        }
+      ]
+    },
+    {
+      "title": "Nessuno Slug",
+      "title_normalized": "Nessuno Slug",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:00"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}
