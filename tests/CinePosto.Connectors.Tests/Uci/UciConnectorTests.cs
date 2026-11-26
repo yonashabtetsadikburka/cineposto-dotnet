@@ -112,6 +112,17 @@ public class UciConnectorTests
     }
 
     [Fact]
+    public void ProgrammingUrl_FillsTheLegacyTemplateWithTheDay()
+    {
+        using JsonDocument config = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, GoldenRoot, "legacy_config.json")));
+        string legacyTemplate = config.RootElement.GetProperty("programming_url_template").GetString()!;
+
+        // The legacy code fills the template with str.format(date="2026-09-05"); the day is always zero padded.
+        Assert.Equal(legacyTemplate.Replace("{date}", "2026-09-05", StringComparison.Ordinal), new UciOptions().ProgrammingUrl(new DateOnly(2026, 9, 5)));
+        Assert.Equal("https://example.test/p/2026-12-31", new UciOptions(ProgrammingUrlTemplate: "https://example.test/p/{date}").ProgrammingUrl(new DateOnly(2026, 12, 31)));
+    }
+
+    [Fact]
     public async Task ScrapeAsync_AsksForJson()
     {
         FakeHttpMessageHandler handler = new(new Dictionary<string, (int, string)> { [UrlFor("2026-06-12")] = (200, """{"data": []}""") });

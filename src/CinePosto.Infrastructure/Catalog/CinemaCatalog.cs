@@ -17,8 +17,20 @@ public static class CinemaCatalog
         Website = "https://www.cinemaclarici.it",
     };
 
+    /// <summary>UCI Cinemas Perugia, in Corciano. Coordinates are approximate, as in the legacy source.</summary>
+    public static Cinema UciPerugia { get; } = new()
+    {
+        Slug = "uci-perugia",
+        Name = "UCI Cinemas Perugia",
+        City = "Corciano",
+        Address = "Via Corcianese 200, 06073 Corciano PG",
+        Latitude = 43.0745,
+        Longitude = 12.2891,
+        Website = "https://ucicinemas.it",
+    };
+
     /// <summary>All cinemas that have a connector.</summary>
-    public static IReadOnlyList<Cinema> All { get; } = [Clarici];
+    public static IReadOnlyList<Cinema> All { get; } = [Clarici, UciPerugia];
 
     /// <summary>Finds a cinema by slug, or returns <see langword="null"/> when no connector exists for it.</summary>
     public static Cinema? Find(string slug)

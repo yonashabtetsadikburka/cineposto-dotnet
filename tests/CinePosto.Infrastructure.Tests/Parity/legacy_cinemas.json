@@ -1,0 +1,20 @@
+{
+  "clarici-foligno": {
+    "name": "Multiplex Politeama Clarici",
+    "address": "Via Giuseppe Garibaldi, 137, 06034 Foligno PG",
+    "city": "Foligno",
+    "region": "Umbria",
+    "lat": 42.95785,
+    "lon": 12.7078,
+    "website": "https://www.cinemaclarici.it"
+  },
+  "uci-perugia": {
+    "name": "UCI Cinemas Perugia",
+    "address": "Via Corcianese 200, 06073 Corciano PG",
+    "city": "Corciano",
+    "region": "Umbria",
+    "lat": 43.0745,
+    "lon": 12.2891,
+    "website": "https://ucicinemas.it"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Nebbia sul Lago",
+      "slug": "nebbia-sul-lago",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:00",
+                  "day": "2026-09-22"
+                },
+                {
+                  "actual_start_at": "20:30",
+                  "day": "2026-09-22"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "poster": "https://example.test/uci-nebbia.jpg",
+      "description": "<p>Trama inventata per i test.</p>"
+    },
+    {
+      "id": 1,
+      "title": "Il Gatto del Faro",
+      "slug": "il-gatto-del-faro",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "17:30",
+                  "day": "2026-09-22"
+                },
+                {
+                  "actual_start_at": "21:00",
+                  "day": "2026-09-22"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "poster": "https://example.test/uci-gatto.jpg"
+    }
+  ]
+}
