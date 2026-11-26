@@ -38,14 +38,15 @@ $ErrorActionPreference = 'Continue'
 
 Push-Location (Join-Path $PSScriptRoot '..')
 
-$ExpectedCounts = '{"cinemas":1,"films":2,"showings":2}'
+# Two cinemas. "Nebbia sul Lago" is in both of them, so there are 3 films.
+$ExpectedCounts = '{"cinemas":2,"films":3,"showings":5}'
 $Started = Get-Date
 $script:Base = ''
 
 # Names of the environment variables this script sets. Their original values are restored at the end, because
 # `$env:` changes would otherwise stay in the caller's session.
 $ManagedVariables = @(
-    'COMPOSE_PROJECT_NAME', 'API_PORT', 'SCRAPER_MODE', 'SCRAPER_FIXTURES_CASE', 'FIXTURES_DIR',
+    'COMPOSE_PROJECT_NAME', 'API_PORT', 'SCRAPER_MODE', 'SCRAPER_FIXTURES_CASE', 'SCRAPER_UCI_FIXTURES_CASE', 'FIXTURES_DIR',
     'CINEPOSTO_DB_PATH', 'SCRAPER_USER_AGENT', 'SCRAPER_HTTP_TIMEOUT_SECONDS', 'ADMIN_TOKEN'
 )
 
@@ -126,6 +127,7 @@ function Invoke-Smoke {
     $env:API_PORT = $port
     $env:SCRAPER_MODE = 'fixtures'
     $env:SCRAPER_FIXTURES_CASE = 'settings_valid'
+    $env:SCRAPER_UCI_FIXTURES_CASE = 'eight_day_window'
     $env:FIXTURES_DIR = './tests/CinePosto.Connectors.Tests/Golden'
     $env:CINEPOSTO_DB_PATH = '/data/cineposto.db'
     # An empty value deletes the variable on Windows, so these two fall back to the defaults of docker-compose.yml.
@@ -173,14 +175,18 @@ function Invoke-Smoke {
     $scrape = Invoke-Docker @('compose', 'run', '-T', '--rm', 'scraper')
     Write-Host $scrape.Output
     if ($scrape.ExitCode -ne 0) { Stop-Smoke 14 'api' "the scraper exited with code $($scrape.ExitCode)" $scrape.Output }
-    if (-not $scrape.Output.Contains('films=2')) { Stop-Smoke 14 'api' 'the scraper did not report 2 films' $scrape.Output }
-    Write-Pass 'scraper finished with exit code 0'
+    if (-not $scrape.Output.Contains('cinema=clarici-foligno mode=fixtures films=2')) { Stop-Smoke 14 'api' 'the scraper did not report 2 films for clarici-foligno' $scrape.Output }
+    if (-not $scrape.Output.Contains('cinema=uci-perugia mode=fixtures films=2')) { Stop-Smoke 14 'api' 'the scraper did not report 2 films for uci-perugia' $scrape.Output }
+    Write-Pass 'scraper finished with exit code 0 and reported both cinemas'
 
     Write-Step '5/10 public endpoints'
     Test-Data '/health' 20 '/health' 'Healthy'
     Test-Data 'cinemas' 21 '/api/v1/cinemas' 'clarici-foligno'
+    Test-Data 'cinemas (uci)' 21 '/api/v1/cinemas' 'uci-perugia'
     Test-Data 'films' 22 '/api/v1/films' 'Nebbia sul Lago'
+    Test-Data 'films (uci)' 22 '/api/v1/films' 'Il Gatto del Faro'
     Test-Data 'showings' 23 '/api/v1/showings' 'clarici-foligno'
+    Test-Data 'showings (uci)' 23 '/api/v1/showings' 'uci-perugia'
 
     Write-Step '6/10 web frontend'
     Test-Data 'web page' 30 '/' 'js/app.js'
@@ -215,10 +221,20 @@ function Invoke-Smoke {
     $scrape = Invoke-Docker @('compose', 'run', '-T', '--rm', 'scraper')
     $env:SCRAPER_FIXTURES_CASE = 'settings_valid'
     Write-Host $scrape.Output
-    if ($scrape.ExitCode -ne 1) { Stop-Smoke 27 'api' "the scraper should exit with code 1 when the source fails, got $($scrape.ExitCode)" $scrape.Output }
+    if ($scrape.ExitCode -ne 1) { Stop-Smoke 27 'api' "the scraper should exit with code 1 when clarici fails, got $($scrape.ExitCode)" $scrape.Output }
+    if (-not $scrape.Output.Contains('cinema=uci-perugia mode=fixtures films=2')) { Stop-Smoke 27 'api' 'uci-perugia was not scraped while clarici was failing' $scrape.Output }
     $admin = Get-Http '/api/v1/admin/dataset-info' @('-H', "X-Admin-Token: $token")
-    if ($admin.Body -ne $ExpectedCounts) { Stop-Smoke 27 'api' "the failing run changed the data: $($admin.Body)" $admin.Body }
-    Write-Pass "scraper reported the failure (exit 1) and the data is still $($admin.Body)"
+    if ($admin.Body -ne $ExpectedCounts) { Stop-Smoke 27 'api' "the clarici failure changed the data: $($admin.Body)" $admin.Body }
+    Write-Pass "clarici failed (exit 1), uci was still scraped and the data is still $($admin.Body)"
+    $env:SCRAPER_UCI_FIXTURES_CASE = 'eight_day_window_http500'
+    $scrape = Invoke-Docker @('compose', 'run', '-T', '--rm', 'scraper')
+    $env:SCRAPER_UCI_FIXTURES_CASE = 'eight_day_window'
+    Write-Host $scrape.Output
+    if ($scrape.ExitCode -ne 1) { Stop-Smoke 27 'api' "the scraper should exit with code 1 when uci fails, got $($scrape.ExitCode)" $scrape.Output }
+    if (-not $scrape.Output.Contains('cinema=clarici-foligno mode=fixtures films=2')) { Stop-Smoke 27 'api' 'clarici-foligno was not scraped while uci was failing' $scrape.Output }
+    $admin = Get-Http '/api/v1/admin/dataset-info' @('-H', "X-Admin-Token: $token")
+    if ($admin.Body -ne $ExpectedCounts) { Stop-Smoke 27 'api' "the uci failure changed the data: $($admin.Body)" $admin.Body }
+    Write-Pass "uci failed (exit 1), clarici was still scraped and the data is still $($admin.Body)"
 
     Write-Step '10/10 the api is still healthy'
     Test-Data '/health' 20 '/health' 'Healthy'
