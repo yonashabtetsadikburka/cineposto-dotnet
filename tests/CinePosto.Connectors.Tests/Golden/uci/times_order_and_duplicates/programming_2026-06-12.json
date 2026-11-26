@@ -1,0 +1,45 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Orari Mescolati",
+      "slug": "orari-mescolati",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "22:40",
+                  "day": "2026-06-12"
+                },
+                {
+                  "actual_start_at": "09:05",
+                  "day": "2026-06-12"
+                },
+                {
+                  "actual_start_at": "20:10",
+                  "day": "2026-06-12"
+                },
+                {
+                  "actual_start_at": "20:10",
+                  "day": "2026-06-12"
+                },
+                {
+                  "actual_start_at": "17:40",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

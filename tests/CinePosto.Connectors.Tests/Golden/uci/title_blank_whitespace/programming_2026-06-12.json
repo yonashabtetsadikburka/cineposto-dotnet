@@ -1,0 +1,62 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "   ",
+      "slug": "spazi",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:00",
+                  "day": "2026-06-12"
+                },
+                {
+                  "actual_start_at": "20:30",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "  Con Spazi  ",
+      "slug": "con-spazi",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:00",
+                  "day": "2026-06-12"
+                },
+                {
+                  "actual_start_at": "20:30",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "films": [
+    {
+      "title": "Senza Orari",
+      "title_normalized": "Senza Orari",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/senza-orari/"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

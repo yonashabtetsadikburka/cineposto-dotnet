@@ -1,0 +1,40 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Film di Prova",
+      "slug": "film-di-prova",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:00",
+                  "day": "2026-06-12"
+                },
+                {
+                  "actual_start_at": "20:30",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "poster": "https://example.test/poster.jpg",
+      "description": "<p>Una storia inventata.</p>",
+      "genres": [
+        {
+          "name": "Drammatico"
+        }
+      ]
+    }
+  ]
+}

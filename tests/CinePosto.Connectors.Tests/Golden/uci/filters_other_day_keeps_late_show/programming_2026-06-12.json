@@ -1,0 +1,33 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Filtro Giorno",
+      "slug": "filtro-giorno",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "16:00",
+                  "day": "2026-06-12"
+                },
+                {
+                  "actual_start_at": "23:55",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

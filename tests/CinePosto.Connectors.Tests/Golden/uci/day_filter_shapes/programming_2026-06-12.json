@@ -1,0 +1,56 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Giorni Strani",
+      "slug": "giorni-strani",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "10:00",
+                  "day": "2026-06-12"
+                },
+                {
+                  "actual_start_at": "11:00",
+                  "day": "2026-06-13"
+                },
+                {
+                  "actual_start_at": "12:00",
+                  "day": ""
+                },
+                {
+                  "actual_start_at": "13:00",
+                  "day": null
+                },
+                {
+                  "actual_start_at": "14:00"
+                },
+                {
+                  "actual_start_at": "15:00",
+                  "day": "2026-06-12T00:00:00"
+                },
+                {
+                  "actual_start_at": "16:00",
+                  "day": 20260612
+                },
+                {
+                  "actual_start_at": "17:00",
+                  "day": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

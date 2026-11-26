@@ -22,13 +22,15 @@ public static partial class GenreNormalizer
             List<string> genres = new();
             foreach (JsonElement item in raw.EnumerateArray())
             {
+                // Original Python: [... for g in raw if g]. Every empty value is dropped first, the empty string included.
+                if (IsFalsy(item))
+                {
+                    continue;
+                }
+
                 if (item.ValueKind == JsonValueKind.String)
                 {
                     genres.Add(item.GetString() ?? string.Empty);
-                }
-                else if (IsFalsy(item))
-                {
-                    continue;
                 }
                 else if (item.ValueKind == JsonValueKind.Object)
                 {

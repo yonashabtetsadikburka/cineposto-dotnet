@@ -1,0 +1,28 @@
+{
+  "films": [
+    {
+      "title": "Titolo Valido",
+      "title_normalized": "Titolo Valido",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/titolo-valido/"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

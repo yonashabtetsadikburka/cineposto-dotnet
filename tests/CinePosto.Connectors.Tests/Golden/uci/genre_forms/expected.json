@@ -1,0 +1,226 @@
+{
+  "films": [
+    {
+      "title": "G Oggetti",
+      "title_normalized": "G Oggetti",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [
+        "Drammatico",
+        "Horror"
+      ],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/g-oggetti/"
+        }
+      ]
+    },
+    {
+      "title": "G Stringhe",
+      "title_normalized": "G Stringhe",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [
+        "Commedia",
+        "Giallo"
+      ],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/g-stringhe/"
+        }
+      ]
+    },
+    {
+      "title": "G Testo",
+      "title_normalized": "G Testo",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [
+        "Azione",
+        "Thriller",
+        "Noir"
+      ],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/g-testo/"
+        }
+      ]
+    },
+    {
+      "title": "G Misti",
+      "title_normalized": "G Misti",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [
+        "Fantasy",
+        "Avventura",
+        ""
+      ],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/g-misti/"
+        }
+      ]
+    },
+    {
+      "title": "G Nulli",
+      "title_normalized": "G Nulli",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/g-nulli/"
+        }
+      ]
+    },
+    {
+      "title": "G Vuoti",
+      "title_normalized": "G Vuoti",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/g-vuoti/"
+        }
+      ]
+    },
+    {
+      "title": "G Numero",
+      "title_normalized": "G Numero",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/g-numero/"
+        }
+      ]
+    },
+    {
+      "title": "G Oggetto",
+      "title_normalized": "G Oggetto",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/g-oggetto/"
+        }
+      ]
+    },
+    {
+      "title": "G Mancanti",
+      "title_normalized": "G Mancanti",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/g-mancanti/"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,97 @@
+{
+  "films": [
+    {
+      "title": "Falso",
+      "title_normalized": "Falso",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/falso/"
+        }
+      ]
+    },
+    {
+      "title": "Uno",
+      "title_normalized": "Uno",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/uno/"
+        }
+      ]
+    },
+    {
+      "title": "Testo",
+      "title_normalized": "Testo",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/testo/"
+        }
+      ]
+    },
+    {
+      "title": "Nullo",
+      "title_normalized": "Nullo",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/nullo/"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

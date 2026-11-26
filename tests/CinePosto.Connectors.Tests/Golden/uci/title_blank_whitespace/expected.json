@@ -1,0 +1,51 @@
+{
+  "films": [
+    {
+      "title": "   ",
+      "title_normalized": "",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/spazi/"
+        }
+      ]
+    },
+    {
+      "title": "  Con Spazi  ",
+      "title_normalized": "Con Spazi",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/con-spazi/"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

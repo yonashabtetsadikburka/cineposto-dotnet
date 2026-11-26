@@ -1,0 +1,112 @@
+{
+  "data": [
+    {
+      "id": 9,
+      "screens": []
+    },
+    {
+      "id": 10,
+      "title": "",
+      "slug": "x",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:00",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": null,
+      "slug": "y",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:00",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": 0,
+      "slug": "z",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:00",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Titolo Valido",
+      "slug": "titolo-valido",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:00",
+                  "day": "2026-06-12"
+                },
+                {
+                  "actual_start_at": "20:30",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

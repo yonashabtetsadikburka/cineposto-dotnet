@@ -1,0 +1,33 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Solo Primo",
+      "slug": "solo-primo",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:00",
+                  "day": "2026-06-12"
+                },
+                {
+                  "actual_start_at": "20:30",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

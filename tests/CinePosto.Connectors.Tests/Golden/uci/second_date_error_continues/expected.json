@@ -1,0 +1,33 @@
+{
+  "films": [
+    {
+      "title": "Dopo Errore",
+      "title_normalized": "Dopo Errore",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-13",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/dopo-errore/"
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "phase": "scrape",
+      "date": "2026-06-12"
+    }
+  ]
+}

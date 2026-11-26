@@ -1,0 +1,31 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Film Uno ",
+      "slug": "film-uno",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "21:00",
+                  "day": "2026-06-13"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "poster": "https://example.test/uno-1.jpg",
+      "description": "Seconda data"
+    }
+  ]
+}

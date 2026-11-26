@@ -1,0 +1,60 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Film Uno",
+      "slug": "film-uno",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "18:00",
+                  "day": "2026-06-12"
+                },
+                {
+                  "actual_start_at": "20:30",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "poster": "https://example.test/uno-0.jpg",
+      "description": "Prima data"
+    },
+    {
+      "id": 1,
+      "title": "Film Due",
+      "slug": "film-due",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "19:00",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

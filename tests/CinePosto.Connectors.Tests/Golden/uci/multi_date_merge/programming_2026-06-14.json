@@ -1,0 +1,58 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Film Tre",
+      "slug": "film-tre",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "17:30",
+                  "day": "2026-06-14"
+                },
+                {
+                  "actual_start_at": "20:00",
+                  "day": "2026-06-14"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Film Due",
+      "slug": "film-due",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "15:30",
+                  "day": "2026-06-14"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

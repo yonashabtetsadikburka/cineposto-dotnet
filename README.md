@@ -18,6 +18,7 @@ locally with Docker. The Azure deployment does not exist yet.
 - [x] Repository structure
 - [x] Domain model (scraped models, title normalization, persistence abstractions)
 - [x] First cinema connector (Clarici)
+- [x] Second cinema connector (UCI; the Scraper does not run it yet)
 - [x] Scraper (minimal: runs the connectors and stores the result in SQLite)
 - [x] API (minimal: cinemas, films, showings, health, admin dataset info)
 - [x] Local run with Docker Compose and a smoke test

@@ -1,0 +1,89 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Notte sul Lago",
+      "slug": "notte-sul-lago",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "Sala 1"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "21:30",
+                  "day": "2026-06-12"
+                },
+                {
+                  "actual_start_at": "18:00",
+                  "day": "2026-06-12"
+                },
+                {
+                  "actual_start_at": "15:10",
+                  "day": "2026-06-12"
+                }
+              ]
+            },
+            {
+              "language": {
+                "name": "ENG"
+              },
+              "screen": {
+                "name": "Sala 2"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "20:00",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ],
+          "3D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "3D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "17:00",
+                  "day": "2026-06-12"
+                },
+                {
+                  "actual_start_at": "19:45",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "IMAX": [
+            {
+              "language": {
+                "name": "ENG"
+              },
+              "screen": {
+                "name": "IMAX"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "22:15",
+                  "day": "2026-06-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
