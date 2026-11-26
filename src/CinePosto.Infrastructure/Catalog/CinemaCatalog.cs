@@ -17,15 +17,19 @@ public static class CinemaCatalog
         Website = "https://www.cinemaclarici.it",
     };
 
-    /// <summary>UCI Cinemas Perugia, in Corciano. Coordinates are approximate, as in the legacy source.</summary>
+    /// <summary>
+    /// UCI Cinemas Perugia, in Viale Centova. This differs on purpose from the legacy backend configuration, which has
+    /// Via Corcianese in Corciano: the maintainer confirmed Viale Centova, which is also what the legacy web map used.
+    /// The position is the one of that map. See legacy-parity-notes.md.
+    /// </summary>
     public static Cinema UciPerugia { get; } = new()
     {
         Slug = "uci-perugia",
         Name = "UCI Cinemas Perugia",
-        City = "Corciano",
-        Address = "Via Corcianese 200, 06073 Corciano PG",
-        Latitude = 43.0745,
-        Longitude = 12.2891,
+        City = "Perugia",
+        Address = "Viale Centova, 1/D, 06132 Perugia PG",
+        Latitude = 43.0963682,
+        Longitude = 12.3553159,
         Website = "https://ucicinemas.it",
     };
 

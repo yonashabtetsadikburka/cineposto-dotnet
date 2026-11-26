@@ -6,16 +6,20 @@ namespace CinePosto.Infrastructure.Tests;
 
 /// <summary>
 /// The catalog is compared with <c>Parity/legacy_cinemas.json</c>, which is produced by reading the legacy
-/// configuration (CINEMA_LOCATIONS) with a private script. Nothing is typed by hand here.
+/// configuration (CINEMA_LOCATIONS) with a private script, and for the corrected cinemas with
+/// <c>Parity/legacy_map_locations.json</c>, which the same script reads from the legacy web map.
 /// </summary>
 public sealed class CinemaCatalogTests
 {
-    private static readonly Lazy<JsonElement> Legacy = new(() =>
-    {
-        string path = Path.Combine(AppContext.BaseDirectory, "Parity", "legacy_cinemas.json");
-        using JsonDocument document = JsonDocument.Parse(File.ReadAllText(path));
-        return document.RootElement.Clone();
-    });
+    /// <summary>
+    /// Cinemas whose address and position differ from CINEMA_LOCATIONS on purpose. In the legacy project the backend
+    /// configuration and the web map disagree about UCI: the maintainer confirmed the address of the map.
+    /// </summary>
+    private static readonly string[] PositionCorrected = ["uci-perugia"];
+
+    private static readonly Lazy<JsonElement> Legacy = LoadParity("legacy_cinemas.json");
+
+    private static readonly Lazy<JsonElement> LegacyMap = LoadParity("legacy_map_locations.json");
 
     public static TheoryData<string> Slugs()
     {
@@ -28,20 +32,75 @@ public sealed class CinemaCatalogTests
         return data;
     }
 
+    public static TheoryData<string> UncorrectedSlugs()
+    {
+        TheoryData<string> data = [];
+        foreach (Cinema cinema in CinemaCatalog.All.Where(c => !PositionCorrected.Contains(c.Slug)))
+        {
+            data.Add(cinema.Slug);
+        }
+
+        return data;
+    }
+
     [Theory]
     [MemberData(nameof(Slugs))]
-    public void Cinema_MatchesTheLegacyConfiguration(string slug)
+    public void Cinema_NameRegionAndWebsiteMatchTheLegacyConfiguration(string slug)
     {
         Cinema cinema = CinemaCatalog.Find(slug)!;
         JsonElement legacy = Legacy.Value.GetProperty(slug);
 
         Assert.Equal(legacy.GetProperty("name").GetString(), cinema.Name);
+        Assert.Equal(legacy.GetProperty("region").GetString(), cinema.Region);
+        Assert.Equal(legacy.GetProperty("website").GetString(), cinema.Website);
+    }
+
+    [Theory]
+    [MemberData(nameof(UncorrectedSlugs))]
+    public void Cinema_AddressAndPositionMatchTheLegacyConfiguration(string slug)
+    {
+        Cinema cinema = CinemaCatalog.Find(slug)!;
+        JsonElement legacy = Legacy.Value.GetProperty(slug);
+
         Assert.Equal(legacy.GetProperty("address").GetString(), cinema.Address);
         Assert.Equal(legacy.GetProperty("city").GetString(), cinema.City);
-        Assert.Equal(legacy.GetProperty("region").GetString(), cinema.Region);
         Assert.Equal(legacy.GetProperty("lat").GetDouble(), cinema.Latitude);
         Assert.Equal(legacy.GetProperty("lon").GetDouble(), cinema.Longitude);
-        Assert.Equal(legacy.GetProperty("website").GetString(), cinema.Website);
+    }
+
+    [Fact]
+    public void UciPerugia_IsInVialeCentovaAsTheLegacyMapSays()
+    {
+        Cinema cinema = CinemaCatalog.UciPerugia;
+        JsonElement map = LegacyMap.Value.GetProperty(cinema.Slug);
+
+        // Position and postal code come from the legacy web map; the address text is the one the maintainer confirmed.
+        Assert.Equal(map.GetProperty("lat").GetDouble(), cinema.Latitude);
+        Assert.Equal(map.GetProperty("lon").GetDouble(), cinema.Longitude);
+        Assert.Contains("06132", map.GetProperty("address").GetString());
+        Assert.Contains("06132", cinema.Address);
+        Assert.Equal("Viale Centova, 1/D, 06132 Perugia PG", cinema.Address);
+        Assert.Equal("Perugia", cinema.City);
+    }
+
+    [Fact]
+    public void UciPerugia_IsNotTheCorcianoAddressOfTheLegacyBackend()
+    {
+        // Guards the correction: the backend configuration of the legacy project is known to be wrong for UCI.
+        JsonElement backend = Legacy.Value.GetProperty(CinemaCatalog.UciPerugia.Slug);
+
+        Assert.NotEqual(backend.GetProperty("address").GetString(), CinemaCatalog.UciPerugia.Address);
+        Assert.NotEqual(backend.GetProperty("lat").GetDouble(), CinemaCatalog.UciPerugia.Latitude);
+    }
+
+    private static Lazy<JsonElement> LoadParity(string fileName)
+    {
+        return new Lazy<JsonElement>(() =>
+        {
+            string path = Path.Combine(AppContext.BaseDirectory, "Parity", fileName);
+            using JsonDocument document = JsonDocument.Parse(File.ReadAllText(path));
+            return document.RootElement.Clone();
+        });
     }
 
     [Fact]
