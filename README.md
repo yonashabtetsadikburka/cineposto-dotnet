@@ -1,4 +1,9 @@
-# CinePosto
+<h1>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="brand/cineposto_logo_v2.svg">
+    <img src="brand/cineposto_logo_v2_light.svg" alt="CinePosto" width="600">
+  </picture>
+</h1>
 
 Scraper, API, and web app for Umbria cinema showtimes (.NET + Azure).
 
@@ -45,6 +50,7 @@ flowchart LR
 ## Repository structure
 
 ```text
+brand/    # official logo files; web/ holds identical copies of the ones it serves
 src/      # .NET projects: Domain, Infrastructure, Connectors, Scraper, Api
 web/      # web frontend: HTML, CSS, JavaScript, texts in web/i18n (it, en), tests in web/tests
 tests/    # automated tests with saved fixtures (no live network)

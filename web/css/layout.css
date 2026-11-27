@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: var(--surface);
+  background: var(--topbar-bg);
   border-bottom: 1px solid var(--card);
   padding: 10px 16px;
   position: sticky;
@@ -21,17 +21,33 @@
   z-index: 50;
 }
 
-.brand img {
-  height: 38px;
-  width: auto;
-  flex: 0 0 auto;
+.brand { flex: 0 0 auto; }
+
+/* The logo file is the full lockup (viewBox 1200x352) with wide margins and a subtitle that cannot be read at header
+   size. The box shows the area x 88-1111, y 67-269 of the file, and the clip hides the subtitle (x < 700, y > 222).
+   The wordmark and the lens stay whole (the lens handle starts at x 763). The file itself is not changed. */
+.brand-mark {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  height: var(--brand-height);
+  width: calc(var(--brand-height) * 1023 / 202);
 }
 
-:root[data-theme="light"] .brand img {
-  background: #141414;
-  border-radius: 8px;
-  padding: 2px;
+.brand-logo {
+  position: absolute;
+  width: calc(100% * 1200 / 1023);
+  max-width: none;
+  height: auto;
+  left: calc(-100% * 88 / 1023);
+  top: calc(-100% * 67 / 202);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 58.333% 100%, 58.333% 63.068%, 0 63.068%);
 }
+
+.brand-logo-for-light,
+:root[data-theme="light"] .brand-logo-for-dark { display: none; }
+
+:root[data-theme="light"] .brand-logo-for-light { display: block; }
 
 .topnav {
   display: none;

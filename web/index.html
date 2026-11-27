@@ -6,7 +6,10 @@
   <base href="/" />
   <title>CinePosto</title>
   <meta name="description" content="" data-i18n-attr="content:app.description" />
-  <link rel="icon" href="assets/logo.png" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/assets/icon_lens.svg" />
+  <!-- The color of the header: js/app.js keeps it in step with the theme. -->
+  <meta name="theme-color" content="#000000" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
   <link rel="stylesheet" href="css/variables.css" />
@@ -20,7 +23,11 @@
 <body>
   <header class="topbar">
     <a class="brand" href="#/">
-      <img src="assets/logo.png" alt="CinePosto" width="120" height="38" />
+      <!-- One file per theme; CSS shows the one that matches data-theme, so the manual toggle works too. -->
+      <span class="brand-mark">
+        <img class="brand-logo brand-logo-for-dark" src="assets/cineposto_logo_v2.svg" alt="CinePosto" width="1200" height="352" />
+        <img class="brand-logo brand-logo-for-light" src="assets/cineposto_logo_v2_light.svg" alt="CinePosto" width="1200" height="352" />
+      </span>
     </a>
     <nav class="topnav" aria-label="" data-i18n-attr="aria-label:nav.main">
       <a href="#/" data-route="home"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75"/></svg><span data-i18n="nav.home"></span></a>

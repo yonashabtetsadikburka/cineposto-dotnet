@@ -37,6 +37,10 @@
   --light: var(--text-secondary);
   --dark: #000000;
 
+  /* Header: the same background as the logo file of the theme, so the logo has no visible box around it */
+  --topbar-bg: #000000;
+  --brand-height: 40px;
+
   /* Layout */
   --max: 1100px;
 
@@ -73,4 +77,5 @@
   --text-muted: #71717a;
   --border: #e4e4e7;
   --dark: #ffffff;
+  --topbar-bg: #f6f3ee;
 }
