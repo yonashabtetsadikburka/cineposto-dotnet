@@ -37,7 +37,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")/.."
 export COMPOSE_PROJECT_NAME="${SMOKE_PROJECT:-cineposto-smoke}"
 export API_PORT="${SMOKE_API_PORT:-18080}"
 export SCRAPER_MODE=fixtures
-export SCRAPER_FIXTURES_CASE=settings_valid
+export SCRAPER_CLARICI_FIXTURES_CASE=settings_valid
 export SCRAPER_UCI_FIXTURES_CASE=eight_day_window
 export FIXTURES_DIR=./tests/CinePosto.Connectors.Tests/Golden
 export CINEPOSTO_DB_PATH=/data/cineposto.db
@@ -197,7 +197,7 @@ get /api/v1/admin/dataset-info -H "X-Admin-Token: ${ADMIN_TOKEN}"
 pass "counts unchanged: $HTTP_BODY"
 
 step "9/10 a failing source must keep the last known showings"
-SCRAPER_FIXTURES_CASE=movies_http500 run_scraper
+SCRAPER_CLARICI_FIXTURES_CASE=movies_http500 run_scraper
 echo "$SCRAPER_OUT"
 [ "$SCRAPER_RC" -eq 1 ] || fail 27 api "the scraper should exit with code 1 when clarici fails, got $SCRAPER_RC" "$SCRAPER_OUT"
 grep -qF 'cinema=uci-perugia mode=fixtures films=2' <<<"$SCRAPER_OUT" || fail 27 api "uci-perugia was not scraped while clarici was failing" "$SCRAPER_OUT"

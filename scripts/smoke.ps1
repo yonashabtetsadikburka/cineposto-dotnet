@@ -46,7 +46,7 @@ $script:Base = ''
 # Names of the environment variables this script sets. Their original values are restored at the end, because
 # `$env:` changes would otherwise stay in the caller's session.
 $ManagedVariables = @(
-    'COMPOSE_PROJECT_NAME', 'API_PORT', 'SCRAPER_MODE', 'SCRAPER_FIXTURES_CASE', 'SCRAPER_UCI_FIXTURES_CASE', 'FIXTURES_DIR',
+    'COMPOSE_PROJECT_NAME', 'API_PORT', 'SCRAPER_MODE', 'SCRAPER_CLARICI_FIXTURES_CASE', 'SCRAPER_UCI_FIXTURES_CASE', 'FIXTURES_DIR',
     'CINEPOSTO_DB_PATH', 'SCRAPER_USER_AGENT', 'SCRAPER_HTTP_TIMEOUT_SECONDS', 'ADMIN_TOKEN'
 )
 
@@ -126,7 +126,7 @@ function Invoke-Smoke {
     $env:COMPOSE_PROJECT_NAME = $project
     $env:API_PORT = $port
     $env:SCRAPER_MODE = 'fixtures'
-    $env:SCRAPER_FIXTURES_CASE = 'settings_valid'
+    $env:SCRAPER_CLARICI_FIXTURES_CASE = 'settings_valid'
     $env:SCRAPER_UCI_FIXTURES_CASE = 'eight_day_window'
     $env:FIXTURES_DIR = './tests/CinePosto.Connectors.Tests/Golden'
     $env:CINEPOSTO_DB_PATH = '/data/cineposto.db'
@@ -217,9 +217,9 @@ function Invoke-Smoke {
     Write-Pass "counts unchanged: $($admin.Body)"
 
     Write-Step '9/10 a failing source must keep the last known showings'
-    $env:SCRAPER_FIXTURES_CASE = 'movies_http500'
+    $env:SCRAPER_CLARICI_FIXTURES_CASE = 'movies_http500'
     $scrape = Invoke-Docker @('compose', 'run', '-T', '--rm', 'scraper')
-    $env:SCRAPER_FIXTURES_CASE = 'settings_valid'
+    $env:SCRAPER_CLARICI_FIXTURES_CASE = 'settings_valid'
     Write-Host $scrape.Output
     if ($scrape.ExitCode -ne 1) { Stop-Smoke 27 'api' "the scraper should exit with code 1 when clarici fails, got $($scrape.ExitCode)" $scrape.Output }
     if (-not $scrape.Output.Contains('cinema=uci-perugia mode=fixtures films=2')) { Stop-Smoke 27 'api' 'uci-perugia was not scraped while clarici was failing' $scrape.Output }

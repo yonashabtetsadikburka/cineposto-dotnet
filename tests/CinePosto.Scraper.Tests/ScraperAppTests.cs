@@ -118,7 +118,7 @@ public sealed class ScraperAppTests : IDisposable
         int exit = await ScraperApp.RunAsync(
             ScraperSettingsTests.Env(
                 ("SCRAPER_MODE", "fixtures"),
-                ("SCRAPER_FIXTURES_DIR", Path.Combine(_directory, "nope")),
+                ("SCRAPER_CLARICI_FIXTURES_DIR", Path.Combine(_directory, "nope")),
                 ("SCRAPER_UCI_FIXTURES_DIR", FixtureTests.UciFixtureDirectory("eight_day_window")),
                 ("CINEPOSTO_DB_PATH", DatabasePath)),
             new StringWriter(),
@@ -138,7 +138,7 @@ public sealed class ScraperAppTests : IDisposable
         int exit = await ScraperApp.RunAsync(
             ScraperSettingsTests.Env(
                 ("SCRAPER_MODE", "fixtures"),
-                ("SCRAPER_FIXTURES_DIR", FixtureTests.FixtureDirectory("settings_valid")),
+                ("SCRAPER_CLARICI_FIXTURES_DIR", FixtureTests.FixtureDirectory("settings_valid")),
                 ("SCRAPER_UCI_FIXTURES_DIR", Path.Combine(_directory, "nope")),
                 ("CINEPOSTO_DB_PATH", DatabasePath)),
             new StringWriter(),
@@ -181,7 +181,7 @@ public sealed class ScraperAppTests : IDisposable
         int exit = await ScraperApp.RunAsync(
             ScraperSettingsTests.Env(
                 ("SCRAPER_MODE", "fixtures"),
-                ("SCRAPER_FIXTURES_DIR", FixtureTests.FixtureDirectory(fixture)),
+                ("SCRAPER_CLARICI_FIXTURES_DIR", FixtureTests.FixtureDirectory(fixture)),
                 ("SCRAPER_UCI_FIXTURES_DIR", FixtureTests.UciFixtureDirectory(uciFixture)),
                 ("CINEPOSTO_DB_PATH", DatabasePath)),
             output,

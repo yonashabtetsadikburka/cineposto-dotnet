@@ -47,7 +47,7 @@ services:
       # fixtures reads the saved responses mounted below and never touches the network. live uses the real sites.
       SCRAPER_MODE: ${SCRAPER_MODE:-fixtures}
       # One saved case per cinema. The days of the run come from the Clarici case; the UCI case covers the same days.
-      SCRAPER_FIXTURES_DIR: /fixtures/clarici/${SCRAPER_FIXTURES_CASE:-settings_valid}
+      SCRAPER_CLARICI_FIXTURES_DIR: /fixtures/clarici/${SCRAPER_CLARICI_FIXTURES_CASE:-settings_valid}
       SCRAPER_UCI_FIXTURES_DIR: /fixtures/uci/${SCRAPER_UCI_FIXTURES_CASE:-eight_day_window}
       CINEPOSTO_DB_PATH: ${CINEPOSTO_DB_PATH:-/data/cineposto.db}
       SCRAPER_USER_AGENT: ${SCRAPER_USER_AGENT:-}

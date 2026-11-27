@@ -10,7 +10,7 @@ public sealed class ScraperSettingsTests
         bool ok = ScraperSettings.TryParse(
             Env(
                 ("SCRAPER_MODE", "fixtures"),
-                ("SCRAPER_FIXTURES_DIR", "/fixtures/x"),
+                ("SCRAPER_CLARICI_FIXTURES_DIR", "/fixtures/x"),
                 ("SCRAPER_UCI_FIXTURES_DIR", "/fixtures/uci/y"),
                 ("CINEPOSTO_DB_PATH", "/data/a.db"),
                 ("SCRAPER_HTTP_TIMEOUT_SECONDS", "12.5")),
@@ -20,7 +20,7 @@ public sealed class ScraperSettingsTests
         Assert.True(ok);
         Assert.Null(error);
         Assert.Equal(ScraperMode.Fixtures, settings!.Mode);
-        Assert.Equal("/fixtures/x", settings.FixturesDirectory);
+        Assert.Equal("/fixtures/x", settings.ClariciFixturesDirectory);
         Assert.Equal("/fixtures/uci/y", settings.UciFixturesDirectory);
         Assert.Equal("/data/a.db", settings.DatabasePath);
         Assert.Equal(TimeSpan.FromSeconds(12.5), settings.HttpTimeout);
@@ -65,7 +65,7 @@ public sealed class ScraperSettingsTests
         bool ok = ScraperSettings.TryParse(Env(("SCRAPER_MODE", "fixtures")), out _, out string? error);
 
         Assert.False(ok);
-        Assert.Contains("SCRAPER_FIXTURES_DIR", error);
+        Assert.Contains("SCRAPER_CLARICI_FIXTURES_DIR", error);
     }
 
     [Theory]
@@ -75,7 +75,7 @@ public sealed class ScraperSettingsTests
     public void TryParse_FixturesWithoutUciDirectory_IsRejected(string? uciDirectory)
     {
         bool ok = ScraperSettings.TryParse(
-            Env(("SCRAPER_MODE", "fixtures"), ("SCRAPER_FIXTURES_DIR", "/fixtures/x"), ("SCRAPER_UCI_FIXTURES_DIR", uciDirectory)),
+            Env(("SCRAPER_MODE", "fixtures"), ("SCRAPER_CLARICI_FIXTURES_DIR", "/fixtures/x"), ("SCRAPER_UCI_FIXTURES_DIR", uciDirectory)),
             out ScraperSettings? settings,
             out string? error);
 

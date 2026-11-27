@@ -44,7 +44,7 @@ internal static class ScraperApp
             UciFixtureCase uciFixture;
             try
             {
-                fixture = FixtureCase.Load(settings.FixturesDirectory!);
+                fixture = FixtureCase.Load(settings.ClariciFixturesDirectory!);
                 uciFixture = UciFixtureCase.Load(settings.UciFixturesDirectory!);
             }
             catch (Exception ex) when (ex is InvalidOperationException or IOException or JsonException or FormatException)

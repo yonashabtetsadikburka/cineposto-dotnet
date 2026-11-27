@@ -106,7 +106,7 @@ is deployed to Azure. You need Docker with the Compose plugin
 3. **Fill the database.** The scraper runs once and exits. The default
    mode, `SCRAPER_MODE=fixtures`, reads saved responses from
    `tests/CinePosto.Connectors.Tests/Golden` (mounted read-only) and never
-   uses the network. It reads one saved case per cinema: `SCRAPER_FIXTURES_CASE`
+   uses the network. It reads one saved case per cinema: `SCRAPER_CLARICI_FIXTURES_CASE`
    for Clarici and `SCRAPER_UCI_FIXTURES_CASE` for UCI. The days of the run come
    from the Clarici case, and the UCI case covers the same days. The database is
    created or migrated automatically.
