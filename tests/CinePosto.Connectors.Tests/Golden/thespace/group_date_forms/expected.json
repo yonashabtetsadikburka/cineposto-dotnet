@@ -1,0 +1,414 @@
+{
+  "films": [
+    {
+      "title": "Gruppo aaa",
+      "title_normalized": "Gruppo aaa",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        }
+      ]
+    },
+    {
+      "title": "Gruppo bbb",
+      "title_normalized": "Gruppo bbb",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-13",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        }
+      ]
+    },
+    {
+      "title": "Gruppo ccc",
+      "title_normalized": "Gruppo ccc",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-14",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        }
+      ]
+    },
+    {
+      "title": "Gruppo ddd",
+      "title_normalized": "Gruppo ddd",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-15",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        }
+      ]
+    },
+    {
+      "title": "Gruppo eee",
+      "title_normalized": "Gruppo eee",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-11",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        }
+      ]
+    },
+    {
+      "title": "Gruppo fff",
+      "title_normalized": "Gruppo fff",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-16",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        }
+      ]
+    },
+    {
+      "title": "Gruppo ggg",
+      "title_normalized": "Gruppo ggg",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-17",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        }
+      ]
+    },
+    {
+      "title": "Gruppo hhh",
+      "title_normalized": "Gruppo hhh",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-18",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        }
+      ]
+    },
+    {
+      "title": "Gruppo iii",
+      "title_normalized": "Gruppo iii",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-19",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        }
+      ]
+    },
+    {
+      "title": "Gruppo jjj",
+      "title_normalized": "Gruppo jjj",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-20",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        }
+      ]
+    },
+    {
+      "title": "Gruppo kkk",
+      "title_normalized": "Gruppo kkk",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": []
+    },
+    {
+      "title": "Gruppo lll",
+      "title_normalized": "Gruppo lll",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": []
+    },
+    {
+      "title": "Gruppo mmm",
+      "title_normalized": "Gruppo mmm",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": []
+    },
+    {
+      "title": "Gruppo nnn",
+      "title_normalized": "Gruppo nnn",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": []
+    },
+    {
+      "title": "Gruppo ooo",
+      "title_normalized": "Gruppo ooo",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": []
+    },
+    {
+      "title": "Gruppo ppp",
+      "title_normalized": "Gruppo ppp",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": []
+    },
+    {
+      "title": "Gruppo qqq",
+      "title_normalized": "Gruppo qqq",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": []
+    },
+    {
+      "title": "Gruppo rrr",
+      "title_normalized": "Gruppo rrr",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": []
+    },
+    {
+      "title": "Gruppo sss",
+      "title_normalized": "Gruppo sss",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": []
+    },
+    {
+      "title": "Gruppo ttt",
+      "title_normalized": "Gruppo ttt",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": []
+    },
+    {
+      "title": "Gruppo uuu",
+      "title_normalized": "Gruppo uuu",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": []
+    },
+    {
+      "title": "Gruppo vvv",
+      "title_normalized": "Gruppo vvv",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": []
+    },
+    {
+      "title": "Gruppo www",
+      "title_normalized": "Gruppo www",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": []
+    },
+    {
+      "title": "Gruppo xxx",
+      "title_normalized": "Gruppo xxx",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": []
+    },
+    {
+      "title": "Gruppo Senza Data",
+      "title_normalized": "Gruppo Senza Data",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": []
+    }
+  ],
+  "errors": [],
+  "requests": [
+    "POST https://www.thespacecinema.it/api/microservice/auth/token",
+    "GET https://www.thespacecinema.it/api/microservice/showings/cinemas/1027/films?showingDate=2026-06-12&includesSession=true&includeSessionAttributes=true"
+  ]
+}

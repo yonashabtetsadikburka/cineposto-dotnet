@@ -1,0 +1,70 @@
+{
+  "result": [
+    {
+      "filmId": "1",
+      "title": "Solo Title",
+      "showingGroups": []
+    },
+    {
+      "filmId": "2",
+      "filmTitle": "",
+      "title": "Ripiego Title"
+    },
+    {
+      "filmId": "3",
+      "filmTitle": "Vince FilmTitle",
+      "title": "Perde"
+    },
+    {
+      "filmId": "4",
+      "filmTitle": "",
+      "title": ""
+    },
+    {
+      "filmId": "5"
+    },
+    {
+      "filmId": "6",
+      "filmTitle": null
+    },
+    {
+      "filmId": "7",
+      "filmTitle": 0
+    },
+    {
+      "filmId": "8",
+      "filmTitle": "   "
+    },
+    {
+      "filmId": "HO00001",
+      "filmTitle": "  Con Spazi  ",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

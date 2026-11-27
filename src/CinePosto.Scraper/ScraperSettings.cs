@@ -22,10 +22,13 @@ internal sealed record ScraperSettings
     public required string DatabasePath { get; init; }
 
     /// <summary>Folder with the saved responses of Clarici. It also sets the days of the run.</summary>
-    public string? FixturesDirectory { get; init; }
+    public string? ClariciFixturesDirectory { get; init; }
 
     /// <summary>Folder with the saved responses of UCI. Its responses must cover the days of the run.</summary>
     public string? UciFixturesDirectory { get; init; }
+
+    /// <summary>Folder with the saved responses of The Space, one folder per venue. They must cover the days of the run.</summary>
+    public string? TheSpaceFixturesDirectory { get; init; }
 
     public required string UserAgent { get; init; }
 
@@ -55,10 +58,10 @@ internal sealed record ScraperSettings
             return false;
         }
 
-        string? fixturesDirectory = getVariable("SCRAPER_FIXTURES_DIR");
-        if (mode == ScraperMode.Fixtures && string.IsNullOrWhiteSpace(fixturesDirectory))
+        string? clariciFixturesDirectory = getVariable("SCRAPER_CLARICI_FIXTURES_DIR");
+        if (mode == ScraperMode.Fixtures && string.IsNullOrWhiteSpace(clariciFixturesDirectory))
         {
-            error = "SCRAPER_FIXTURES_DIR is required when SCRAPER_MODE is 'fixtures'.";
+            error = "SCRAPER_CLARICI_FIXTURES_DIR is required when SCRAPER_MODE is 'fixtures'.";
             return false;
         }
 
@@ -66,6 +69,13 @@ internal sealed record ScraperSettings
         if (mode == ScraperMode.Fixtures && string.IsNullOrWhiteSpace(uciFixturesDirectory))
         {
             error = "SCRAPER_UCI_FIXTURES_DIR is required when SCRAPER_MODE is 'fixtures'.";
+            return false;
+        }
+
+        string? theSpaceFixturesDirectory = getVariable("SCRAPER_THESPACE_FIXTURES_DIR");
+        if (mode == ScraperMode.Fixtures && string.IsNullOrWhiteSpace(theSpaceFixturesDirectory))
+        {
+            error = "SCRAPER_THESPACE_FIXTURES_DIR is required when SCRAPER_MODE is 'fixtures'.";
             return false;
         }
 
@@ -86,8 +96,9 @@ internal sealed record ScraperSettings
         {
             Mode = mode,
             DatabasePath = string.IsNullOrWhiteSpace(databasePath) ? "cineposto.db" : databasePath,
-            FixturesDirectory = fixturesDirectory,
+            ClariciFixturesDirectory = clariciFixturesDirectory,
             UciFixturesDirectory = uciFixturesDirectory,
+            TheSpaceFixturesDirectory = theSpaceFixturesDirectory,
             UserAgent = string.IsNullOrWhiteSpace(userAgent) ? DefaultUserAgent : userAgent,
             HttpTimeout = TimeSpan.FromSeconds(timeoutSeconds),
         };

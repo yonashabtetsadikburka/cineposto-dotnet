@@ -1,0 +1,27 @@
+{
+  "result": [
+    {
+      "filmId": "HO00001",
+      "filmTitle": "Film Uno ",
+      "showingGroups": [
+        {
+          "date": "2026-06-13T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-13T21:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "synopsisShort": "Secondo giorno",
+      "posterImageSrc": "https://example.test/uno-1.jpg"
+    }
+  ]
+}

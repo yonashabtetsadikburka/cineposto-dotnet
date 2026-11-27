@@ -1,0 +1,125 @@
+{
+  "result": [
+    {
+      "filmTitle": "Attributi",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T10:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "2D",
+                  "attributeType": "Session"
+                },
+                {
+                  "name": "Dolby Atmos",
+                  "attributeType": "Session"
+                },
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T11:00:00",
+              "attributes": [
+                {
+                  "name": "Lingua originale",
+                  "attributeType": "Language"
+                },
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T12:00:00",
+              "attributes": [
+                {
+                  "value": "VOST",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T13:00:00",
+              "attributes": [
+                {
+                  "name": "",
+                  "value": "3D"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T14:00:00",
+              "attributes": [
+                {
+                  "name": "Senza Tipo"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T15:00:00",
+              "attributes": [
+                {
+                  "name": "Minuscolo",
+                  "attributeType": "language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T16:00:00",
+              "attributes": [
+                {
+                  "attributeType": "Language"
+                },
+                {
+                  "name": "",
+                  "attributeType": "Language"
+                },
+                {
+                  "name": "ENG",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T17:00:00",
+              "attributes": [
+                "testo",
+                5,
+                null,
+                [
+                  1
+                ],
+                {}
+              ]
+            },
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "attributes": null
+            },
+            {
+              "startTime": "2026-06-12T19:00:00",
+              "attributes": {
+                "a": 1
+              }
+            },
+            {
+              "startTime": "2026-06-12T20:00:00",
+              "attributes": "abc"
+            },
+            {
+              "startTime": "2026-06-12T21:00:00"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

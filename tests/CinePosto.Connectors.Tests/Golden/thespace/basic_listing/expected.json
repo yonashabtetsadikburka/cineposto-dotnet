@@ -1,0 +1,72 @@
+{
+  "films": [
+    {
+      "title": "Nebbia sul Lago",
+      "title_normalized": "Nebbia sul Lago",
+      "poster": "https://www.thespacecinema.it/-/media/locandine/nebbia.jpg",
+      "backdrop": null,
+      "description": "Una storia inventata.",
+      "genres": [
+        "Drammatico",
+        "Mistero"
+      ],
+      "duration": "105 min",
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/nebbia-sul-lago"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/nebbia-sul-lago"
+        }
+      ]
+    },
+    {
+      "title": "La Mappa di Vetro",
+      "title_normalized": "Mappa di Vetro",
+      "poster": "https://example.test/mappa.jpg",
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "21:15"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://example.test/film/la-mappa"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "requests": [
+    "POST https://www.thespacecinema.it/api/microservice/auth/token",
+    "GET https://www.thespacecinema.it/api/microservice/showings/cinemas/1027/films?showingDate=2026-06-12&includesSession=true&includeSessionAttributes=true"
+  ]
+}

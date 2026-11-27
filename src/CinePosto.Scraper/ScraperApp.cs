@@ -2,6 +2,7 @@ using System.Net;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using CinePosto.Connectors.Clarici;
+using CinePosto.Connectors.TheSpace;
 using CinePosto.Connectors.Uci;
 using CinePosto.Infrastructure.Persistence;
 using CinePosto.Scraper.Fixtures;
@@ -35,6 +36,8 @@ internal static class ScraperApp
 
         ClariciOptions clariciOptions = new();
         UciOptions uciOptions = new();
+        TheSpaceOptions theSpaceCorciano = TheSpaceOptions.Corciano;
+        TheSpaceOptions theSpaceTerni = TheSpaceOptions.Terni;
 
         ScrapeWindow window;
         HttpMessageHandler handler;
@@ -42,10 +45,13 @@ internal static class ScraperApp
         {
             FixtureCase fixture;
             UciFixtureCase uciFixture;
+            Dictionary<string, FixtureResponse> theSpaceResponses;
             try
             {
-                fixture = FixtureCase.Load(settings.FixturesDirectory!);
+                fixture = FixtureCase.Load(settings.ClariciFixturesDirectory!);
                 uciFixture = UciFixtureCase.Load(settings.UciFixturesDirectory!);
+                theSpaceResponses = TheSpaceFixtureCase.Load(settings.TheSpaceFixturesDirectory!)
+                    .ToResponses([theSpaceCorciano, theSpaceTerni]);
             }
             catch (Exception ex) when (ex is InvalidOperationException or IOException or JsonException or FormatException)
             {
@@ -53,15 +59,19 @@ internal static class ScraperApp
                 return ExitConfiguration;
             }
 
-            // One window for every cinema: the days come from the Clarici case and the UCI case has to cover them.
+            // One window for every cinema: the days come from the Clarici case and the other cases have to cover them.
             window = new ScrapeWindow(fixture.Today, fixture.Dates);
             Dictionary<string, FixtureResponse> responses = BuildClariciResponses(fixture, clariciOptions);
-            foreach ((string url, FixtureResponse response) in uciFixture.ToResponses(uciOptions))
+            foreach ((string url, FixtureResponse response) in uciFixture.ToResponses(uciOptions).Concat(theSpaceResponses))
             {
                 responses[url] = response;
             }
 
             handler = new FixtureHttpMessageHandler(responses);
+
+            // Saved responses need no pause between requests.
+            theSpaceCorciano = theSpaceCorciano with { RequestDelay = TimeSpan.Zero };
+            theSpaceTerni = theSpaceTerni with { RequestDelay = TimeSpan.Zero };
         }
         else
         {
@@ -72,7 +82,7 @@ internal static class ScraperApp
             }
 
             window = ScrapeWindow.ForNow(clock, zone);
-            handler = new SocketsHttpHandler();
+            handler = CreateLiveHandler();
         }
 
         using HttpClient httpClient = new(handler) { Timeout = settings.HttpTimeout };
@@ -101,7 +111,7 @@ internal static class ScraperApp
 
             SqliteShowtimeStore store = new(db);
             ScraperRunner runner = new(store, clock, output);
-            return await runner.RunAsync(ConnectorRegistry.Create(httpClient, clock, clariciOptions, uciOptions), window, settings.Mode, cancellationToken).ConfigureAwait(false);
+            return await runner.RunAsync(ConnectorRegistry.Create(httpClient, clock, clariciOptions, uciOptions, theSpaceCorciano, theSpaceTerni), window, settings.Mode, cancellationToken).ConfigureAwait(false);
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
         {
@@ -109,6 +119,9 @@ internal static class ScraperApp
             return ExitCancelled;
         }
     }
+
+    /// <summary>The transport of the live mode. It keeps cookies: the guest session of The Space is made of them.</summary>
+    internal static SocketsHttpHandler CreateLiveHandler() => new() { UseCookies = true };
 
     private static Dictionary<string, FixtureResponse> BuildClariciResponses(FixtureCase fixture, ClariciOptions options)
     {

@@ -1,0 +1,189 @@
+{
+  "films": [
+    {
+      "title": "S Breve",
+      "title_normalized": "S Breve",
+      "poster": null,
+      "backdrop": null,
+      "description": "Breve",
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO00001"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO00001"
+        }
+      ]
+    },
+    {
+      "title": "S Lunga",
+      "title_normalized": "S Lunga",
+      "poster": null,
+      "backdrop": null,
+      "description": "Solo lunga",
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO00001"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO00001"
+        }
+      ]
+    },
+    {
+      "title": "S Nessuna",
+      "title_normalized": "S Nessuna",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO00001"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO00001"
+        }
+      ]
+    },
+    {
+      "title": "S Nulla",
+      "title_normalized": "S Nulla",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO00001"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO00001"
+        }
+      ]
+    },
+    {
+      "title": "S Entita",
+      "title_normalized": "S Entita",
+      "poster": null,
+      "backdrop": null,
+      "description": "Caff&egrave; <b>non</b> toccato",
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO00001"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO00001"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "requests": [
+    "POST https://www.thespacecinema.it/api/microservice/auth/token",
+    "GET https://www.thespacecinema.it/api/microservice/showings/cinemas/1027/films?showingDate=2026-06-12&includesSession=true&includeSessionAttributes=true"
+  ]
+}

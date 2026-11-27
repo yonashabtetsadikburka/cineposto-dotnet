@@ -1,0 +1,131 @@
+{
+  "films": [
+    {
+      "title": "Film Uno",
+      "title_normalized": "Film Uno",
+      "poster": "https://example.test/uno-0.jpg",
+      "backdrop": null,
+      "description": "Primo giorno",
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO00001"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO00001"
+        },
+        {
+          "date": "2026-06-13",
+          "times": [
+            "21:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO00001"
+        }
+      ]
+    },
+    {
+      "title": "Film Due",
+      "title_normalized": "Film Due",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "19:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO00001"
+        },
+        {
+          "date": "2026-06-14",
+          "times": [
+            "15:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO00001"
+        }
+      ]
+    },
+    {
+      "title": "Film Tre",
+      "title_normalized": "Film Tre",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-14",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO00001"
+        },
+        {
+          "date": "2026-06-14",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO00001"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "requests": [
+    "POST https://www.thespacecinema.it/api/microservice/auth/token",
+    "GET https://www.thespacecinema.it/api/microservice/showings/cinemas/1027/films?showingDate=2026-06-12&includesSession=true&includeSessionAttributes=true",
+    "GET https://www.thespacecinema.it/api/microservice/showings/cinemas/1027/films?showingDate=2026-06-13&includesSession=true&includeSessionAttributes=true",
+    "GET https://www.thespacecinema.it/api/microservice/showings/cinemas/1027/films?showingDate=2026-06-14&includesSession=true&includeSessionAttributes=true"
+  ]
+}

@@ -1,0 +1,415 @@
+{
+  "result": [
+    {
+      "filmId": "HO00001",
+      "filmTitle": "U Assoluto",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "filmUrl": "https://example.test/film/assoluto"
+    },
+    {
+      "filmId": "HO00001",
+      "filmTitle": "U Radice",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "filmUrl": "/film/radice"
+    },
+    {
+      "filmId": "HO00001",
+      "filmTitle": "U Relativo",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "filmUrl": "film/relativo"
+    },
+    {
+      "filmId": "HO00001",
+      "filmTitle": "U Protocollo",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "filmUrl": "//cdn.example.test/film/p"
+    },
+    {
+      "filmId": "HO00001",
+      "filmTitle": "U Query",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "filmUrl": "/film/q?x=1#a"
+    },
+    {
+      "filmId": "HO123",
+      "filmTitle": "U Vuoto Con Id",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "filmUrl": ""
+    },
+    {
+      "filmId": "HO456",
+      "filmTitle": "U Senza Con Id",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "filmId": 789,
+      "filmTitle": "U Id Numero",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "filmId": 0,
+      "filmTitle": "U Id Zero",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "filmId": "",
+      "filmTitle": "U Id Vuoto",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "filmId": null,
+      "filmTitle": "U Niente",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "filmId": "HO999",
+      "filmTitle": "U Url Nullo",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "filmUrl": null
+    },
+    {
+      "filmId": "HO998",
+      "filmTitle": "U Url Zero",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "filmUrl": 0
+    }
+  ]
+}

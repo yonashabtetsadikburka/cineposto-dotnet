@@ -22,7 +22,7 @@ public class UciParityTableTests
     [MemberData(nameof(ResolveUrlCases))]
     public void Resolve_MatchesLegacyUrlJoin(string relative, string expected)
     {
-        Assert.Equal(expected, UciUrlResolver.Resolve(new UciOptions().BaseUrl, relative));
+        Assert.Equal(expected, LegacyUrlResolver.Resolve(new UciOptions().BaseUrl, relative));
     }
 
     [Theory]

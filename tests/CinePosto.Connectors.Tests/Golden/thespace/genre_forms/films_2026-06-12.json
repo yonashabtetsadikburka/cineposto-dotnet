@@ -1,0 +1,279 @@
+{
+  "result": [
+    {
+      "filmId": "HO00001",
+      "filmTitle": "G Stringhe",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "genres": [
+        "Commedia",
+        "Giallo"
+      ]
+    },
+    {
+      "filmId": "HO00001",
+      "filmTitle": "G Oggetti",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "genres": [
+        {
+          "name": "Horror"
+        },
+        {
+          "name": "Thriller"
+        }
+      ]
+    },
+    {
+      "filmId": "HO00001",
+      "filmTitle": "G Testo",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "genres": "Azione, Thriller/Noir"
+    },
+    {
+      "filmId": "HO00001",
+      "filmTitle": "G Misti",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "genres": [
+        {
+          "name": "Fantasy"
+        },
+        "Avventura",
+        null,
+        "",
+        {
+          "other": 1
+        }
+      ]
+    },
+    {
+      "filmId": "HO00001",
+      "filmTitle": "G Nulli",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "genres": null
+    },
+    {
+      "filmId": "HO00001",
+      "filmTitle": "G Vuoti",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "genres": []
+    },
+    {
+      "filmId": "HO00001",
+      "filmTitle": "G Numero",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "genres": 5
+    },
+    {
+      "filmId": "HO00001",
+      "filmTitle": "G Mancanti",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

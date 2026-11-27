@@ -1,0 +1,36 @@
+{
+  "result": [
+    {
+      "filmTitle": "Rumore",
+      "showingGroups": [
+        "testo",
+        5,
+        null,
+        [
+          1
+        ],
+        true,
+        {
+          "date": "2026-06-12",
+          "sessions": [
+            "testo",
+            7,
+            null,
+            [],
+            true,
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "result": [
+    {
+      "filmId": "HO-la-mappa-di-vetro",
+      "filmTitle": "La Mappa di Vetro",
+      "filmUrl": "/film/la-mappa-di-vetro",
+      "posterImageSrc": "https://example.test/thespace-la-mappa-di-vetro.jpg",
+      "synopsisShort": "Trama inventata per i test.",
+      "runningTime": 100,
+      "director": "Regia Inventata",
+      "showingGroups": [
+        {
+          "date": "2026-09-22T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-09-22T17:45:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

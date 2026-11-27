@@ -37,16 +37,17 @@ cd "$(dirname "${BASH_SOURCE[0]}")/.."
 export COMPOSE_PROJECT_NAME="${SMOKE_PROJECT:-cineposto-smoke}"
 export API_PORT="${SMOKE_API_PORT:-18080}"
 export SCRAPER_MODE=fixtures
-export SCRAPER_FIXTURES_CASE=settings_valid
+export SCRAPER_CLARICI_FIXTURES_CASE=settings_valid
 export SCRAPER_UCI_FIXTURES_CASE=eight_day_window
+export SCRAPER_THESPACE_FIXTURES_CASE=eight_day_window
 export FIXTURES_DIR=./tests/CinePosto.Connectors.Tests/Golden
 export CINEPOSTO_DB_PATH=/data/cineposto.db
 export SCRAPER_USER_AGENT=
 export SCRAPER_HTTP_TIMEOUT_SECONDS=30
 
 BASE="http://127.0.0.1:${API_PORT}"
-# Two cinemas. "Nebbia sul Lago" is in both of them, so there are 3 films.
-EXPECTED_COUNTS='{"cinemas":2,"films":3,"showings":5}'
+# Four cinemas. "Nebbia sul Lago" is in all of them and "La Mappa di Vetro" in both venues of The Space: 4 films.
+EXPECTED_COUNTS='{"cinemas":4,"films":4,"showings":11}'
 STARTED=$SECONDS
 HTTP_STATUS=""
 HTTP_BODY=""
@@ -158,7 +159,9 @@ echo "$SCRAPER_OUT"
 [ "$SCRAPER_RC" -eq 0 ] || fail 14 api "the scraper exited with code $SCRAPER_RC" "$SCRAPER_OUT"
 grep -qF 'cinema=clarici-foligno mode=fixtures films=2' <<<"$SCRAPER_OUT" || fail 14 api "the scraper did not report 2 films for clarici-foligno" "$SCRAPER_OUT"
 grep -qF 'cinema=uci-perugia mode=fixtures films=2' <<<"$SCRAPER_OUT" || fail 14 api "the scraper did not report 2 films for uci-perugia" "$SCRAPER_OUT"
-pass "scraper finished with exit code 0 and reported both cinemas"
+grep -qF 'cinema=the-space-corciano mode=fixtures films=2' <<<"$SCRAPER_OUT" || fail 14 api "the scraper did not report 2 films for the-space-corciano" "$SCRAPER_OUT"
+grep -qF 'cinema=the-space-terni mode=fixtures films=2' <<<"$SCRAPER_OUT" || fail 14 api "the scraper did not report 2 films for the-space-terni" "$SCRAPER_OUT"
+pass "scraper finished with exit code 0 and reported every cinema"
 
 step "5/10 public endpoints"
 expect_data "/health" 20 /health "Healthy"
@@ -168,6 +171,9 @@ expect_data "films" 22 /api/v1/films "Nebbia sul Lago"
 expect_data "films (uci)" 22 /api/v1/films "Il Gatto del Faro"
 expect_data "showings" 23 /api/v1/showings "clarici-foligno"
 expect_data "showings (uci)" 23 /api/v1/showings "uci-perugia"
+expect_data "cinemas (the space)" 21 /api/v1/cinemas "the-space-terni"
+expect_data "films (the space)" 22 /api/v1/films "La Mappa di Vetro"
+expect_data "showings (the space)" 23 /api/v1/showings "the-space-corciano"
 
 step "6/10 web frontend"
 expect_data "web page" 30 / "js/app.js"
@@ -197,7 +203,7 @@ get /api/v1/admin/dataset-info -H "X-Admin-Token: ${ADMIN_TOKEN}"
 pass "counts unchanged: $HTTP_BODY"
 
 step "9/10 a failing source must keep the last known showings"
-SCRAPER_FIXTURES_CASE=movies_http500 run_scraper
+SCRAPER_CLARICI_FIXTURES_CASE=movies_http500 run_scraper
 echo "$SCRAPER_OUT"
 [ "$SCRAPER_RC" -eq 1 ] || fail 27 api "the scraper should exit with code 1 when clarici fails, got $SCRAPER_RC" "$SCRAPER_OUT"
 grep -qF 'cinema=uci-perugia mode=fixtures films=2' <<<"$SCRAPER_OUT" || fail 27 api "uci-perugia was not scraped while clarici was failing" "$SCRAPER_OUT"
@@ -211,6 +217,15 @@ grep -qF 'cinema=clarici-foligno mode=fixtures films=2' <<<"$SCRAPER_OUT" || fai
 get /api/v1/admin/dataset-info -H "X-Admin-Token: ${ADMIN_TOKEN}"
 [ "$HTTP_BODY" = "$EXPECTED_COUNTS" ] || fail 27 api "the uci failure changed the data: $HTTP_BODY" "$HTTP_BODY"
 pass "uci failed (exit 1), clarici was still scraped and the data is still $HTTP_BODY"
+SCRAPER_THESPACE_FIXTURES_CASE=eight_day_window_blocked run_scraper
+echo "$SCRAPER_OUT"
+[ "$SCRAPER_RC" -eq 1 ] || fail 27 api "the scraper should exit with code 1 when the space refuses the requests, got $SCRAPER_RC" "$SCRAPER_OUT"
+grep -qF 'cinema=the-space-corciano mode=fixtures films=0 showings=4 errors=1' <<<"$SCRAPER_OUT" || fail 27 api "the-space-corciano should keep its showings and report one error" "$SCRAPER_OUT"
+grep -qF 'cinema=the-space-terni mode=fixtures films=0 showings=2 errors=1' <<<"$SCRAPER_OUT" || fail 27 api "the-space-terni should keep its showings and report one error" "$SCRAPER_OUT"
+grep -qF 'cinema=clarici-foligno mode=fixtures films=2' <<<"$SCRAPER_OUT" || fail 27 api "clarici-foligno was not scraped while the space was failing" "$SCRAPER_OUT"
+get /api/v1/admin/dataset-info -H "X-Admin-Token: ${ADMIN_TOKEN}"
+[ "$HTTP_BODY" = "$EXPECTED_COUNTS" ] || fail 27 api "the failure of the space changed the data: $HTTP_BODY" "$HTTP_BODY"
+pass "the space refused (exit 1), the others were still scraped and the data is still $HTTP_BODY"
 
 step "10/10 the api is still healthy"
 expect_data "/health" 20 /health "Healthy"

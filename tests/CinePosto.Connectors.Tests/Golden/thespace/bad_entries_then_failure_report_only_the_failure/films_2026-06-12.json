@@ -1,0 +1,36 @@
+{
+  "result": [
+    "testo",
+    {
+      "filmId": "HO00001",
+      "filmTitle": "Letto E Scartato",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

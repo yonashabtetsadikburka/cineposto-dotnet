@@ -1,0 +1,30 @@
+{
+  "result": [
+    {
+      "filmId": "HO-nebbia-sul-lago",
+      "filmTitle": "Nebbia sul Lago",
+      "filmUrl": "/film/nebbia-sul-lago",
+      "posterImageSrc": "https://example.test/thespace-nebbia-sul-lago.jpg",
+      "synopsisShort": "Trama inventata per i test.",
+      "runningTime": 100,
+      "director": "Regia Inventata",
+      "showingGroups": [
+        {
+          "date": "2026-09-25T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-09-25T21:15:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

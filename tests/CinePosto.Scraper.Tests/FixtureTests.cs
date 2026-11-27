@@ -1,4 +1,5 @@
 using System.Net;
+using CinePosto.Connectors.TheSpace;
 using CinePosto.Connectors.Uci;
 using CinePosto.Scraper.Fixtures;
 
@@ -161,6 +162,92 @@ public sealed class FixtureTests
     }
 
     [Fact]
+    public void LoadTheSpace_ReadsOneCasePerVenue()
+    {
+        TheSpaceFixtureCase fixture = TheSpaceFixtureCase.Load(TheSpaceFixtureDirectory("eight_day_window"));
+
+        Assert.Equal([1027, 1006], fixture.Venues.Select(v => v.CinemaId));
+        Assert.All(fixture.Venues, venue => Assert.Equal(HttpStatusCode.OK, venue.Session.Status));
+        Assert.All(fixture.Venues, venue => Assert.Equal(8, venue.Days.Count));
+        Assert.Contains("La Mappa di Vetro", fixture.Venues[0].Days[0].Body);
+    }
+
+    [Fact]
+    public void TheSpaceToResponses_UsesTheAddressesTheConnectorsAskFor()
+    {
+        TheSpaceFixtureCase fixture = TheSpaceFixtureCase.Load(TheSpaceFixtureDirectory("eight_day_window"));
+
+        Dictionary<string, FixtureResponse> responses = fixture.ToResponses([TheSpaceOptions.Corciano, TheSpaceOptions.Terni]);
+
+        // One address for the guest session and eight days for each venue.
+        Assert.Equal(17, responses.Count);
+        Assert.Equal(HttpStatusCode.OK, responses[TheSpaceOptions.Corciano.AuthUrl].Status);
+        Assert.Contains("Nebbia sul Lago", responses[TheSpaceOptions.Terni.FilmsUrl(new DateOnly(2026, 9, 25))].Body);
+    }
+
+    [Fact]
+    public void TheSpaceToResponses_NeedsExactlyTheVenuesOfTheConnectors()
+    {
+        TheSpaceFixtureCase fixture = TheSpaceFixtureCase.Load(TheSpaceFixtureDirectory("eight_day_window"));
+
+        Assert.Throws<InvalidOperationException>(() => fixture.ToResponses([TheSpaceOptions.Corciano]));
+        Assert.Throws<InvalidOperationException>(
+            () => fixture.ToResponses([TheSpaceOptions.Corciano, TheSpaceOptions.Terni with { CinemaId = 1 }]));
+    }
+
+    [Fact]
+    public void LoadTheSpace_RejectsAMissingFolder()
+    {
+        Assert.Throws<InvalidOperationException>(() => TheSpaceFixtureCase.Load(TheSpaceFixtureDirectory("does-not-exist")));
+    }
+
+    [Fact]
+    public void LoadTheSpace_RejectsAFolderWithoutVenues()
+    {
+        string directory = Path.Combine(Path.GetTempPath(), "cineposto-tests", Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(directory);
+        try
+        {
+            Assert.Throws<InvalidOperationException>(() => TheSpaceFixtureCase.Load(directory));
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [Theory]
+    [InlineData("[]")]
+    [InlineData("{\"auth\": {\"body\": \"a.json\"}, \"responses\": []}")]
+    [InlineData("{\"cinema_id\": \"1027\", \"auth\": {\"body\": \"a.json\"}, \"responses\": []}")]
+    [InlineData("{\"cinema_id\": 1027, \"responses\": []}")]
+    [InlineData("{\"cinema_id\": 1027, \"auth\": 5, \"responses\": []}")]
+    [InlineData("{\"cinema_id\": 1027, \"auth\": {\"body\": \"../a.json\"}, \"responses\": []}")]
+    [InlineData("{\"cinema_id\": 1027, \"auth\": {\"body\": \"a.json\"}}")]
+    [InlineData("{\"cinema_id\": 1027, \"auth\": {\"body\": \"a.json\"}, \"responses\": []}", "{\"cinema_id\": 1027, \"auth\": {\"body\": \"a.json\"}, \"responses\": []}")]
+    [InlineData("{\"cinema_id\": 1027, \"auth\": {\"body\": \"a.json\"}, \"responses\": []}", "{\"cinema_id\": 1006, \"auth\": {\"status\": 403, \"body\": \"a.json\"}, \"responses\": []}")]
+    public void LoadTheSpace_RejectsAnUnusableCase(params string[] venueParams)
+    {
+        string directory = Path.Combine(Path.GetTempPath(), "cineposto-tests", Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(directory);
+        try
+        {
+            for (int i = 0; i < venueParams.Length; i++)
+            {
+                string venue = Directory.CreateDirectory(Path.Combine(directory, $"venue{i}")).FullName;
+                File.WriteAllText(Path.Combine(venue, "params.json"), venueParams[i]);
+                File.WriteAllText(Path.Combine(venue, "a.json"), "{}");
+            }
+
+            Assert.Throws<InvalidOperationException>(() => TheSpaceFixtureCase.Load(directory));
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [Fact]
     public async Task Handler_AnswersFromSavedResponses_AndReturns404ForOtherAddresses()
     {
         Dictionary<string, FixtureResponse> responses = new()
@@ -193,4 +280,6 @@ public sealed class FixtureTests
     internal static string FixtureDirectory(string name) => Path.Combine(AppContext.BaseDirectory, "Fixtures", name);
 
     internal static string UciFixtureDirectory(string name) => Path.Combine(AppContext.BaseDirectory, "Fixtures", "uci", name);
+
+    internal static string TheSpaceFixtureDirectory(string name) => Path.Combine(AppContext.BaseDirectory, "Fixtures", "thespace", name);
 }

@@ -1,0 +1,477 @@
+{
+  "films": [
+    {
+      "title": "U Assoluto",
+      "title_normalized": "U Assoluto",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://example.test/film/assoluto"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://example.test/film/assoluto"
+        }
+      ]
+    },
+    {
+      "title": "U Radice",
+      "title_normalized": "U Radice",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/radice"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/radice"
+        }
+      ]
+    },
+    {
+      "title": "U Relativo",
+      "title_normalized": "U Relativo",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/relativo"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/relativo"
+        }
+      ]
+    },
+    {
+      "title": "U Protocollo",
+      "title_normalized": "U Protocollo",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://cdn.example.test/film/p"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://cdn.example.test/film/p"
+        }
+      ]
+    },
+    {
+      "title": "U Query",
+      "title_normalized": "U Query",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/q?x=1#a"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/q?x=1#a"
+        }
+      ]
+    },
+    {
+      "title": "U Vuoto Con Id",
+      "title_normalized": "U Vuoto Con Id",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO123"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO123"
+        }
+      ]
+    },
+    {
+      "title": "U Senza Con Id",
+      "title_normalized": "U Senza Con Id",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO456"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO456"
+        }
+      ]
+    },
+    {
+      "title": "U Id Numero",
+      "title_normalized": "U Id Numero",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/789"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/789"
+        }
+      ]
+    },
+    {
+      "title": "U Id Zero",
+      "title_normalized": "U Id Zero",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        }
+      ]
+    },
+    {
+      "title": "U Id Vuoto",
+      "title_normalized": "U Id Vuoto",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        }
+      ]
+    },
+    {
+      "title": "U Niente",
+      "title_normalized": "U Niente",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        }
+      ]
+    },
+    {
+      "title": "U Url Nullo",
+      "title_normalized": "U Url Nullo",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO999"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO999"
+        }
+      ]
+    },
+    {
+      "title": "U Url Zero",
+      "title_normalized": "U Url Zero",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO998"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/HO998"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "requests": [
+    "POST https://www.thespacecinema.it/api/microservice/auth/token",
+    "GET https://www.thespacecinema.it/api/microservice/showings/cinemas/1027/films?showingDate=2026-06-12&includesSession=true&includeSessionAttributes=true"
+  ]
+}

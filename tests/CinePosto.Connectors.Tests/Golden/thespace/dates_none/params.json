@@ -1,0 +1,16 @@
+{
+  "cinema_id": 1027,
+  "today": "2026-06-12",
+  "dates": null,
+  "auth": {
+    "status": 200,
+    "body": "auth.json"
+  },
+  "responses": [
+    {
+      "date": "2026-06-12",
+      "status": 200,
+      "body": "films_2026-06-12.json"
+    }
+  ]
+}

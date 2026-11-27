@@ -15,4 +15,28 @@ internal static class LegacyJson
         JsonValueKind.Object => element.EnumerateObject().Any(),
         _ => true,
     };
+
+    /// <summary>The value of a property of an object, or an undefined element when the object does not have it.</summary>
+    public static JsonElement Property(JsonElement element, string name) =>
+        element.TryGetProperty(name, out JsonElement value) ? value : default;
+
+    /// <summary>
+    /// Python: <c>value or ""</c> for a value used as text. A value that is true but not text raises, as it does in the
+    /// legacy code as soon as it is used as text.
+    /// </summary>
+    public static string TruthyText(JsonElement element, string property)
+    {
+        JsonElement value = Property(element, property);
+        if (!IsTruthy(value))
+        {
+            return string.Empty;
+        }
+
+        if (value.ValueKind == JsonValueKind.String)
+        {
+            return value.GetString() ?? string.Empty;
+        }
+
+        throw new InvalidOperationException($"Cannot read {property} from a JSON {value.ValueKind} value.");
+    }
 }

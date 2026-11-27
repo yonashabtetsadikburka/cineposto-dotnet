@@ -10,8 +10,9 @@ public sealed class ScraperSettingsTests
         bool ok = ScraperSettings.TryParse(
             Env(
                 ("SCRAPER_MODE", "fixtures"),
-                ("SCRAPER_FIXTURES_DIR", "/fixtures/x"),
+                ("SCRAPER_CLARICI_FIXTURES_DIR", "/fixtures/x"),
                 ("SCRAPER_UCI_FIXTURES_DIR", "/fixtures/uci/y"),
+                ("SCRAPER_THESPACE_FIXTURES_DIR", "/fixtures/thespace/z"),
                 ("CINEPOSTO_DB_PATH", "/data/a.db"),
                 ("SCRAPER_HTTP_TIMEOUT_SECONDS", "12.5")),
             out ScraperSettings? settings,
@@ -20,8 +21,9 @@ public sealed class ScraperSettingsTests
         Assert.True(ok);
         Assert.Null(error);
         Assert.Equal(ScraperMode.Fixtures, settings!.Mode);
-        Assert.Equal("/fixtures/x", settings.FixturesDirectory);
+        Assert.Equal("/fixtures/x", settings.ClariciFixturesDirectory);
         Assert.Equal("/fixtures/uci/y", settings.UciFixturesDirectory);
+        Assert.Equal("/fixtures/thespace/z", settings.TheSpaceFixturesDirectory);
         Assert.Equal("/data/a.db", settings.DatabasePath);
         Assert.Equal(TimeSpan.FromSeconds(12.5), settings.HttpTimeout);
         Assert.Equal(ScraperSettings.DefaultUserAgent, settings.UserAgent);
@@ -65,7 +67,7 @@ public sealed class ScraperSettingsTests
         bool ok = ScraperSettings.TryParse(Env(("SCRAPER_MODE", "fixtures")), out _, out string? error);
 
         Assert.False(ok);
-        Assert.Contains("SCRAPER_FIXTURES_DIR", error);
+        Assert.Contains("SCRAPER_CLARICI_FIXTURES_DIR", error);
     }
 
     [Theory]
@@ -75,13 +77,33 @@ public sealed class ScraperSettingsTests
     public void TryParse_FixturesWithoutUciDirectory_IsRejected(string? uciDirectory)
     {
         bool ok = ScraperSettings.TryParse(
-            Env(("SCRAPER_MODE", "fixtures"), ("SCRAPER_FIXTURES_DIR", "/fixtures/x"), ("SCRAPER_UCI_FIXTURES_DIR", uciDirectory)),
+            Env(("SCRAPER_MODE", "fixtures"), ("SCRAPER_CLARICI_FIXTURES_DIR", "/fixtures/x"), ("SCRAPER_UCI_FIXTURES_DIR", uciDirectory)),
             out ScraperSettings? settings,
             out string? error);
 
         Assert.False(ok);
         Assert.Null(settings);
         Assert.Contains("SCRAPER_UCI_FIXTURES_DIR", error);
+    }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData("   ")]
+    public void TryParse_FixturesWithoutTheSpaceDirectory_IsRejected(string? theSpaceDirectory)
+    {
+        bool ok = ScraperSettings.TryParse(
+            Env(
+                ("SCRAPER_MODE", "fixtures"),
+                ("SCRAPER_CLARICI_FIXTURES_DIR", "/fixtures/x"),
+                ("SCRAPER_UCI_FIXTURES_DIR", "/fixtures/uci/y"),
+                ("SCRAPER_THESPACE_FIXTURES_DIR", theSpaceDirectory)),
+            out ScraperSettings? settings,
+            out string? error);
+
+        Assert.False(ok);
+        Assert.Null(settings);
+        Assert.Contains("SCRAPER_THESPACE_FIXTURES_DIR", error);
     }
 
     [Theory]

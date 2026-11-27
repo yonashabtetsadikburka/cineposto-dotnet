@@ -1,0 +1,47 @@
+{
+  "result": [
+    {
+      "filmTitle": "Sale",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T10:00:00",
+              "screenName": "Sala 7",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T11:00:00",
+              "screenName": "",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T12:00:00",
+              "screenName": null,
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T13:00:00"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "films": [],
+  "errors": [
+    {
+      "phase": "scrape_fallback",
+      "url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+    }
+  ],
+  "requests": [
+    "POST https://www.thespacecinema.it/api/microservice/auth/token"
+  ]
+}

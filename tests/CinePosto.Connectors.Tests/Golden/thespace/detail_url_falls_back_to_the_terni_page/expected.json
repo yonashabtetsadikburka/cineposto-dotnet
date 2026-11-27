@@ -1,0 +1,45 @@
+{
+  "films": [
+    {
+      "title": "Senza Niente",
+      "title_normalized": "Senza Niente",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/al-cinema/terni"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:30"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/al-cinema/terni"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "requests": [
+    "POST https://www.thespacecinema.it/api/microservice/auth/token",
+    "GET https://www.thespacecinema.it/api/microservice/showings/cinemas/1006/films?showingDate=2026-06-12&includesSession=true&includeSessionAttributes=true"
+  ]
+}
