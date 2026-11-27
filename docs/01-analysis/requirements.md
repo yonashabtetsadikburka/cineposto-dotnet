@@ -99,9 +99,25 @@ User accounts, ticket purchase or payments, ratings and reviews, price data, nat
 - Is UCI included, given that its API is undocumented? Check its terms first.
 - Local database: SQLite or a containerized server database? Decided in a later ADR.
 - Frontend framework: Blazor or React?
-- Is the TMDb backdrop worth keeping, given the attribution and non-commercial constraints?
+- ~~Is the TMDb backdrop worth keeping, given the attribution and non-commercial constraints?~~ Yes, decided by the owner on 2026-11-27: see section 9.
 
 ## 9. Source terms checks (NFR-07)
+
+### TMDB API (`api.themoviedb.org`): cleared for non-commercial use, with conditions
+
+Checked on 2026-11-27 on the API Terms of Use (<https://www.themoviedb.org/api-terms-of-use>, last updated on 2023-10-20). The terms of use of the TMDB website, which they also require, were not reviewed. This is a reading by a non-lawyer, not legal advice. Each user of the API accepts the terms with their own account and token.
+
+The conditions that matter here, and how CinePosto meets them:
+
+| Condition in the terms | In CinePosto |
+|---|---|
+| No commercial use. The listed examples include use "on or in connection with a destination website" | Non-commercial, personal project. Read this clause again before making the app public |
+| No information may be cached for longer than 6 months | A stored lookup expires after 150 days: every run of the scraper deletes the expired ones. Data stays longer if the scraper does not run |
+| The TMDB logo must identify the use, less prominent than the logo of the application, with the notice "This [...] uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB." | The footer of the web page shows the official logo and that notice |
+| Do not conceal the identity of the application | Requests carry the User-Agent of the scraper |
+| No excessive bandwidth | One lookup at a time with a pause between requests, results are cached, and a run stops asking after a refused or limited request |
+| No use with machine learning or AI applications | None |
+| If the license ends, all TMDB content must be purged | Manual: delete the `Backdrop` and `BackdropFetchedAt` values of the `films` table, or the database |
 
 ### The Space Cinema (`thespacecinema.it`): not cleared
 
