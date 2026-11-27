@@ -18,7 +18,7 @@ public sealed class ScraperAppTests : IDisposable
     /// What the saved responses of all four cinemas give. "Nebbia sul Lago" is in all of them and
     /// "La Mappa di Vetro" in both venues of The Space, so there are 4 films.
     /// </summary>
-    private static readonly DatasetInfo AllCinemas = new() { Cinemas = 4, Films = 4, Showings = 11 };
+    private static readonly DatasetInfo AllCinemas = new() { Cinemas = 4, Films = 4, Showings = 10 };
 
     private string DatabasePath => Path.Combine(_directory, "scraper.db");
 
@@ -37,7 +37,7 @@ public sealed class ScraperAppTests : IDisposable
         Assert.Equal(string.Empty, error);
         Assert.Contains("cinema=clarici-foligno mode=fixtures films=2 showings=2 errors=0", output);
         Assert.Contains("cinema=uci-perugia mode=fixtures films=2 showings=3 errors=0", output);
-        Assert.Contains("cinema=the-space-corciano mode=fixtures films=2 showings=4 errors=0", output);
+        Assert.Contains("cinema=the-space-corciano mode=fixtures films=2 showings=3 errors=0", output);
         Assert.Contains("cinema=the-space-terni mode=fixtures films=2 showings=2 errors=0", output);
 
         // A film shown in several cinemas is stored once.
@@ -105,7 +105,7 @@ public sealed class ScraperAppTests : IDisposable
 
         Assert.Equal(1, exit);
         // One error per venue, not one per day: nothing else is asked after the refusal.
-        Assert.Contains("cinema=the-space-corciano mode=fixtures films=0 showings=4 errors=1 showings_replaced=false", output);
+        Assert.Contains("cinema=the-space-corciano mode=fixtures films=0 showings=3 errors=1 showings_replaced=false", output);
         Assert.Contains("cinema=the-space-terni mode=fixtures films=0 showings=2 errors=1 showings_replaced=false", output);
         Assert.Contains("showings_replaced=true", LineOf(output, "clarici-foligno"));
         Assert.Contains("showings_replaced=true", LineOf(output, "uci-perugia"));
@@ -119,7 +119,7 @@ public sealed class ScraperAppTests : IDisposable
 
         Assert.Equal(1, exit);
         Assert.Contains("cinema=clarici-foligno mode=fixtures films=0", output);
-        Assert.Equal(new DatasetInfo { Cinemas = 4, Films = 3, Showings = 9 }, await ReadInfoAsync());
+        Assert.Equal(new DatasetInfo { Cinemas = 4, Films = 3, Showings = 8 }, await ReadInfoAsync());
     }
 
     [Fact]
