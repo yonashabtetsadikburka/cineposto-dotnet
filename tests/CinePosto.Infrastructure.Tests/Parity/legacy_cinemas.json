@@ -16,5 +16,23 @@
     "lat": 43.0745,
     "lon": 12.2891,
     "website": "https://ucicinemas.it"
+  },
+  "the-space-corciano": {
+    "name": "The Space Cinema Corciano",
+    "address": "Via Trasimeno Ovest 164, 06073 Corciano PG",
+    "city": "Corciano",
+    "region": "Umbria",
+    "lat": 43.0866,
+    "lon": 12.3073,
+    "website": "https://www.thespacecinema.it"
+  },
+  "the-space-terni": {
+    "name": "The Space Cinema Terni",
+    "address": "Viale Donato Bramante, Snc, 05100 Terni TR",
+    "city": "Terni",
+    "region": "Umbria",
+    "lat": 42.57265,
+    "lon": 12.63553,
+    "website": "https://www.thespacecinema.it/al-cinema/terni"
   }
 }

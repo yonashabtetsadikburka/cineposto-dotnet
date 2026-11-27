@@ -1,5 +1,6 @@
 using CinePosto.Connectors;
 using CinePosto.Connectors.Clarici;
+using CinePosto.Connectors.TheSpace;
 using CinePosto.Connectors.Uci;
 using CinePosto.Domain.Models;
 using CinePosto.Infrastructure.Catalog;
@@ -16,12 +17,16 @@ internal static class ConnectorRegistry
         HttpClient httpClient,
         TimeProvider clock,
         ClariciOptions clariciOptions,
-        UciOptions uciOptions)
+        UciOptions uciOptions,
+        TheSpaceOptions theSpaceCorciano,
+        TheSpaceOptions theSpaceTerni)
     {
         return
         [
             Register(CinemaCatalog.Clarici, new ClariciConnector(httpClient, clock, clariciOptions)),
             Register(CinemaCatalog.UciPerugia, new UciConnector(httpClient, clock, uciOptions)),
+            Register(CinemaCatalog.TheSpaceCorciano, new TheSpaceConnector(httpClient, theSpaceCorciano, clock)),
+            Register(CinemaCatalog.TheSpaceTerni, new TheSpaceConnector(httpClient, theSpaceTerni, clock)),
         ];
     }
 

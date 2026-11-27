@@ -33,8 +33,35 @@ public static class CinemaCatalog
         Website = "https://ucicinemas.it",
     };
 
+    /// <summary>
+    /// The Space Cinema in Corciano, as the legacy backend configuration has it. The legacy web map gives another
+    /// address and position (Via Pierluigi Nervi): which one is right has not been confirmed.
+    /// </summary>
+    public static Cinema TheSpaceCorciano { get; } = new()
+    {
+        Slug = "the-space-corciano",
+        Name = "The Space Cinema Corciano",
+        City = "Corciano",
+        Address = "Via Trasimeno Ovest 164, 06073 Corciano PG",
+        Latitude = 43.0866,
+        Longitude = 12.3073,
+        Website = "https://www.thespacecinema.it",
+    };
+
+    /// <summary>The Space Cinema in Terni.</summary>
+    public static Cinema TheSpaceTerni { get; } = new()
+    {
+        Slug = "the-space-terni",
+        Name = "The Space Cinema Terni",
+        City = "Terni",
+        Address = "Viale Donato Bramante, Snc, 05100 Terni TR",
+        Latitude = 42.57265,
+        Longitude = 12.63553,
+        Website = "https://www.thespacecinema.it/al-cinema/terni",
+    };
+
     /// <summary>All cinemas that have a connector.</summary>
-    public static IReadOnlyList<Cinema> All { get; } = [Clarici, UciPerugia];
+    public static IReadOnlyList<Cinema> All { get; } = [Clarici, UciPerugia, TheSpaceCorciano, TheSpaceTerni];
 
     /// <summary>Finds a cinema by slug, or returns <see langword="null"/> when no connector exists for it.</summary>
     public static Cinema? Find(string slug)

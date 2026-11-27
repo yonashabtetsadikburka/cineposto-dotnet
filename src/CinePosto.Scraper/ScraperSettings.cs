@@ -27,6 +27,9 @@ internal sealed record ScraperSettings
     /// <summary>Folder with the saved responses of UCI. Its responses must cover the days of the run.</summary>
     public string? UciFixturesDirectory { get; init; }
 
+    /// <summary>Folder with the saved responses of The Space, one folder per venue. They must cover the days of the run.</summary>
+    public string? TheSpaceFixturesDirectory { get; init; }
+
     public required string UserAgent { get; init; }
 
     public required TimeSpan HttpTimeout { get; init; }
@@ -69,6 +72,13 @@ internal sealed record ScraperSettings
             return false;
         }
 
+        string? theSpaceFixturesDirectory = getVariable("SCRAPER_THESPACE_FIXTURES_DIR");
+        if (mode == ScraperMode.Fixtures && string.IsNullOrWhiteSpace(theSpaceFixturesDirectory))
+        {
+            error = "SCRAPER_THESPACE_FIXTURES_DIR is required when SCRAPER_MODE is 'fixtures'.";
+            return false;
+        }
+
         double timeoutSeconds = 30;
         string? timeoutText = getVariable("SCRAPER_HTTP_TIMEOUT_SECONDS");
         if (!string.IsNullOrWhiteSpace(timeoutText)
@@ -88,6 +98,7 @@ internal sealed record ScraperSettings
             DatabasePath = string.IsNullOrWhiteSpace(databasePath) ? "cineposto.db" : databasePath,
             ClariciFixturesDirectory = clariciFixturesDirectory,
             UciFixturesDirectory = uciFixturesDirectory,
+            TheSpaceFixturesDirectory = theSpaceFixturesDirectory,
             UserAgent = string.IsNullOrWhiteSpace(userAgent) ? DefaultUserAgent : userAgent,
             HttpTimeout = TimeSpan.FromSeconds(timeoutSeconds),
         };

@@ -12,6 +12,7 @@ public sealed class ScraperSettingsTests
                 ("SCRAPER_MODE", "fixtures"),
                 ("SCRAPER_CLARICI_FIXTURES_DIR", "/fixtures/x"),
                 ("SCRAPER_UCI_FIXTURES_DIR", "/fixtures/uci/y"),
+                ("SCRAPER_THESPACE_FIXTURES_DIR", "/fixtures/thespace/z"),
                 ("CINEPOSTO_DB_PATH", "/data/a.db"),
                 ("SCRAPER_HTTP_TIMEOUT_SECONDS", "12.5")),
             out ScraperSettings? settings,
@@ -22,6 +23,7 @@ public sealed class ScraperSettingsTests
         Assert.Equal(ScraperMode.Fixtures, settings!.Mode);
         Assert.Equal("/fixtures/x", settings.ClariciFixturesDirectory);
         Assert.Equal("/fixtures/uci/y", settings.UciFixturesDirectory);
+        Assert.Equal("/fixtures/thespace/z", settings.TheSpaceFixturesDirectory);
         Assert.Equal("/data/a.db", settings.DatabasePath);
         Assert.Equal(TimeSpan.FromSeconds(12.5), settings.HttpTimeout);
         Assert.Equal(ScraperSettings.DefaultUserAgent, settings.UserAgent);
@@ -82,6 +84,26 @@ public sealed class ScraperSettingsTests
         Assert.False(ok);
         Assert.Null(settings);
         Assert.Contains("SCRAPER_UCI_FIXTURES_DIR", error);
+    }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData("   ")]
+    public void TryParse_FixturesWithoutTheSpaceDirectory_IsRejected(string? theSpaceDirectory)
+    {
+        bool ok = ScraperSettings.TryParse(
+            Env(
+                ("SCRAPER_MODE", "fixtures"),
+                ("SCRAPER_CLARICI_FIXTURES_DIR", "/fixtures/x"),
+                ("SCRAPER_UCI_FIXTURES_DIR", "/fixtures/uci/y"),
+                ("SCRAPER_THESPACE_FIXTURES_DIR", theSpaceDirectory)),
+            out ScraperSettings? settings,
+            out string? error);
+
+        Assert.False(ok);
+        Assert.Null(settings);
+        Assert.Contains("SCRAPER_THESPACE_FIXTURES_DIR", error);
     }
 
     [Theory]
