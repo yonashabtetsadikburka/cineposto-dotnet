@@ -26,6 +26,8 @@ This project is a from-scratch rewrite in C#/.NET of an earlier team project (se
 | Zenith | Static HTML (weekly table) | Perugia |
 | The Space | Public REST API, no browser fallback | Corciano, Terni |
 
+The Space is built for personal, non-public use only, as an exception to NFR-07 (see section 9).
+
 ### 3.2 After the MVP
 
 - M2: UCI (Perugia/Corciano area), Cinegatti family (4 venues, one parametric connector), Politeama (Terni), PostModernissimo (Perugia).
@@ -64,7 +66,7 @@ User accounts, ticket purchase or payments, ratings and reviews, price data, nat
 | NFR-04 | Resilience | A failure in one connector never blocks the others. Failed requests are retried with exponential backoff (3 attempts), followed by one delayed second pass. |
 | NFR-05 | Observability | Structured logs, per-cinema error records (phase, timestamp, error type), a health endpoint, and an alert on repeated failures. |
 | NFR-06 | Security | No secrets in the repository. Secrets come from environment variables locally and from Key Vault in Azure. HTTPS only. Admin endpoints are protected. All input is validated. |
-| NFR-07 | Legal and ethics | Terms of service and `robots.txt` are checked before adding a source. Requests are rate-limited and sent with a User-Agent that identifies the project. Connectors do not circumvent anti-bot protections. Only sources with acceptable terms are used. |
+| NFR-07 | Legal and ethics | Terms of service and `robots.txt` are checked before adding a source. Requests are rate-limited and sent with a User-Agent that identifies the project. Connectors do not circumvent anti-bot protections. Only sources with acceptable terms are used. One exception to this last rule, decided by the owner, is recorded in section 9. |
 | NFR-08 | Attribution | When TMDb images are used, the footer shows the TMDb attribution notice. TMDb data is used for non-commercial purposes only. No commercial APIs with restrictive terms. |
 | NFR-09 | Localization | UI default language is Italian. UI strings live in resource files, never hardcoded. Code, comments, commits and documentation are in English. |
 | NFR-10 | Testability | Connectors are tested against saved fixtures without network access. The CI runs build and tests on every pull request. Core logic (title normalization, merge) has unit tests. |
@@ -98,3 +100,24 @@ User accounts, ticket purchase or payments, ratings and reviews, price data, nat
 - Local database: SQLite or a containerized server database? Decided in a later ADR.
 - Frontend framework: Blazor or React?
 - Is the TMDb backdrop worth keeping, given the attribution and non-commercial constraints?
+
+## 9. Source terms checks (NFR-07)
+
+### The Space Cinema (`thespacecinema.it`): not cleared
+
+Checked on 2026-11-27. Only `robots.txt`, `sitemap.xml` and the terms page were downloaded. No API endpoint was called, including the guest token one.
+
+- **`robots.txt`:** one group, for all user agents. It does not disallow `/api/`. It disallows booking, order and account pages, among them `/ordine/` and `/il-mio-account`, and `/cdn-cgi/`.
+- **Terms** (<https://www.thespacecinema.it/legale/termini-e-condizioni>, section "Contenuti di questo sito Web"): the information and material on the site, including texts, images, photographs and the organization of the information, belong to The Space Cinema 1 S.p.A. The terms say: "Tale materiale non può essere copiato, riprodotto, ripubblicato, trasmesso o distribuito in qualunque forma, anche solo parzialmente, senza l'autorizzazione di The Space Cinema 1 S.p.A." In English: this material may not be copied, reproduced, republished, transmitted or distributed in any form, even in part, without the authorization of The Space Cinema 1 S.p.A. Using the site is conditional on accepting the terms. No exception for personal or non-commercial use was found.
+- **Not covered:** no clause naming bots, scraping, the API or the guest token was found.
+- **Also observed:** the site is served through Cloudflare, which sets its bot management cookie (`__cf_bm`).
+
+**Result of the check:** CinePosto would copy and republish showtimes, descriptions and posters, which this clause forbids without authorization. `robots.txt` does not give that authorization. This is a reading of the terms by a non-lawyer, not legal advice.
+
+**Owner decision (2026-11-27):** build the connector anyway, for a personal project that is not made public. This does not change the result of the check: the terms still do not allow this use, and the owner accepts that risk. It is an exception to NFR-07 for this source only. The rule against circumventing anti-bot protections still applies. Conditions:
+
+- Personal use only. The collected data is not published or shared, and a deployment that includes this source must not be reachable by other people.
+- The connector only calls the JSON API, keeping the session cookies that the site sets. It has no browser fallback and no fingerprint spoofing, and it sends no User-Agent or Referer that imitates a browser or the site itself.
+- Few requests: for each venue and run, one guest session request and one request per day of the window, with a pause between them and no retries.
+- The first failed or refused request ends the run for that venue. No other way around it is tried.
+- Development and tests use synthetic fixtures only.
