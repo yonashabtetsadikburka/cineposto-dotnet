@@ -2,6 +2,7 @@ using System.Globalization;
 using System.Text.Json;
 using CinePosto.Domain.Abstractions;
 using CinePosto.Domain.Models;
+using CinePosto.Domain.Showings;
 using CinePosto.Domain.Text;
 using Microsoft.EntityFrameworkCore;
 
@@ -42,11 +43,20 @@ public sealed class SqliteShowtimeStore : IScrapeResultWriter, IShowtimeReader
 
         await _db.Showings.Where(s => s.CinemaSlug == cinema.Slug).ExecuteDeleteAsync(cancellationToken).ConfigureAwait(false);
 
+        // Two scraped films can be the same film row, so their showings are gathered per row before being merged.
         Dictionary<string, FilmEntity> films = new(StringComparer.Ordinal);
-        int showingCount = 0;
+        Dictionary<FilmEntity, List<ScrapedShowing>> showingsByFilm = [];
+        List<FilmEntity> filmOrder = [];
         foreach (ScrapedFilm scraped in result.Films)
         {
             FilmEntity film = await UpsertFilmAsync(scraped, films, cancellationToken).ConfigureAwait(false);
+            if (!showingsByFilm.TryGetValue(film, out List<ScrapedShowing>? gathered))
+            {
+                gathered = [];
+                showingsByFilm[film] = gathered;
+                filmOrder.Add(film);
+            }
+
             foreach (ScrapedShowing showing in scraped.Showings)
             {
                 if (!string.Equals(showing.CinemaSlug, cinema.Slug, StringComparison.Ordinal))
@@ -55,13 +65,23 @@ public sealed class SqliteShowtimeStore : IScrapeResultWriter, IShowtimeReader
                         $"Showing of cinema '{showing.CinemaSlug}' cannot be stored for cinema '{cinema.Slug}'.");
                 }
 
+                gathered.Add(showing);
+            }
+        }
+
+        int showingCount = 0;
+        foreach (FilmEntity film in filmOrder)
+        {
+            // The legacy output step: one row per day, language, screen and attributes, with all its times.
+            foreach (ScrapedShowing showing in ShowingConsolidator.Consolidate(showingsByFilm[film]))
+            {
                 _db.Showings.Add(new ShowingEntity
                 {
                     Film = film,
                     CinemaSlug = cinema.Slug,
                     Date = showing.Date,
                     TimesJson = JsonSerializer.Serialize(
-                        showing.Times.Distinct().OrderBy(t => t).Select(t => t.ToString(TimeFormat, CultureInfo.InvariantCulture))),
+                        showing.Times.Select(t => t.ToString(TimeFormat, CultureInfo.InvariantCulture))),
                     Screen = showing.Screen,
                     Language = showing.Language,
                     SourceUrl = showing.SourceUrl,

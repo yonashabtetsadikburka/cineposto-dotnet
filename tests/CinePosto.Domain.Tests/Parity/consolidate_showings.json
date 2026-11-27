@@ -1,0 +1,1413 @@
+[
+  {
+    "name": "no_showings",
+    "input": [],
+    "expected": []
+  },
+  {
+    "name": "one_showing_sorts_and_deduplicates_times",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00",
+          "09:30",
+          "21:00",
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "09:30",
+          "18:00",
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ]
+  },
+  {
+    "name": "one_session_per_row_is_merged",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:15"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "23:30"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:15",
+          "21:00",
+          "23:30"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ]
+  },
+  {
+    "name": "same_time_twice_is_kept_once",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "20:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "20:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "20:00",
+          "22:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "20:00",
+          "22:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ]
+  },
+  {
+    "name": "different_screens_stay_apart",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 2",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 2",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ]
+  },
+  {
+    "name": "different_languages_stay_apart",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "VOST",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "VOST",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ]
+  },
+  {
+    "name": "different_dates_stay_apart",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-23",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-23",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ]
+  },
+  {
+    "name": "different_cinemas_stay_apart",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-b",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-b",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ]
+  },
+  {
+    "name": "different_attributes_stay_apart",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "2D"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "3D"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "22:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "2D",
+          "Atmos"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "23:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "2D"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "3D"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "22:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "2D",
+          "Atmos"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "23:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ]
+  },
+  {
+    "name": "attribute_order_does_not_matter",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "IMAX",
+          "2D"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "2D",
+          "IMAX"
+        ]
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00",
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "IMAX",
+          "2D"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "a_repeated_attribute_makes_another_group",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "2D",
+          "2D"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "2D"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "22:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "2D",
+          "2D"
+        ]
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00",
+          "22:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "2D",
+          "2D"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "2D"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "attribute_case_matters",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "atmos"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "Atmos"
+        ]
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "atmos"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "Atmos"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "attributes_joined_by_a_comma_collide",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "a,b"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "a",
+          "b"
+        ]
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00",
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "a,b",
+          "a",
+          "b"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "an_empty_attribute_is_like_none_first",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          ""
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00",
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          ""
+        ]
+      }
+    ]
+  },
+  {
+    "name": "an_empty_attribute_is_like_none_later",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          ""
+        ]
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00",
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ]
+  },
+  {
+    "name": "missing_and_empty_language_are_the_same",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": null,
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00",
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": null,
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ]
+  },
+  {
+    "name": "empty_and_missing_language_are_the_same",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": null,
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00",
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": null,
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ]
+  },
+  {
+    "name": "missing_and_empty_screen_are_the_same",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": null,
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00",
+          "21:00"
+        ],
+        "screen": null,
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ]
+  },
+  {
+    "name": "first_address_that_is_not_empty_wins",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": null,
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "19:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "20:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/second",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/third",
+        "session_attributes": []
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00",
+          "19:00",
+          "20:00",
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/second",
+        "session_attributes": []
+      }
+    ]
+  },
+  {
+    "name": "first_address_is_kept",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/first",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/second",
+        "session_attributes": []
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00",
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/first",
+        "session_attributes": []
+      }
+    ]
+  },
+  {
+    "name": "no_address_at_all",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": null,
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "",
+        "session_attributes": []
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00",
+          "21:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": null,
+        "session_attributes": []
+      }
+    ]
+  },
+  {
+    "name": "empty_times_are_kept_as_a_row",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [],
+        "screen": "Sala 9",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [],
+        "screen": "Sala 9",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ]
+  },
+  {
+    "name": "a_row_without_times_adds_none",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ]
+  },
+  {
+    "name": "groups_keep_the_order_of_first_appearance",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "22:00"
+        ],
+        "screen": "Sala 2",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "10:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "09:00"
+        ],
+        "screen": "Sala 2",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "23:00"
+        ],
+        "screen": "Sala 3",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "08:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "09:00",
+          "22:00"
+        ],
+        "screen": "Sala 2",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "08:00",
+          "10:00"
+        ],
+        "screen": "Sala 1",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "23:00"
+        ],
+        "screen": "Sala 3",
+        "language": "ITA",
+        "source_url": "https://example.test/film",
+        "session_attributes": []
+      }
+    ]
+  },
+  {
+    "name": "sessions_of_one_week",
+    "input": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "21:15"
+        ],
+        "screen": "Sala 1",
+        "language": "Italiano",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "Italiano"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "Italiano",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "Italiano"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "19:00"
+        ],
+        "screen": "Sala 4",
+        "language": "Italiano",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "Italiano"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "20:30"
+        ],
+        "screen": "Sala 1",
+        "language": "Lingua originale",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "Lingua originale"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-23",
+        "times": [
+          "21:15"
+        ],
+        "screen": "Sala 1",
+        "language": "Italiano",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "Italiano"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-23",
+        "times": [
+          "18:00"
+        ],
+        "screen": "Sala 1",
+        "language": "Italiano",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "Italiano"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-23",
+        "times": [
+          "19:00"
+        ],
+        "screen": "Sala 4",
+        "language": "Italiano",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "Italiano"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-23",
+        "times": [
+          "20:30"
+        ],
+        "screen": "Sala 1",
+        "language": "Lingua originale",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "Lingua originale"
+        ]
+      }
+    ],
+    "expected": [
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "18:00",
+          "21:15"
+        ],
+        "screen": "Sala 1",
+        "language": "Italiano",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "Italiano"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "19:00"
+        ],
+        "screen": "Sala 4",
+        "language": "Italiano",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "Italiano"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-22",
+        "times": [
+          "20:30"
+        ],
+        "screen": "Sala 1",
+        "language": "Lingua originale",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "Lingua originale"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-23",
+        "times": [
+          "18:00",
+          "21:15"
+        ],
+        "screen": "Sala 1",
+        "language": "Italiano",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "Italiano"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-23",
+        "times": [
+          "19:00"
+        ],
+        "screen": "Sala 4",
+        "language": "Italiano",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "Italiano"
+        ]
+      },
+      {
+        "cinema_slug": "cinema-a",
+        "date": "2026-09-23",
+        "times": [
+          "20:30"
+        ],
+        "screen": "Sala 1",
+        "language": "Lingua originale",
+        "source_url": "https://example.test/film",
+        "session_attributes": [
+          "Lingua originale"
+        ]
+      }
+    ]
+  }
+]

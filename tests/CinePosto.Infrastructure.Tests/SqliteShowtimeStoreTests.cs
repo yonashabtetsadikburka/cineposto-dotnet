@@ -164,6 +164,47 @@ public sealed class SqliteShowtimeStoreTests
     }
 
     [Fact]
+    public async Task SaveAsync_ShowingsThatDifferOnlyInTimes_BecomeOneRow()
+    {
+        await using TestDatabase db = await TestDatabase.CreateAsync();
+        ScrapedFilm film = MakeFilm("Nebbia sul Lago", ["21:00"]) with
+        {
+            Showings =
+            [
+                MakeShowing(Clarici.Slug, ["21:00"]),
+                MakeShowing(Clarici.Slug, ["18:15"]),
+                MakeShowing(Clarici.Slug, ["19:00"]) with { Screen = "Sala 2" },
+            ],
+        };
+
+        SaveOutcome outcome = await db.Store.SaveAsync(Clarici, ResultOf(film), CancellationToken.None);
+
+        Assert.Equal(2, outcome.Showings);
+        IReadOnlyList<Showing> rows = await db.Store.GetShowingsAsync(null, null, null, CancellationToken.None);
+        Assert.Equal(2, rows.Count);
+        Assert.Equal([new TimeOnly(18, 15), new TimeOnly(21, 0)], rows[0].Times);
+        Assert.Null(rows[0].Screen);
+        Assert.Equal([new TimeOnly(19, 0)], rows[1].Times);
+        Assert.Equal("Sala 2", rows[1].Screen);
+    }
+
+    [Fact]
+    public async Task SaveAsync_FilmsThatShareARow_HaveTheirShowingsMerged()
+    {
+        await using TestDatabase db = await TestDatabase.CreateAsync();
+
+        SaveOutcome outcome = await db.Store.SaveAsync(
+            Clarici,
+            ResultOf(MakeFilm("Nebbia sul Lago", ["21:00"]), MakeFilm("NEBBIA SUL LAGO", ["18:15"])),
+            CancellationToken.None);
+
+        Assert.Equal(1, outcome.Films);
+        Assert.Equal(1, outcome.Showings);
+        Showing row = Assert.Single(await db.Store.GetShowingsAsync(null, null, null, CancellationToken.None));
+        Assert.Equal([new TimeOnly(18, 15), new TimeOnly(21, 0)], row.Times);
+    }
+
+    [Fact]
     public async Task SaveAsync_ShowingOfAnotherCinema_Throws()
     {
         await using TestDatabase db = await TestDatabase.CreateAsync();

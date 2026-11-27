@@ -47,7 +47,7 @@ export SCRAPER_HTTP_TIMEOUT_SECONDS=30
 
 BASE="http://127.0.0.1:${API_PORT}"
 # Four cinemas. "Nebbia sul Lago" is in all of them and "La Mappa di Vetro" in both venues of The Space: 4 films.
-EXPECTED_COUNTS='{"cinemas":4,"films":4,"showings":11}'
+EXPECTED_COUNTS='{"cinemas":4,"films":4,"showings":10}'
 STARTED=$SECONDS
 HTTP_STATUS=""
 HTTP_BODY=""
@@ -220,7 +220,7 @@ pass "uci failed (exit 1), clarici was still scraped and the data is still $HTTP
 SCRAPER_THESPACE_FIXTURES_CASE=eight_day_window_blocked run_scraper
 echo "$SCRAPER_OUT"
 [ "$SCRAPER_RC" -eq 1 ] || fail 27 api "the scraper should exit with code 1 when the space refuses the requests, got $SCRAPER_RC" "$SCRAPER_OUT"
-grep -qF 'cinema=the-space-corciano mode=fixtures films=0 showings=4 errors=1' <<<"$SCRAPER_OUT" || fail 27 api "the-space-corciano should keep its showings and report one error" "$SCRAPER_OUT"
+grep -qF 'cinema=the-space-corciano mode=fixtures films=0 showings=3 errors=1' <<<"$SCRAPER_OUT" || fail 27 api "the-space-corciano should keep its showings and report one error" "$SCRAPER_OUT"
 grep -qF 'cinema=the-space-terni mode=fixtures films=0 showings=2 errors=1' <<<"$SCRAPER_OUT" || fail 27 api "the-space-terni should keep its showings and report one error" "$SCRAPER_OUT"
 grep -qF 'cinema=clarici-foligno mode=fixtures films=2' <<<"$SCRAPER_OUT" || fail 27 api "clarici-foligno was not scraped while the space was failing" "$SCRAPER_OUT"
 get /api/v1/admin/dataset-info -H "X-Admin-Token: ${ADMIN_TOKEN}"

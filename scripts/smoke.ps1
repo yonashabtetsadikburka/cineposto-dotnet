@@ -39,7 +39,7 @@ $ErrorActionPreference = 'Continue'
 Push-Location (Join-Path $PSScriptRoot '..')
 
 # Four cinemas. "Nebbia sul Lago" is in all of them and "La Mappa di Vetro" in both venues of The Space: 4 films.
-$ExpectedCounts = '{"cinemas":4,"films":4,"showings":11}'
+$ExpectedCounts = '{"cinemas":4,"films":4,"showings":10}'
 $Started = Get-Date
 $script:Base = ''
 
@@ -246,7 +246,7 @@ function Invoke-Smoke {
     $env:SCRAPER_THESPACE_FIXTURES_CASE = 'eight_day_window'
     Write-Host $scrape.Output
     if ($scrape.ExitCode -ne 1) { Stop-Smoke 27 'api' "the scraper should exit with code 1 when the space refuses the requests, got $($scrape.ExitCode)" $scrape.Output }
-    if (-not $scrape.Output.Contains('cinema=the-space-corciano mode=fixtures films=0 showings=4 errors=1')) { Stop-Smoke 27 'api' 'the-space-corciano should keep its showings and report one error' $scrape.Output }
+    if (-not $scrape.Output.Contains('cinema=the-space-corciano mode=fixtures films=0 showings=3 errors=1')) { Stop-Smoke 27 'api' 'the-space-corciano should keep its showings and report one error' $scrape.Output }
     if (-not $scrape.Output.Contains('cinema=the-space-terni mode=fixtures films=0 showings=2 errors=1')) { Stop-Smoke 27 'api' 'the-space-terni should keep its showings and report one error' $scrape.Output }
     if (-not $scrape.Output.Contains('cinema=clarici-foligno mode=fixtures films=2')) { Stop-Smoke 27 'api' 'clarici-foligno was not scraped while the space was failing' $scrape.Output }
     $admin = Get-Http '/api/v1/admin/dataset-info' @('-H', "X-Admin-Token: $token")
