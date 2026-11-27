@@ -1,0 +1,64 @@
+{
+  "films": [
+    {
+      "title": "La Mappa di Vetro",
+      "title_normalized": "Mappa di Vetro",
+      "poster": "https://example.test/thespace-la-mappa-di-vetro.jpg",
+      "backdrop": null,
+      "description": "Trama inventata per i test.",
+      "genres": [],
+      "duration": "100 min",
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "17:45"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/la-mappa-di-vetro"
+        }
+      ]
+    },
+    {
+      "title": "Nebbia sul Lago",
+      "title_normalized": "Nebbia sul Lago",
+      "poster": "https://example.test/thespace-nebbia-sul-lago.jpg",
+      "backdrop": null,
+      "description": "Trama inventata per i test.",
+      "genres": [],
+      "duration": "100 min",
+      "director": "Regia Inventata",
+      "showings": [
+        {
+          "date": "2026-09-25",
+          "times": [
+            "21:15"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/film/nebbia-sul-lago"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "requests": [
+    "POST https://www.thespacecinema.it/api/microservice/auth/token",
+    "GET https://www.thespacecinema.it/api/microservice/showings/cinemas/1006/films?showingDate=2026-09-22&includesSession=true&includeSessionAttributes=true",
+    "GET https://www.thespacecinema.it/api/microservice/showings/cinemas/1006/films?showingDate=2026-09-23&includesSession=true&includeSessionAttributes=true",
+    "GET https://www.thespacecinema.it/api/microservice/showings/cinemas/1006/films?showingDate=2026-09-24&includesSession=true&includeSessionAttributes=true",
+    "GET https://www.thespacecinema.it/api/microservice/showings/cinemas/1006/films?showingDate=2026-09-25&includesSession=true&includeSessionAttributes=true",
+    "GET https://www.thespacecinema.it/api/microservice/showings/cinemas/1006/films?showingDate=2026-09-26&includesSession=true&includeSessionAttributes=true",
+    "GET https://www.thespacecinema.it/api/microservice/showings/cinemas/1006/films?showingDate=2026-09-27&includesSession=true&includeSessionAttributes=true",
+    "GET https://www.thespacecinema.it/api/microservice/showings/cinemas/1006/films?showingDate=2026-09-28&includesSession=true&includeSessionAttributes=true",
+    "GET https://www.thespacecinema.it/api/microservice/showings/cinemas/1006/films?showingDate=2026-09-29&includesSession=true&includeSessionAttributes=true"
+  ]
+}

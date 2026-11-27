@@ -1,0 +1,85 @@
+{
+  "result": [
+    {
+      "filmTitle": "Senza Gruppi"
+    },
+    {
+      "filmTitle": "Gruppi Vuoti",
+      "showingGroups": []
+    },
+    {
+      "filmTitle": "Gruppi Nulli",
+      "showingGroups": null
+    },
+    {
+      "filmTitle": "Gruppi Oggetto",
+      "showingGroups": {
+        "a": 1
+      }
+    },
+    {
+      "filmTitle": "Gruppi Testo",
+      "showingGroups": "abc"
+    },
+    {
+      "filmTitle": "Sessioni Nulle",
+      "showingGroups": [
+        {
+          "date": "2026-06-12",
+          "sessions": null
+        }
+      ]
+    },
+    {
+      "filmTitle": "Sessioni Oggetto",
+      "showingGroups": [
+        {
+          "date": "2026-06-12",
+          "sessions": {
+            "a": 1
+          }
+        }
+      ]
+    },
+    {
+      "filmTitle": "Sessioni Testo",
+      "showingGroups": [
+        {
+          "date": "2026-06-12",
+          "sessions": "abc"
+        }
+      ]
+    },
+    {
+      "filmId": "HO00001",
+      "filmTitle": "Con Orari",
+      "showingGroups": [
+        {
+          "date": "2026-06-12T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-12T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-12T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

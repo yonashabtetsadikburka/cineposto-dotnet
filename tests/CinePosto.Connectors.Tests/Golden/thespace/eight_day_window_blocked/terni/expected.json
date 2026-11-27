@@ -1,0 +1,12 @@
+{
+  "films": [],
+  "errors": [
+    {
+      "phase": "scrape_fallback",
+      "url": "https://www.thespacecinema.it/al-cinema/terni"
+    }
+  ],
+  "requests": [
+    "POST https://www.thespacecinema.it/api/microservice/auth/token"
+  ]
+}

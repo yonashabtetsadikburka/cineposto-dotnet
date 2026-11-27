@@ -1,0 +1,56 @@
+{
+  "result": [
+    {
+      "filmId": "HO00001",
+      "filmTitle": "Film Tre",
+      "showingGroups": [
+        {
+          "date": "2026-06-14T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-14T18:00:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            },
+            {
+              "startTime": "2026-06-14T20:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "filmId": "HO00001",
+      "filmTitle": "Film Due",
+      "showingGroups": [
+        {
+          "date": "2026-06-14T00:00:00",
+          "sessions": [
+            {
+              "startTime": "2026-06-14T15:30:00",
+              "screenName": "Sala 1",
+              "attributes": [
+                {
+                  "name": "Italiano",
+                  "attributeType": "Language"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

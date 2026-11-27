@@ -1,0 +1,21 @@
+{
+  "auth_url": "https://www.thespacecinema.it/api/microservice/auth/token",
+  "api_base": "https://www.thespacecinema.it/api/microservice",
+  "base_url": "https://www.thespacecinema.it",
+  "venues": [
+    {
+      "cinema_id": 1027,
+      "slug": "the-space-corciano",
+      "name": "The Space Cinema Corciano",
+      "cinema_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema",
+      "films_url_template": "https://www.thespacecinema.it/api/microservice/showings/cinemas/1027/films?showingDate={date}&includesSession=true&includeSessionAttributes=true"
+    },
+    {
+      "cinema_id": 1006,
+      "slug": "the-space-terni",
+      "name": "The Space Cinema Terni",
+      "cinema_url": "https://www.thespacecinema.it/al-cinema/terni",
+      "films_url_template": "https://www.thespacecinema.it/api/microservice/showings/cinemas/1006/films?showingDate={date}&includesSession=true&includeSessionAttributes=true"
+    }
+  ]
+}

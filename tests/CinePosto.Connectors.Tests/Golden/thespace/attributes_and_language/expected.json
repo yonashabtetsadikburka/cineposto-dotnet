@@ -1,0 +1,158 @@
+{
+  "films": [
+    {
+      "title": "Attributi",
+      "title_normalized": "Attributi",
+      "poster": null,
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-06-12",
+          "times": [
+            "10:00"
+          ],
+          "screen": "Sala 1",
+          "language": "Italiano",
+          "session_attributes": [
+            "2D",
+            "Dolby Atmos",
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "11:00"
+          ],
+          "screen": null,
+          "language": "Lingua originale",
+          "session_attributes": [
+            "Lingua originale",
+            "Italiano"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "12:00"
+          ],
+          "screen": null,
+          "language": "VOST",
+          "session_attributes": [
+            "VOST"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "13:00"
+          ],
+          "screen": null,
+          "language": null,
+          "session_attributes": [
+            "3D"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "14:00"
+          ],
+          "screen": null,
+          "language": null,
+          "session_attributes": [
+            "Senza Tipo"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "15:00"
+          ],
+          "screen": null,
+          "language": null,
+          "session_attributes": [
+            "Minuscolo"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "16:00"
+          ],
+          "screen": null,
+          "language": "ENG",
+          "session_attributes": [
+            "ENG"
+          ],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "17:00"
+          ],
+          "screen": null,
+          "language": null,
+          "session_attributes": [],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "18:00"
+          ],
+          "screen": null,
+          "language": null,
+          "session_attributes": [],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "19:00"
+          ],
+          "screen": null,
+          "language": null,
+          "session_attributes": [],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "20:00"
+          ],
+          "screen": null,
+          "language": null,
+          "session_attributes": [],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        },
+        {
+          "date": "2026-06-12",
+          "times": [
+            "21:00"
+          ],
+          "screen": null,
+          "language": null,
+          "session_attributes": [],
+          "source_url": "https://www.thespacecinema.it/cinema/corciano/al-cinema"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "requests": [
+    "POST https://www.thespacecinema.it/api/microservice/auth/token",
+    "GET https://www.thespacecinema.it/api/microservice/showings/cinemas/1027/films?showingDate=2026-06-12&includesSession=true&includeSessionAttributes=true"
+  ]
+}
