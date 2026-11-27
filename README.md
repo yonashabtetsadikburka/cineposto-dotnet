@@ -26,6 +26,7 @@ exist yet.
 - [x] First cinema connector (Clarici)
 - [x] Second cinema connector (UCI)
 - [x] Third cinema connector (The Space, Corciano and Terni; personal use only)
+- [x] Film backdrops from TMDB (optional: needs a token)
 - [x] Scraper (minimal: runs the connectors and stores the result in SQLite)
 - [x] API (minimal: cinemas, films, showings, health, admin dataset info)
 - [x] Local run with Docker Compose and a smoke test
@@ -108,10 +109,11 @@ is deployed to Azure. You need Docker with the Compose plugin
 3. **Fill the database.** The scraper runs once and exits. The default
    mode, `SCRAPER_MODE=fixtures`, reads saved responses from
    `tests/CinePosto.Connectors.Tests/Golden` (mounted read-only) and never
-   uses the network. It reads one saved case per connector:
-   `SCRAPER_CLARICI_FIXTURES_CASE`, `SCRAPER_UCI_FIXTURES_CASE` and
-   `SCRAPER_THESPACE_FIXTURES_CASE` (a folder with one case per venue). The days
-   of the run come from the Clarici case, and the other cases cover the same days.
+   uses the network. It reads one saved case per source:
+   `SCRAPER_CLARICI_FIXTURES_CASE`, `SCRAPER_UCI_FIXTURES_CASE`,
+   `SCRAPER_THESPACE_FIXTURES_CASE` (a folder with one case per venue) and
+   `SCRAPER_TMDB_FIXTURES_CASE` (film backdrops, no token needed). The days of
+   the run come from the Clarici case, and the cinema cases cover the same days.
    The database is created or migrated automatically.
 
    ```bash
@@ -126,8 +128,8 @@ is deployed to Azure. You need Docker with the Compose plugin
    The saved responses are dated 2026-09-22 and 2026-09-25, which is in the
    past. The home therefore opens on the closest day that has data and shows
    a "data is out of date" notice. The days from today onwards are empty.
-   Both are expected with fixtures. Posters are placeholders because the
-   fixtures point to addresses that do not exist.
+   Both are expected with fixtures. Posters and backdrops are placeholders
+   because the fixtures point to addresses that do not exist.
 
 5. **Or call the API directly.**
 
@@ -166,6 +168,27 @@ Notes:
   been run against the real site.
 - Ports, the database path and the fixtures folder are set in `.env`. Every
   variable is described in `.env.example`.
+
+### Film backdrops (TMDB)
+
+In live mode the scraper can give a landscape image to the films whose cinema
+sends none. It is off until `TMDB_READ_TOKEN` is set in `.env`.
+
+1. Create an account on themoviedb.org, then open
+   <https://www.themoviedb.org/settings/api>. Ask for API access there if you do
+   not have it yet, and accept the terms.
+2. Copy the **API Read Access Token** (the long one, not the API Key) into
+   `TMDB_READ_TOKEN=` in `.env`. It is a secret: never commit it.
+
+After the cinemas, the scraper looks up each film that has showings, no
+backdrop and no stored result, and prints one `backdrops` line. It keeps each
+result, also "not found", for 150 days: the TMDB terms allow 6 months at most.
+A failed lookup is not kept. A refused request (token or rate limit) ends the
+lookups of that run, and no failure changes the exit code.
+
+The TMDB API is for non-commercial use, and the web page shows the logo and the
+notice that its terms ask for. Section 9 of
+`docs/01-analysis/requirements.md` lists the conditions.
 
 ### Smoke test
 

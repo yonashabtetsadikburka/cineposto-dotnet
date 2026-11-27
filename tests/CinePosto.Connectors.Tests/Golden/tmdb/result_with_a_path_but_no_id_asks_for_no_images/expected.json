@@ -1,0 +1,14 @@
+{
+  "url": "https://image.tmdb.org/t/p/w1280/only_path.jpg",
+  "requests": [
+    {
+      "url": "https://api.themoviedb.org/3/search/movie",
+      "query": {
+        "query": "Nebbia sul Lago",
+        "language": "it-IT",
+        "include_adult": "false"
+      }
+    }
+  ],
+  "legacy_cached": "https://image.tmdb.org/t/p/w1280/only_path.jpg"
+}

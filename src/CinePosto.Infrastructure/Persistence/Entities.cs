@@ -38,6 +38,12 @@ internal sealed class FilmEntity
 
     public string? Backdrop { get; set; }
 
+    /// <summary>
+    /// When the backdrop was looked up in an external catalogue (UTC), also when nothing was found. Null when no lookup
+    /// is stored, and for a backdrop that came from a cinema.
+    /// </summary>
+    public DateTime? BackdropFetchedAtUtc { get; set; }
+
     public string? Description { get; set; }
 
     public string? Director { get; set; }

@@ -1,0 +1,16 @@
+{
+  "backdrops": [
+    {
+      "file_path": "/italian.jpg",
+      "width": 3840,
+      "vote_average": 5.0,
+      "iso_639_1": "it"
+    },
+    {
+      "file_path": "/empty.jpg",
+      "width": 780,
+      "vote_average": 5.0,
+      "iso_639_1": ""
+    }
+  ]
+}

@@ -67,6 +67,9 @@ namespace CinePosto.Infrastructure.Migrations
                     b.Property<string>("Backdrop")
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTime?>("BackdropFetchedAtUtc")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 

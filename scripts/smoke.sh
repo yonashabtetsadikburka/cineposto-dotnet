@@ -40,6 +40,9 @@ export SCRAPER_MODE=fixtures
 export SCRAPER_CLARICI_FIXTURES_CASE=settings_valid
 export SCRAPER_UCI_FIXTURES_CASE=eight_day_window
 export SCRAPER_THESPACE_FIXTURES_CASE=eight_day_window
+export SCRAPER_TMDB_FIXTURES_CASE=window
+# A placeholder, so that a real token in .env is never passed to these containers. Fixtures mode does not read it.
+export TMDB_READ_TOKEN=not-used-in-fixtures
 export FIXTURES_DIR=./tests/CinePosto.Connectors.Tests/Golden
 export CINEPOSTO_DB_PATH=/data/cineposto.db
 export SCRAPER_USER_AGENT=
@@ -161,7 +164,8 @@ grep -qF 'cinema=clarici-foligno mode=fixtures films=2' <<<"$SCRAPER_OUT" || fai
 grep -qF 'cinema=uci-perugia mode=fixtures films=2' <<<"$SCRAPER_OUT" || fail 14 api "the scraper did not report 2 films for uci-perugia" "$SCRAPER_OUT"
 grep -qF 'cinema=the-space-corciano mode=fixtures films=2' <<<"$SCRAPER_OUT" || fail 14 api "the scraper did not report 2 films for the-space-corciano" "$SCRAPER_OUT"
 grep -qF 'cinema=the-space-terni mode=fixtures films=2' <<<"$SCRAPER_OUT" || fail 14 api "the scraper did not report 2 films for the-space-terni" "$SCRAPER_OUT"
-pass "scraper finished with exit code 0 and reported every cinema"
+grep -qF 'backdrops films=3 found=1 not_found=2 failed=0' <<<"$SCRAPER_OUT" || fail 14 api "the scraper did not report the expected backdrop lookups" "$SCRAPER_OUT"
+pass "scraper finished with exit code 0 and reported every cinema and the backdrops"
 
 step "5/10 public endpoints"
 expect_data "/health" 20 /health "Healthy"
@@ -174,12 +178,14 @@ expect_data "showings (uci)" 23 /api/v1/showings "uci-perugia"
 expect_data "cinemas (the space)" 21 /api/v1/cinemas "the-space-terni"
 expect_data "films (the space)" 22 /api/v1/films "La Mappa di Vetro"
 expect_data "showings (the space)" 23 /api/v1/showings "the-space-corciano"
+expect_data "films (backdrop)" 22 /api/v1/films "https://example.test/tmdb/w1280/mappa-search.jpg"
 
 step "6/10 web frontend"
 expect_data "web page" 30 / "js/app.js"
 expect_data "web script" 30 /js/app.js "renderHome"
 expect_data "italian texts" 30 /i18n/it.json '"nav.home"'
 expect_data "english texts" 30 /i18n/en.json '"nav.home"'
+expect_data "tmdb logo" 30 /assets/tmdb.svg "<svg"
 get /tests/i18n.test.mjs
 [ "$HTTP_STATUS" = "404" ] || fail 31 api "the frontend tests are served by the api (status $HTTP_STATUS)" "$HTTP_BODY"
 pass "frontend tests are not shipped in the image"
@@ -200,7 +206,8 @@ run_scraper
 [ "$SCRAPER_RC" -eq 0 ] || fail 26 api "the second scraper run exited with code $SCRAPER_RC" "$SCRAPER_OUT"
 get /api/v1/admin/dataset-info -H "X-Admin-Token: ${ADMIN_TOKEN}"
 [ "$HTTP_BODY" = "$EXPECTED_COUNTS" ] || fail 26 api "counts changed after the second run: $HTTP_BODY" "$HTTP_BODY"
-pass "counts unchanged: $HTTP_BODY"
+grep -qF 'backdrops films=0 found=0' <<<"$SCRAPER_OUT" || fail 26 api "the second run looked up backdrops again" "$SCRAPER_OUT"
+pass "counts unchanged and no backdrop looked up again: $HTTP_BODY"
 
 step "9/10 a failing source must keep the last known showings"
 SCRAPER_CLARICI_FIXTURES_CASE=movies_http500 run_scraper

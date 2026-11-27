@@ -46,7 +46,7 @@ $script:Base = ''
 # Names of the environment variables this script sets. Their original values are restored at the end, because
 # `$env:` changes would otherwise stay in the caller's session.
 $ManagedVariables = @(
-    'COMPOSE_PROJECT_NAME', 'API_PORT', 'SCRAPER_MODE', 'SCRAPER_CLARICI_FIXTURES_CASE', 'SCRAPER_UCI_FIXTURES_CASE', 'SCRAPER_THESPACE_FIXTURES_CASE', 'FIXTURES_DIR',
+    'COMPOSE_PROJECT_NAME', 'API_PORT', 'SCRAPER_MODE', 'SCRAPER_CLARICI_FIXTURES_CASE', 'SCRAPER_UCI_FIXTURES_CASE', 'SCRAPER_THESPACE_FIXTURES_CASE', 'SCRAPER_TMDB_FIXTURES_CASE', 'TMDB_READ_TOKEN', 'FIXTURES_DIR',
     'CINEPOSTO_DB_PATH', 'SCRAPER_USER_AGENT', 'SCRAPER_HTTP_TIMEOUT_SECONDS', 'ADMIN_TOKEN'
 )
 
@@ -129,6 +129,9 @@ function Invoke-Smoke {
     $env:SCRAPER_CLARICI_FIXTURES_CASE = 'settings_valid'
     $env:SCRAPER_UCI_FIXTURES_CASE = 'eight_day_window'
     $env:SCRAPER_THESPACE_FIXTURES_CASE = 'eight_day_window'
+    $env:SCRAPER_TMDB_FIXTURES_CASE = 'window'
+    # A placeholder, so that a real token in .env is never passed to these containers. Fixtures mode does not read it.
+    $env:TMDB_READ_TOKEN = 'not-used-in-fixtures'
     $env:FIXTURES_DIR = './tests/CinePosto.Connectors.Tests/Golden'
     $env:CINEPOSTO_DB_PATH = '/data/cineposto.db'
     # An empty value deletes the variable on Windows, so these two fall back to the defaults of docker-compose.yml.
@@ -180,7 +183,8 @@ function Invoke-Smoke {
     if (-not $scrape.Output.Contains('cinema=uci-perugia mode=fixtures films=2')) { Stop-Smoke 14 'api' 'the scraper did not report 2 films for uci-perugia' $scrape.Output }
     if (-not $scrape.Output.Contains('cinema=the-space-corciano mode=fixtures films=2')) { Stop-Smoke 14 'api' 'the scraper did not report 2 films for the-space-corciano' $scrape.Output }
     if (-not $scrape.Output.Contains('cinema=the-space-terni mode=fixtures films=2')) { Stop-Smoke 14 'api' 'the scraper did not report 2 films for the-space-terni' $scrape.Output }
-    Write-Pass 'scraper finished with exit code 0 and reported every cinema'
+    if (-not $scrape.Output.Contains('backdrops films=3 found=1 not_found=2 failed=0')) { Stop-Smoke 14 'api' 'the scraper did not report the expected backdrop lookups' $scrape.Output }
+    Write-Pass 'scraper finished with exit code 0 and reported every cinema and the backdrops'
 
     Write-Step '5/10 public endpoints'
     Test-Data '/health' 20 '/health' 'Healthy'
@@ -193,12 +197,14 @@ function Invoke-Smoke {
     Test-Data 'cinemas (the space)' 21 '/api/v1/cinemas' 'the-space-terni'
     Test-Data 'films (the space)' 22 '/api/v1/films' 'La Mappa di Vetro'
     Test-Data 'showings (the space)' 23 '/api/v1/showings' 'the-space-corciano'
+    Test-Data 'films (backdrop)' 22 '/api/v1/films' 'https://example.test/tmdb/w1280/mappa-search.jpg'
 
     Write-Step '6/10 web frontend'
     Test-Data 'web page' 30 '/' 'js/app.js'
     Test-Data 'web script' 30 '/js/app.js' 'renderHome'
     Test-Data 'italian texts' 30 '/i18n/it.json' '"nav.home"'
     Test-Data 'english texts' 30 '/i18n/en.json' '"nav.home"'
+    Test-Data 'tmdb logo' 30 '/assets/tmdb.svg' '<svg'
     $tests = Get-Http '/tests/i18n.test.mjs'
     if ($tests.Status -ne '404') { Stop-Smoke 31 'api' "the frontend tests are served by the api (status $($tests.Status))" $tests.Body }
     Write-Pass 'frontend tests are not shipped in the image'
@@ -220,7 +226,8 @@ function Invoke-Smoke {
     if ($scrape.ExitCode -ne 0) { Stop-Smoke 26 'api' "the second scraper run exited with code $($scrape.ExitCode)" $scrape.Output }
     $admin = Get-Http '/api/v1/admin/dataset-info' @('-H', "X-Admin-Token: $token")
     if ($admin.Body -ne $ExpectedCounts) { Stop-Smoke 26 'api' "counts changed after the second run: $($admin.Body)" $admin.Body }
-    Write-Pass "counts unchanged: $($admin.Body)"
+    if (-not $scrape.Output.Contains('backdrops films=0 found=0')) { Stop-Smoke 26 'api' 'the second run looked up backdrops again' $scrape.Output }
+    Write-Pass "counts unchanged and no backdrop looked up again: $($admin.Body)"
 
     Write-Step '9/10 a failing source must keep the last known showings'
     $env:SCRAPER_CLARICI_FIXTURES_CASE = 'movies_http500'

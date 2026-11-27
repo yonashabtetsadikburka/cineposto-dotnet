@@ -1,0 +1,7 @@
+{
+  "api_base": "https://api.themoviedb.org/3",
+  "image_base": "https://image.tmdb.org/t/p",
+  "backdrop_size": "w1280",
+  "min_call_interval_seconds": 0.3,
+  "miss_marker": "__NOT_FOUND__"
+}

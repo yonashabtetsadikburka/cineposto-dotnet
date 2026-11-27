@@ -31,6 +31,7 @@
     <None Include="..\CinePosto.Connectors.Tests\Golden\uci\eight_day_window_http500\*" Link="Fixtures\uci\eight_day_window_http500\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\CinePosto.Connectors.Tests\Golden\thespace\eight_day_window\**\*" Link="Fixtures\thespace\eight_day_window\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\CinePosto.Connectors.Tests\Golden\thespace\eight_day_window_blocked\**\*" Link="Fixtures\thespace\eight_day_window_blocked\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\CinePosto.Connectors.Tests\Golden\tmdb_fixtures\window\*" Link="Fixtures\tmdb_fixtures\window\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

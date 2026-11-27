@@ -50,6 +50,9 @@ services:
       SCRAPER_CLARICI_FIXTURES_DIR: /fixtures/clarici/${SCRAPER_CLARICI_FIXTURES_CASE:-settings_valid}
       SCRAPER_UCI_FIXTURES_DIR: /fixtures/uci/${SCRAPER_UCI_FIXTURES_CASE:-eight_day_window}
       SCRAPER_THESPACE_FIXTURES_DIR: /fixtures/thespace/${SCRAPER_THESPACE_FIXTURES_CASE:-eight_day_window}
+      SCRAPER_TMDB_FIXTURES_DIR: /fixtures/tmdb_fixtures/${SCRAPER_TMDB_FIXTURES_CASE:-window}
+      # Optional secret, read in live mode only. Without it no film backdrop is looked up.
+      TMDB_READ_TOKEN: ${TMDB_READ_TOKEN:-}
       CINEPOSTO_DB_PATH: ${CINEPOSTO_DB_PATH:-/data/cineposto.db}
       SCRAPER_USER_AGENT: ${SCRAPER_USER_AGENT:-}
       SCRAPER_HTTP_TIMEOUT_SECONDS: ${SCRAPER_HTTP_TIMEOUT_SECONDS:-30}
