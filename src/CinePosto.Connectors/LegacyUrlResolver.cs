@@ -1,13 +1,13 @@
 using System.Text.RegularExpressions;
 
-namespace CinePosto.Connectors.Uci;
+namespace CinePosto.Connectors;
 
-/// <summary>Port of Python's <c>urllib.parse.urljoin</c>, which the legacy connector uses to complete poster addresses.</summary>
+/// <summary>Port of Python's <c>urllib.parse.urljoin</c>, which the legacy connectors use to complete addresses.</summary>
 /// <remarks>
 /// <see cref="Uri"/> is not used on purpose: it escapes spaces and non-ASCII characters and rewrites the address, so the output would differ.
 /// Path parameters (<c>;name=value</c>) are not split off: they stay in the path, which gives the same text unless the path is only a parameter.
 /// </remarks>
-internal static partial class UciUrlResolver
+internal static partial class LegacyUrlResolver
 {
     // Python: uses_relative (schemes whose addresses can be relative). Every one of them is also in uses_netloc.
     private static readonly HashSet<string> RelativeSchemes = new(StringComparer.Ordinal)

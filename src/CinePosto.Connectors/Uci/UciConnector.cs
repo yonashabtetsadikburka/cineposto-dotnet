@@ -6,6 +6,7 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using CinePosto.Domain.Models;
 using CinePosto.Domain.Text;
+using static CinePosto.Connectors.LegacyJson;
 
 namespace CinePosto.Connectors.Uci;
 
@@ -171,7 +172,7 @@ public sealed partial class UciConnector : ICinemaConnector
     {
         // Steps run in the legacy order, because the order decides whether a malformed film is skipped silently or reported.
         JsonElement titleElement = Property(movie, "title");
-        if (!LegacyJson.IsTruthy(titleElement))
+        if (!IsTruthy(titleElement))
         {
             return null;
         }
@@ -187,7 +188,7 @@ public sealed partial class UciConnector : ICinemaConnector
 
         if (poster.Length > 0 && !poster.StartsWith("http", StringComparison.Ordinal))
         {
-            poster = UciUrlResolver.Resolve(_options.BaseUrl, poster);
+            poster = LegacyUrlResolver.Resolve(_options.BaseUrl, poster);
         }
 
         IReadOnlyList<string> genres = GenreNormalizer.Normalize(Property(movie, "genres"));
@@ -278,7 +279,7 @@ public sealed partial class UciConnector : ICinemaConnector
         // A screen given as an object is read by name. Any other non-empty value means "the screen is the format".
         string? screenName = null;
         JsonElement screen = Property(variant, "screen");
-        if (LegacyJson.IsTruthy(screen))
+        if (IsTruthy(screen))
         {
             screenName = screen.ValueKind == JsonValueKind.Object ? TextOrNull(Property(screen, "name")) : format;
         }
@@ -298,7 +299,7 @@ public sealed partial class UciConnector : ICinemaConnector
     private List<TimeOnly> ReadTimes(JsonElement performances, string dateText, List<ConnectorError> errors)
     {
         List<TimeOnly> times = [];
-        if (!LegacyJson.IsTruthy(performances))
+        if (!IsTruthy(performances))
         {
             return times;
         }
@@ -326,14 +327,14 @@ public sealed partial class UciConnector : ICinemaConnector
 
             // A performance on another day is dropped. A missing or empty day is kept.
             JsonElement day = Property(performance, "day");
-            if (LegacyJson.IsTruthy(day)
+            if (IsTruthy(day)
                 && !(day.ValueKind == JsonValueKind.String && string.Equals(day.GetString(), dateText, StringComparison.Ordinal)))
             {
                 continue;
             }
 
             JsonElement start = Property(performance, "actual_start_at");
-            if (!LegacyJson.IsTruthy(start))
+            if (!IsTruthy(start))
             {
                 continue;
             }
@@ -352,26 +353,6 @@ public sealed partial class UciConnector : ICinemaConnector
 
         times.Sort();
         return times;
-    }
-
-    private static JsonElement Property(JsonElement element, string name) =>
-        element.TryGetProperty(name, out JsonElement value) ? value : default;
-
-    // Python: value or "". A value that is not text raises in the legacy code, whatever it is used for next.
-    private static string TruthyText(JsonElement element, string property)
-    {
-        JsonElement value = Property(element, property);
-        if (!LegacyJson.IsTruthy(value))
-        {
-            return string.Empty;
-        }
-
-        if (value.ValueKind == JsonValueKind.String)
-        {
-            return value.GetString() ?? string.Empty;
-        }
-
-        throw new InvalidOperationException($"Cannot read {property} from a JSON {value.ValueKind} value.");
     }
 
     // Deviation: the legacy code keeps a name of any type. Only text is stored here.
