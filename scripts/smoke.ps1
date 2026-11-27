@@ -38,15 +38,15 @@ $ErrorActionPreference = 'Continue'
 
 Push-Location (Join-Path $PSScriptRoot '..')
 
-# Two cinemas. "Nebbia sul Lago" is in both of them, so there are 3 films.
-$ExpectedCounts = '{"cinemas":2,"films":3,"showings":5}'
+# Four cinemas. "Nebbia sul Lago" is in all of them and "La Mappa di Vetro" in both venues of The Space: 4 films.
+$ExpectedCounts = '{"cinemas":4,"films":4,"showings":11}'
 $Started = Get-Date
 $script:Base = ''
 
 # Names of the environment variables this script sets. Their original values are restored at the end, because
 # `$env:` changes would otherwise stay in the caller's session.
 $ManagedVariables = @(
-    'COMPOSE_PROJECT_NAME', 'API_PORT', 'SCRAPER_MODE', 'SCRAPER_CLARICI_FIXTURES_CASE', 'SCRAPER_UCI_FIXTURES_CASE', 'FIXTURES_DIR',
+    'COMPOSE_PROJECT_NAME', 'API_PORT', 'SCRAPER_MODE', 'SCRAPER_CLARICI_FIXTURES_CASE', 'SCRAPER_UCI_FIXTURES_CASE', 'SCRAPER_THESPACE_FIXTURES_CASE', 'FIXTURES_DIR',
     'CINEPOSTO_DB_PATH', 'SCRAPER_USER_AGENT', 'SCRAPER_HTTP_TIMEOUT_SECONDS', 'ADMIN_TOKEN'
 )
 
@@ -128,6 +128,7 @@ function Invoke-Smoke {
     $env:SCRAPER_MODE = 'fixtures'
     $env:SCRAPER_CLARICI_FIXTURES_CASE = 'settings_valid'
     $env:SCRAPER_UCI_FIXTURES_CASE = 'eight_day_window'
+    $env:SCRAPER_THESPACE_FIXTURES_CASE = 'eight_day_window'
     $env:FIXTURES_DIR = './tests/CinePosto.Connectors.Tests/Golden'
     $env:CINEPOSTO_DB_PATH = '/data/cineposto.db'
     # An empty value deletes the variable on Windows, so these two fall back to the defaults of docker-compose.yml.
@@ -177,7 +178,9 @@ function Invoke-Smoke {
     if ($scrape.ExitCode -ne 0) { Stop-Smoke 14 'api' "the scraper exited with code $($scrape.ExitCode)" $scrape.Output }
     if (-not $scrape.Output.Contains('cinema=clarici-foligno mode=fixtures films=2')) { Stop-Smoke 14 'api' 'the scraper did not report 2 films for clarici-foligno' $scrape.Output }
     if (-not $scrape.Output.Contains('cinema=uci-perugia mode=fixtures films=2')) { Stop-Smoke 14 'api' 'the scraper did not report 2 films for uci-perugia' $scrape.Output }
-    Write-Pass 'scraper finished with exit code 0 and reported both cinemas'
+    if (-not $scrape.Output.Contains('cinema=the-space-corciano mode=fixtures films=2')) { Stop-Smoke 14 'api' 'the scraper did not report 2 films for the-space-corciano' $scrape.Output }
+    if (-not $scrape.Output.Contains('cinema=the-space-terni mode=fixtures films=2')) { Stop-Smoke 14 'api' 'the scraper did not report 2 films for the-space-terni' $scrape.Output }
+    Write-Pass 'scraper finished with exit code 0 and reported every cinema'
 
     Write-Step '5/10 public endpoints'
     Test-Data '/health' 20 '/health' 'Healthy'
@@ -187,6 +190,9 @@ function Invoke-Smoke {
     Test-Data 'films (uci)' 22 '/api/v1/films' 'Il Gatto del Faro'
     Test-Data 'showings' 23 '/api/v1/showings' 'clarici-foligno'
     Test-Data 'showings (uci)' 23 '/api/v1/showings' 'uci-perugia'
+    Test-Data 'cinemas (the space)' 21 '/api/v1/cinemas' 'the-space-terni'
+    Test-Data 'films (the space)' 22 '/api/v1/films' 'La Mappa di Vetro'
+    Test-Data 'showings (the space)' 23 '/api/v1/showings' 'the-space-corciano'
 
     Write-Step '6/10 web frontend'
     Test-Data 'web page' 30 '/' 'js/app.js'
@@ -235,6 +241,17 @@ function Invoke-Smoke {
     $admin = Get-Http '/api/v1/admin/dataset-info' @('-H', "X-Admin-Token: $token")
     if ($admin.Body -ne $ExpectedCounts) { Stop-Smoke 27 'api' "the uci failure changed the data: $($admin.Body)" $admin.Body }
     Write-Pass "uci failed (exit 1), clarici was still scraped and the data is still $($admin.Body)"
+    $env:SCRAPER_THESPACE_FIXTURES_CASE = 'eight_day_window_blocked'
+    $scrape = Invoke-Docker @('compose', 'run', '-T', '--rm', 'scraper')
+    $env:SCRAPER_THESPACE_FIXTURES_CASE = 'eight_day_window'
+    Write-Host $scrape.Output
+    if ($scrape.ExitCode -ne 1) { Stop-Smoke 27 'api' "the scraper should exit with code 1 when the space refuses the requests, got $($scrape.ExitCode)" $scrape.Output }
+    if (-not $scrape.Output.Contains('cinema=the-space-corciano mode=fixtures films=0 showings=4 errors=1')) { Stop-Smoke 27 'api' 'the-space-corciano should keep its showings and report one error' $scrape.Output }
+    if (-not $scrape.Output.Contains('cinema=the-space-terni mode=fixtures films=0 showings=2 errors=1')) { Stop-Smoke 27 'api' 'the-space-terni should keep its showings and report one error' $scrape.Output }
+    if (-not $scrape.Output.Contains('cinema=clarici-foligno mode=fixtures films=2')) { Stop-Smoke 27 'api' 'clarici-foligno was not scraped while the space was failing' $scrape.Output }
+    $admin = Get-Http '/api/v1/admin/dataset-info' @('-H', "X-Admin-Token: $token")
+    if ($admin.Body -ne $ExpectedCounts) { Stop-Smoke 27 'api' "the failure of the space changed the data: $($admin.Body)" $admin.Body }
+    Write-Pass "the space refused (exit 1), the others were still scraped and the data is still $($admin.Body)"
 
     Write-Step '10/10 the api is still healthy'
     Test-Data '/health' 20 '/health' 'Healthy'
