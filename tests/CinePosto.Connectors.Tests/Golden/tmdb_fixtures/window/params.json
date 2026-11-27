@@ -1,0 +1,36 @@
+{
+  "searches": [
+    {
+      "title": "Nebbia sul Lago",
+      "status": 200,
+      "body": "search_0.json"
+    },
+    {
+      "title": "La Mappa di Vetro",
+      "status": 200,
+      "body": "search_1.json"
+    },
+    {
+      "title": "Il Gatto del Faro",
+      "status": 200,
+      "body": "search_2.json"
+    },
+    {
+      "title": "Festa Sintetica",
+      "status": 200,
+      "body": "search_3.json"
+    }
+  ],
+  "images": [
+    {
+      "movie_id": 101,
+      "status": 200,
+      "body": "images_101.json"
+    },
+    {
+      "movie_id": 102,
+      "status": 200,
+      "body": "images_102.json"
+    }
+  ]
+}

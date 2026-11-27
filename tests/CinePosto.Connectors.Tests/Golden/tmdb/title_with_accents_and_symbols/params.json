@@ -1,0 +1,14 @@
+{
+  "title": "L'età & il caffè: parte 2 + 1?",
+  "search": {
+    "status": 200,
+    "body": "search.json"
+  },
+  "images": [
+    {
+      "movie_id": 11,
+      "status": 200,
+      "body": "images_11.json"
+    }
+  ]
+}

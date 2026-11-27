@@ -1,0 +1,14 @@
+{
+  "title": "Nebbia sul Lago",
+  "search": {
+    "status": 200,
+    "body": "search.json"
+  },
+  "images": [
+    {
+      "movie_id": 22,
+      "status": 200,
+      "body": "images_22.json"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "title": "Risultato",
+      "id": 11,
+      "backdrop_path": "/one.jpg"
+    },
+    {
+      "title": "Risultato",
+      "id": 22,
+      "backdrop_path": "/two.jpg"
+    }
+  ]
+}

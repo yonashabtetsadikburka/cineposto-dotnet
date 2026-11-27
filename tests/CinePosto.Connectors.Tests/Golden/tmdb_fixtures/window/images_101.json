@@ -1,0 +1,16 @@
+{
+  "backdrops": [
+    {
+      "file_path": "/nebbia-small.jpg",
+      "width": 780,
+      "vote_average": 5.0,
+      "iso_639_1": null
+    },
+    {
+      "file_path": "/nebbia-wide.jpg",
+      "width": 1920,
+      "vote_average": 5.0,
+      "iso_639_1": null
+    }
+  ]
+}

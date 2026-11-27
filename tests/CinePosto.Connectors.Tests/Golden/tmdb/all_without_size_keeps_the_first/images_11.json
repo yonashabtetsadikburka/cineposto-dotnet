@@ -1,0 +1,16 @@
+{
+  "backdrops": [
+    {
+      "file_path": "/one.jpg",
+      "width": null,
+      "vote_average": null,
+      "iso_639_1": null
+    },
+    {
+      "file_path": "/two.jpg",
+      "width": null,
+      "vote_average": null,
+      "iso_639_1": null
+    }
+  ]
+}
