@@ -1,4 +1,5 @@
 using CinePosto.Connectors.Clarici;
+using CinePosto.Connectors.Uci;
 using CinePosto.Domain.Models;
 using CinePosto.Infrastructure.Catalog;
 using CinePosto.Infrastructure.Persistence;
@@ -12,7 +13,16 @@ public sealed class ScraperAppTests : IDisposable
 {
     private readonly string _directory = Path.Combine(Path.GetTempPath(), "cineposto-tests", Guid.NewGuid().ToString("N"));
 
+    /// <summary>What the saved responses of both cinemas give: "Nebbia sul Lago" is in both, so there are 3 films.</summary>
+    private static readonly DatasetInfo BothCinemas = new() { Cinemas = 2, Films = 3, Showings = 5 };
+
     private string DatabasePath => Path.Combine(_directory, "scraper.db");
+
+    /// <summary>The summary line the scraper prints for one cinema.</summary>
+    private static string LineOf(string output, string slug)
+    {
+        return output.Split('\n').Single(line => line.StartsWith($"cinema={slug} ", StringComparison.Ordinal));
+    }
 
     [Fact]
     public async Task Run_InFixturesMode_PopulatesTheDatabase()
@@ -22,11 +32,10 @@ public sealed class ScraperAppTests : IDisposable
         Assert.Equal(0, exit);
         Assert.Equal(string.Empty, error);
         Assert.Contains("cinema=clarici-foligno mode=fixtures films=2 showings=2 errors=0", output);
+        Assert.Contains("cinema=uci-perugia mode=fixtures films=2 showings=3 errors=0", output);
 
-        DatasetInfo info = await ReadInfoAsync();
-        Assert.Equal(1, info.Cinemas);
-        Assert.Equal(2, info.Films);
-        Assert.Equal(2, info.Showings);
+        // "Nebbia sul Lago" is in both cinemas and is stored once.
+        Assert.Equal(BothCinemas, await ReadInfoAsync());
     }
 
     [Fact]
@@ -36,8 +45,7 @@ public sealed class ScraperAppTests : IDisposable
         (int exit, _, _) = await RunAsync("settings_valid");
 
         Assert.Equal(0, exit);
-        DatasetInfo info = await ReadInfoAsync();
-        Assert.Equal(new DatasetInfo { Cinemas = 1, Films = 2, Showings = 2 }, info);
+        Assert.Equal(BothCinemas, await ReadInfoAsync());
     }
 
     [Fact]
@@ -48,19 +56,46 @@ public sealed class ScraperAppTests : IDisposable
         (int exit, string output, _) = await RunAsync("movies_http500");
 
         Assert.Equal(1, exit);
-        Assert.Contains("showings_replaced=false", output);
+        // A failed cinema reports the showings it kept, not the ones it found.
+        Assert.Contains("cinema=clarici-foligno mode=fixtures films=0 showings=2 errors=1 showings_replaced=false", output);
         Assert.Contains("error cinema=clarici-foligno phase=scrape", output);
-        Assert.Equal(2, (await ReadInfoAsync()).Showings);
+        Assert.Contains("showings_replaced=true", LineOf(output, "uci-perugia"));
+        Assert.Equal(BothCinemas, await ReadInfoAsync());
     }
 
     [Fact]
-    public async Task Run_WhenThePayloadIsNotJson_ReturnsOneWithoutStoringFilms()
+    public async Task Run_WhenUciFails_ReturnsOneAndKeepsItsLastKnownShowings()
+    {
+        await RunAsync("settings_valid");
+
+        (int exit, string output, _) = await RunAsync("settings_valid", "eight_day_window_http500");
+
+        Assert.Equal(1, exit);
+        Assert.Contains("cinema=uci-perugia mode=fixtures films=0 showings=3 errors=8 showings_replaced=false", output);
+        Assert.Contains("error cinema=uci-perugia phase=scrape type=HttpRequestException", output);
+        Assert.Contains("showings_replaced=true", LineOf(output, "clarici-foligno"));
+        Assert.Equal(BothCinemas, await ReadInfoAsync());
+    }
+
+    [Fact]
+    public async Task Run_WhenBothSourcesFail_ReturnsOneAndStoresNothing()
+    {
+        (int exit, string output, _) = await RunAsync("movies_http500", "eight_day_window_http500");
+
+        Assert.Equal(1, exit);
+        Assert.Contains("cinema=clarici-foligno mode=fixtures films=0", output);
+        Assert.Contains("cinema=uci-perugia mode=fixtures films=0", output);
+        Assert.Equal(0, (await ReadInfoAsync()).Films);
+    }
+
+    [Fact]
+    public async Task Run_WhenThePayloadIsNotJson_ReturnsOneAndStillStoresTheOtherCinema()
     {
         (int exit, string output, _) = await RunAsync("movies_body_not_json");
 
         Assert.Equal(1, exit);
-        Assert.Contains("films=0", output);
-        Assert.Equal(0, (await ReadInfoAsync()).Films);
+        Assert.Contains("cinema=clarici-foligno mode=fixtures films=0", output);
+        Assert.Equal(new DatasetInfo { Cinemas = 2, Films = 2, Showings = 3 }, await ReadInfoAsync());
     }
 
     [Fact]
@@ -81,7 +116,11 @@ public sealed class ScraperAppTests : IDisposable
         StringWriter error = new();
 
         int exit = await ScraperApp.RunAsync(
-            ScraperSettingsTests.Env(("SCRAPER_MODE", "fixtures"), ("SCRAPER_FIXTURES_DIR", Path.Combine(_directory, "nope")), ("CINEPOSTO_DB_PATH", DatabasePath)),
+            ScraperSettingsTests.Env(
+                ("SCRAPER_MODE", "fixtures"),
+                ("SCRAPER_FIXTURES_DIR", Path.Combine(_directory, "nope")),
+                ("SCRAPER_UCI_FIXTURES_DIR", FixtureTests.UciFixtureDirectory("eight_day_window")),
+                ("CINEPOSTO_DB_PATH", DatabasePath)),
             new StringWriter(),
             error,
             TimeProvider.System,
@@ -92,15 +131,38 @@ public sealed class ScraperAppTests : IDisposable
     }
 
     [Fact]
-    public void Registry_ListsConnectorsThatMatchTheCatalog()
+    public async Task Run_WithAMissingUciFixturesFolder_ReturnsAConfigurationError()
+    {
+        StringWriter error = new();
+
+        int exit = await ScraperApp.RunAsync(
+            ScraperSettingsTests.Env(
+                ("SCRAPER_MODE", "fixtures"),
+                ("SCRAPER_FIXTURES_DIR", FixtureTests.FixtureDirectory("settings_valid")),
+                ("SCRAPER_UCI_FIXTURES_DIR", Path.Combine(_directory, "nope")),
+                ("CINEPOSTO_DB_PATH", DatabasePath)),
+            new StringWriter(),
+            error,
+            TimeProvider.System,
+            CancellationToken.None);
+
+        Assert.Equal(ScraperApp.ExitConfiguration, exit);
+        Assert.Contains("UCI", error.ToString());
+        Assert.False(File.Exists(DatabasePath));
+    }
+
+    [Fact]
+    public void Registry_ListsEveryCatalogCinemaWithItsOwnConnector()
     {
         using HttpClient client = new();
 
-        IReadOnlyList<ConnectorRegistration> registrations = ConnectorRegistry.Create(client, TimeProvider.System, new ClariciOptions());
+        IReadOnlyList<ConnectorRegistration> registrations = ConnectorRegistry.Create(client, TimeProvider.System, new ClariciOptions(), new UciOptions());
 
-        ConnectorRegistration clarici = Assert.Single(registrations);
-        Assert.Equal(CinemaCatalog.Clarici.Slug, clarici.Connector.CinemaSlug);
-        Assert.NotNull(CinemaCatalog.Find(clarici.Connector.CinemaSlug));
+        string[] slugs = [.. registrations.Select(r => r.Connector.CinemaSlug)];
+        Assert.Equal(new[] { "clarici-foligno", "uci-perugia" }, slugs);
+        Assert.Equal(slugs.Length, slugs.Distinct(StringComparer.Ordinal).Count());
+        Assert.Equal(CinemaCatalog.All.Select(c => c.Slug).Order(StringComparer.Ordinal), slugs.Order(StringComparer.Ordinal));
+        Assert.All(registrations, r => Assert.Same(CinemaCatalog.Find(r.Connector.CinemaSlug), r.Cinema));
     }
 
     public void Dispose()
@@ -112,7 +174,7 @@ public sealed class ScraperAppTests : IDisposable
         }
     }
 
-    private async Task<(int Exit, string Output, string Error)> RunAsync(string fixture)
+    private async Task<(int Exit, string Output, string Error)> RunAsync(string fixture, string uciFixture = "eight_day_window")
     {
         StringWriter output = new();
         StringWriter error = new();
@@ -120,6 +182,7 @@ public sealed class ScraperAppTests : IDisposable
             ScraperSettingsTests.Env(
                 ("SCRAPER_MODE", "fixtures"),
                 ("SCRAPER_FIXTURES_DIR", FixtureTests.FixtureDirectory(fixture)),
+                ("SCRAPER_UCI_FIXTURES_DIR", FixtureTests.UciFixtureDirectory(uciFixture)),
                 ("CINEPOSTO_DB_PATH", DatabasePath)),
             output,
             error,

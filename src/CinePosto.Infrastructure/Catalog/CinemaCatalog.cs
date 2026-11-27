@@ -17,8 +17,24 @@ public static class CinemaCatalog
         Website = "https://www.cinemaclarici.it",
     };
 
+    /// <summary>
+    /// UCI Cinemas Perugia, in Viale Centova. This differs on purpose from the legacy backend configuration, which has
+    /// Via Corcianese in Corciano: the maintainer confirmed Viale Centova, which is also what the legacy web map used.
+    /// The position is the one of that map. See legacy-parity-notes.md.
+    /// </summary>
+    public static Cinema UciPerugia { get; } = new()
+    {
+        Slug = "uci-perugia",
+        Name = "UCI Cinemas Perugia",
+        City = "Perugia",
+        Address = "Viale Centova, 1/D, 06132 Perugia PG",
+        Latitude = 43.0963682,
+        Longitude = 12.3553159,
+        Website = "https://ucicinemas.it",
+    };
+
     /// <summary>All cinemas that have a connector.</summary>
-    public static IReadOnlyList<Cinema> All { get; } = [Clarici];
+    public static IReadOnlyList<Cinema> All { get; } = [Clarici, UciPerugia];
 
     /// <summary>Finds a cinema by slug, or returns <see langword="null"/> when no connector exists for it.</summary>
     public static Cinema? Find(string slug)

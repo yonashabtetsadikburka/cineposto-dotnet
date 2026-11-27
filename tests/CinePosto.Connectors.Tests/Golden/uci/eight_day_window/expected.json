@@ -1,0 +1,61 @@
+{
+  "films": [
+    {
+      "title": "Nebbia sul Lago",
+      "title_normalized": "Nebbia sul Lago",
+      "poster": "https://example.test/uci-nebbia.jpg",
+      "backdrop": null,
+      "description": "Trama inventata per i test.",
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "18:00",
+            "20:30"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/nebbia-sul-lago/"
+        }
+      ]
+    },
+    {
+      "title": "Il Gatto del Faro",
+      "title_normalized": "Gatto del Faro",
+      "poster": "https://example.test/uci-gatto.jpg",
+      "backdrop": null,
+      "description": null,
+      "genres": [],
+      "duration": null,
+      "director": null,
+      "showings": [
+        {
+          "date": "2026-09-22",
+          "times": [
+            "17:30",
+            "21:00"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/il-gatto-del-faro/"
+        },
+        {
+          "date": "2026-09-25",
+          "times": [
+            "19:00"
+          ],
+          "screen": "2D",
+          "language": "ITA",
+          "session_attributes": [],
+          "source_url": "https://ucicinemas.it/film/il-gatto-del-faro/"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

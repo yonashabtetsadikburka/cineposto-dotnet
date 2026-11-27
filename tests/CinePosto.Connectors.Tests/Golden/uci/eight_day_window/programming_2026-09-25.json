@@ -1,0 +1,30 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Il Gatto del Faro",
+      "slug": "il-gatto-del-faro",
+      "screens": [
+        {
+          "2D": [
+            {
+              "language": {
+                "name": "ITA"
+              },
+              "screen": {
+                "name": "2D"
+              },
+              "performances": [
+                {
+                  "actual_start_at": "19:00",
+                  "day": "2026-09-25"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "poster": "https://example.test/uci-gatto.jpg"
+    }
+  ]
+}

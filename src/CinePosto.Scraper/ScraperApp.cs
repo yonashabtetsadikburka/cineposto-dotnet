@@ -2,6 +2,7 @@ using System.Net;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using CinePosto.Connectors.Clarici;
+using CinePosto.Connectors.Uci;
 using CinePosto.Infrastructure.Persistence;
 using CinePosto.Scraper.Fixtures;
 
@@ -33,15 +34,18 @@ internal static class ScraperApp
         }
 
         ClariciOptions clariciOptions = new();
+        UciOptions uciOptions = new();
 
-        FixtureCase? fixture = null;
         ScrapeWindow window;
         HttpMessageHandler handler;
         if (settings!.Mode == ScraperMode.Fixtures)
         {
+            FixtureCase fixture;
+            UciFixtureCase uciFixture;
             try
             {
                 fixture = FixtureCase.Load(settings.FixturesDirectory!);
+                uciFixture = UciFixtureCase.Load(settings.UciFixturesDirectory!);
             }
             catch (Exception ex) when (ex is InvalidOperationException or IOException or JsonException or FormatException)
             {
@@ -49,8 +53,15 @@ internal static class ScraperApp
                 return ExitConfiguration;
             }
 
+            // One window for every cinema: the days come from the Clarici case and the UCI case has to cover them.
             window = new ScrapeWindow(fixture.Today, fixture.Dates);
-            handler = new FixtureHttpMessageHandler(BuildClariciResponses(fixture, clariciOptions));
+            Dictionary<string, FixtureResponse> responses = BuildClariciResponses(fixture, clariciOptions);
+            foreach ((string url, FixtureResponse response) in uciFixture.ToResponses(uciOptions))
+            {
+                responses[url] = response;
+            }
+
+            handler = new FixtureHttpMessageHandler(responses);
         }
         else
         {
@@ -90,7 +101,7 @@ internal static class ScraperApp
 
             SqliteShowtimeStore store = new(db);
             ScraperRunner runner = new(store, clock, output);
-            return await runner.RunAsync(ConnectorRegistry.Create(httpClient, clock, clariciOptions), window, settings.Mode, cancellationToken).ConfigureAwait(false);
+            return await runner.RunAsync(ConnectorRegistry.Create(httpClient, clock, clariciOptions, uciOptions), window, settings.Mode, cancellationToken).ConfigureAwait(false);
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
         {

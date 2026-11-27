@@ -47,7 +47,7 @@ public sealed partial class UciConnector : ICinemaConnector
         foreach (DateOnly date in targetDates)
         {
             string dateText = date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
-            string url = _options.ProgrammingUrlTemplate.Replace("{date}", dateText, StringComparison.Ordinal);
+            string url = _options.ProgrammingUrl(date);
             try
             {
                 using JsonDocument document = await FetchJsonAsync(url, cancellationToken).ConfigureAwait(false);

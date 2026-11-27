@@ -27,6 +27,8 @@
     <None Include="..\CinePosto.Connectors.Tests\Golden\clarici\settings_valid\*" Link="Fixtures\settings_valid\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\CinePosto.Connectors.Tests\Golden\clarici\movies_http500\*" Link="Fixtures\movies_http500\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\CinePosto.Connectors.Tests\Golden\clarici\movies_body_not_json\*" Link="Fixtures\movies_body_not_json\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\CinePosto.Connectors.Tests\Golden\uci\eight_day_window\*" Link="Fixtures\uci\eight_day_window\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\CinePosto.Connectors.Tests\Golden\uci\eight_day_window_http500\*" Link="Fixtures\uci\eight_day_window_http500\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,6 @@
 using CinePosto.Connectors;
 using CinePosto.Connectors.Clarici;
+using CinePosto.Connectors.Uci;
 using CinePosto.Domain.Models;
 using CinePosto.Infrastructure.Catalog;
 
@@ -11,11 +12,16 @@ internal sealed record ConnectorRegistration(Cinema Cinema, ICinemaConnector Con
 /// <summary>The single place that lists the connectors. New cinemas are added here and in the cinema catalog.</summary>
 internal static class ConnectorRegistry
 {
-    public static IReadOnlyList<ConnectorRegistration> Create(HttpClient httpClient, TimeProvider clock, ClariciOptions clariciOptions)
+    public static IReadOnlyList<ConnectorRegistration> Create(
+        HttpClient httpClient,
+        TimeProvider clock,
+        ClariciOptions clariciOptions,
+        UciOptions uciOptions)
     {
         return
         [
             Register(CinemaCatalog.Clarici, new ClariciConnector(httpClient, clock, clariciOptions)),
+            Register(CinemaCatalog.UciPerugia, new UciConnector(httpClient, clock, uciOptions)),
         ];
     }
 
