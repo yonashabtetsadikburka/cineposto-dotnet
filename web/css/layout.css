@@ -164,3 +164,11 @@
 }
 
 .attrib a { color: var(--light); }
+
+/* TMDB logo (official file, unchanged): its terms want it less prominent than the logo of the application. */
+.attrib .tmdb-logo {
+  display: inline-block;
+  height: 11px;
+  width: auto;
+  vertical-align: middle;
+}
