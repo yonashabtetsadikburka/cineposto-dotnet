@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace CinePosto.Infrastructure.Persistence;
 
 /// <summary>Stores and reads the catalog in the SQLite database.</summary>
-public sealed class SqliteShowtimeStore : IScrapeResultWriter, IShowtimeReader
+public sealed class SqliteShowtimeStore : IScrapeResultWriter, IShowtimeReader, IBackdropStore
 {
     private const string TimeFormat = "HH:mm";
 
@@ -120,19 +120,7 @@ public sealed class SqliteShowtimeStore : IScrapeResultWriter, IShowtimeReader
             .Where(f => _db.Showings.Any(s => s.FilmId == f.Id && (date == null || s.Date == date)));
 
         List<FilmEntity> rows = await query.OrderBy(f => f.Title).ThenBy(f => f.Id).ToListAsync(cancellationToken).ConfigureAwait(false);
-        return rows.Select(f => new Film
-        {
-            Id = f.Id,
-            Title = f.Title,
-            TitleNormalized = f.TitleNormalized,
-            OriginalTitle = f.OriginalTitle,
-            Poster = f.Poster,
-            Backdrop = f.Backdrop,
-            Description = f.Description,
-            Director = f.Director,
-            DurationMinutes = f.DurationMinutes,
-            Genres = ReadStrings(f.GenresJson),
-        }).ToList();
+        return rows.Select(ToFilm).ToList();
     }
 
     /// <inheritdoc />
@@ -183,6 +171,62 @@ public sealed class SqliteShowtimeStore : IScrapeResultWriter, IShowtimeReader
             Showings = await _db.Showings.CountAsync(cancellationToken).ConfigureAwait(false),
         };
     }
+
+    /// <inheritdoc />
+    public async Task<int> ExpireBackdropsAsync(DateTimeOffset madeBefore, CancellationToken cancellationToken)
+    {
+        DateTime limit = madeBefore.UtcDateTime;
+        return await _db.Films
+            .Where(f => f.BackdropFetchedAtUtc != null && f.BackdropFetchedAtUtc < limit)
+            .ExecuteUpdateAsync(
+                update => update
+                    .SetProperty(f => f.Backdrop, (string?)null)
+                    .SetProperty(f => f.BackdropFetchedAtUtc, (DateTime?)null),
+                cancellationToken)
+            .ConfigureAwait(false);
+    }
+
+    /// <inheritdoc />
+    public async Task<IReadOnlyList<Film>> GetFilmsNeedingBackdropAsync(CancellationToken cancellationToken)
+    {
+        List<FilmEntity> rows = await _db.Films.AsNoTracking()
+            .Where(f => f.Backdrop == null && f.BackdropFetchedAtUtc == null && _db.Showings.Any(s => s.FilmId == f.Id))
+            .OrderBy(f => f.Id)
+            .ToListAsync(cancellationToken)
+            .ConfigureAwait(false);
+        return rows.Select(ToFilm).ToList();
+    }
+
+    /// <inheritdoc />
+    public async Task SaveBackdropAsync(int filmId, string? backdropUrl, DateTimeOffset madeAt, CancellationToken cancellationToken)
+    {
+        FilmEntity film = await _db.Films.FindAsync([filmId], cancellationToken).ConfigureAwait(false)
+            ?? throw new InvalidOperationException($"There is no film {filmId}.");
+
+        // Data from a cinema is never replaced by data from a catalogue (NFR-13).
+        if (film.Backdrop is not null && film.BackdropFetchedAtUtc is null)
+        {
+            return;
+        }
+
+        film.Backdrop = backdropUrl;
+        film.BackdropFetchedAtUtc = madeAt.UtcDateTime;
+        await _db.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+    }
+
+    private static Film ToFilm(FilmEntity f) => new()
+    {
+        Id = f.Id,
+        Title = f.Title,
+        TitleNormalized = f.TitleNormalized,
+        OriginalTitle = f.OriginalTitle,
+        Poster = f.Poster,
+        Backdrop = f.Backdrop,
+        Description = f.Description,
+        Director = f.Director,
+        DurationMinutes = f.DurationMinutes,
+        Genres = ReadStrings(f.GenresJson),
+    };
 
     private static List<string> ReadStrings(string json)
     {
@@ -237,7 +281,13 @@ public sealed class SqliteShowtimeStore : IScrapeResultWriter, IShowtimeReader
         entity.TitleNormalized = scraped.TitleNormalized;
         entity.OriginalTitle = scraped.OriginalTitle ?? entity.OriginalTitle;
         entity.Poster = scraped.Poster ?? entity.Poster;
-        entity.Backdrop = scraped.Backdrop ?? entity.Backdrop;
+        if (scraped.Backdrop is not null)
+        {
+            // A backdrop from a cinema replaces a looked up one and does not expire.
+            entity.Backdrop = scraped.Backdrop;
+            entity.BackdropFetchedAtUtc = null;
+        }
+
         entity.Description = scraped.Description ?? entity.Description;
         entity.Director = scraped.Director ?? entity.Director;
         entity.DurationMinutes = scraped.DurationMinutes ?? entity.DurationMinutes;

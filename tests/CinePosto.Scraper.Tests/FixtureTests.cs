@@ -1,5 +1,6 @@
 using System.Net;
 using CinePosto.Connectors.TheSpace;
+using CinePosto.Connectors.Tmdb;
 using CinePosto.Connectors.Uci;
 using CinePosto.Scraper.Fixtures;
 
@@ -248,6 +249,50 @@ public sealed class FixtureTests
     }
 
     [Fact]
+    public void LoadTmdb_ReadsSearchesAndImages_ByTheAddressesTheProviderAsksFor()
+    {
+        TmdbOptions options = new();
+
+        Dictionary<string, FixtureResponse> responses = TmdbFixtureCase.Load(TmdbFixtureDirectory("window")).ToResponses(options);
+
+        Assert.Equal(6, responses.Count);
+        Assert.Contains(new Uri(options.SearchUrl("La Mappa di Vetro")).AbsoluteUri, responses.Keys);
+        Assert.Contains(new Uri(options.ImagesUrl("101")).AbsoluteUri, responses.Keys);
+    }
+
+    [Fact]
+    public void LoadTmdb_RejectsAMissingFolder()
+    {
+        Assert.Throws<InvalidOperationException>(() => TmdbFixtureCase.Load(TmdbFixtureDirectory("does-not-exist")));
+    }
+
+    [Theory]
+    [InlineData("{}")]
+    [InlineData("[]")]
+    [InlineData("{\"searches\": []}")]
+    [InlineData("{\"searches\": [5], \"images\": []}")]
+    [InlineData("{\"searches\": [{\"body\": \"a.json\"}], \"images\": []}")]
+    [InlineData("{\"searches\": [], \"images\": [{\"movie_id\": \"1\", \"body\": \"a.json\"}]}")]
+    [InlineData("{\"searches\": [{\"title\": \"a\", \"body\": \"../a.json\"}], \"images\": []}")]
+    [InlineData("{\"searches\": [{\"title\": \"a\", \"body\": \"a.json\"}, {\"title\": \"a\", \"body\": \"a.json\"}], \"images\": []}")]
+    public void LoadTmdb_RejectsAnUnusableCase(string paramsJson)
+    {
+        string directory = Path.Combine(Path.GetTempPath(), "cineposto-tests", Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(directory);
+        try
+        {
+            File.WriteAllText(Path.Combine(directory, "params.json"), paramsJson);
+            File.WriteAllText(Path.Combine(directory, "a.json"), "{}");
+
+            Assert.Throws<InvalidOperationException>(() => TmdbFixtureCase.Load(directory));
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [Fact]
     public async Task Handler_AnswersFromSavedResponses_AndReturns404ForOtherAddresses()
     {
         Dictionary<string, FixtureResponse> responses = new()
@@ -282,4 +327,6 @@ public sealed class FixtureTests
     internal static string UciFixtureDirectory(string name) => Path.Combine(AppContext.BaseDirectory, "Fixtures", "uci", name);
 
     internal static string TheSpaceFixtureDirectory(string name) => Path.Combine(AppContext.BaseDirectory, "Fixtures", "thespace", name);
+
+    internal static string TmdbFixtureDirectory(string name) => Path.Combine(AppContext.BaseDirectory, "Fixtures", "tmdb_fixtures", name);
 }
