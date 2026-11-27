@@ -7,6 +7,12 @@
   .hero-overview { display: none; }
   /* Films: sempre 2 colonne leggibili, mai 1 colonna gigante */
   .films-grid { grid-template-columns: repeat(2, 1fr); }
+  /* Logo and the three header buttons stay on one row */
+  .brand { --brand-height: 32px; }
+}
+
+@media (max-width: 359px) {
+  .brand { --brand-height: 24px; }
 }
 
 /* Header compatto: wrap della search sotto i 640px */
@@ -23,6 +29,7 @@
 /* Fascia 640-900px: 5 link + search + 2 bottoni, compattati */
 @media (min-width: 640px) and (max-width: 899px) {
   .topbar { gap: 8px; padding: 10px; }
+  .brand { --brand-height: 27px; }
   .topnav { gap: 8px; }
   .topnav a { font-size: 13px; }
   .topbar .tb-search { max-width: 260px; }

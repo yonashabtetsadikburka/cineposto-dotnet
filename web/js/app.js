@@ -78,6 +78,9 @@ function paintTheme() {
   const light = currentTheme() === 'light';
   themeButton.innerHTML = light ? ICONS.sun : ICONS.moon;
   themeButton.setAttribute('aria-pressed', String(light));
+  // The browser UI (mobile address bar) takes the color of the header.
+  const headerColor = getComputedStyle(document.documentElement).getPropertyValue('--topbar-bg').trim();
+  if (headerColor) document.querySelector('meta[name="theme-color"]').setAttribute('content', headerColor);
 }
 themeButton.addEventListener('click', () => {
   const next = currentTheme() === 'light' ? 'dark' : 'light';
